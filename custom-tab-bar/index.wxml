@@ -1,0 +1,22 @@
+<view class="bottom-bar-container">
+    <view class="bottom-icon-box" data-path="{{'/pages/home/home'}}" data-index="{{0}}" bindtap="switchTab">
+        <image class="tab-icon"
+                src="{{selected===0?'/assets/svg/home-active.svg':'/assets/svg/home.svg'}}"
+        ></image>
+        <view class="tab-name {{selected===0?'tab-active':''}}" >首页</view>
+    </view>
+
+    <view class="bottom-icon-box" data-path="{{'/pages/me/me'}}" data-index="{{1}}" bindtap="switchTab">
+        <image class="tab-icon"
+               src="{{selected===1?'/assets/svg/me-active.svg':'/assets/svg/me.svg'}}"
+        ></image>
+        <view class="tab-name {{selected===1?'tab-active':''}}" >我的</view>
+    </view>
+
+<!--    <view class="bottom-icon-box" data-path="{{'/my-pages/app-home/app-home'}}" data-index="{{2}}" bindtap="switchTab">-->
+<!--        <image wx:if="{{selected===2}}" src="./../assets/icons/home-fill.svg"></image>-->
+<!--        <image wx:if="{{selected!==2}}" src="./../assets/icons/home.svg"></image>-->
+<!--    </view>-->
+
+
+</view>
