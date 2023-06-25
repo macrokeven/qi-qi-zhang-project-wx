@@ -1,0 +1,85 @@
+/* pages/login/login.wxss */
+.welcome-text {
+    font-size: 55rpx;
+    margin: 20% 0 0 80rpx;
+}
+
+.login-input {
+    margin-top: 100rpx;
+    width: calc(90% - 100rpx);
+    background: #F6F6F6;
+    height: 90rpx;
+    font-size: 30rpx;
+    padding: 10rpx 50rpx;
+    border-radius: 30rpx;
+}
+
+.active-code-box {
+    margin-top: 50rpx;
+    width: 100%;
+    position: relative;
+    height: 90px;
+}
+
+.active-code-input {
+    margin-top: 0;
+    position: absolute;
+    left: 5%;
+}
+
+.active-code-btn {
+    position: absolute;
+    border-radius: 20rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    width: 200rpx;
+    text-align: center;
+    background: #ffffff;
+    color: #000000;
+    top: 20rpx;
+    right: 8%;
+    z-index: 2;
+    transition: 0.3s;
+}
+
+.active-code-btn:active {
+    background: #d9d9d9;
+}
+
+.login-btn {
+    margin-left: 5%;
+    width: 90%;
+    height: 90rpx;
+    border-radius: 20rpx;
+    background: #0052D9;
+    text-align: center;
+    line-height: 90rpx;
+    color: #FFF;
+    letter-spacing: 40rpx;
+    font-size: 40rpx;
+    transition: 0.3s;
+}
+
+.login-btn:active {
+    background: #013ea6;
+}
+
+.security-box {
+    font-size: 28rpx;
+    color: #afafaf;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: auto;
+    margin-bottom: constant(safe-area-inset-bottom);
+    margin-bottom: env(safe-area-inset-bottom);
+    width: 100%;
+}
+.pic-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 50rpx 0;
+}
+.login-pic{
+    width: 80%;
+}

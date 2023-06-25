@@ -1,0 +1,30 @@
+<!--pages/login/login.wxml-->
+<view class="l-container" style="height: 100vh;background: #ffffff;justify-content: flex-start;">
+    <view class="welcome-text">
+        欢迎登录
+    </view>
+    <view wx:if="{{loginMethod===0}}" class="pic-box">
+        <image src="./../../assets/pics/login-pic2.jpg" class="login-pic"></image>
+    </view>
+    <view wx:if="{{loginMethod===1}}" class="l-row l-center">
+        <input class="login-input" bindinput='getInputPhoneNumber' placeholder="请输入手机号" type="text"/>
+    </view>
+    <view wx:if="{{loginMethod===1}}" class="active-code-box">
+        <input class="login-input active-code-input" bindinput="getInputActiveCode" placeholder="请输入验证码" type="text"/>
+        <view class="active-code-btn" bind:tap="getActiveCode">
+            {{loginStatus === 0 ? '获取验证码' : requestWaitingTime + 's'}}
+        </view>
+    </view>
+    <view class="login-btn" wx:if="{{loginMethod===1}}" bind:tap="login">登录</view>
+    <button wx:if="{{loginMethod===0}}" class="login-btn" style="letter-spacing:5rpx;margin-top:80rpx;font-size:35rpx"
+            open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键授权登录
+    </button>
+
+    <view class="l-row security-box">
+        <t-checkbox icon="rectangle" default-checked style="padding:0"/>
+        <view class="security-text" style="width:80%;margin-left:20rpx">
+            我已阅读同意用户协议和隐私政策，未注册绑定的手机号验证成功后将自动注册
+        </view>
+    </view>
+</view>
+<t-message id="t-message"></t-message>

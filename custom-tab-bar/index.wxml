@@ -1,0 +1,31 @@
+<view class="bottom-bar-container">
+    <view class="bottom-bar">
+        <view class="bottom-icon-box" data-path="{{'/pages/home/home'}}" data-index="{{0}}" bindtap="switchTab">
+            <image class="tab-icon"
+                   src="{{selected===0?'/assets/svg/home-active.svg':'/assets/svg/home.svg'}}"
+            ></image>
+            <view class="tab-name {{selected===0?'tab-active':''}}">首页</view>
+        </view>
+        <view wx:if="{{role<56}}" class="bottom-icon-box" data-path="{{'/pages/company-transfer/company-transfer'}}" data-index="{{3}}" bindtap="switchTab">
+            <image class="tab-icon"
+                   src="{{selected===3?'/assets/svg/company-transfer-active.svg':'/assets/svg/company-transfer-no-active.svg'}}"
+            ></image>
+            <view class="tab-name {{selected===3?'tab-active':''}}">公司转让</view>
+        </view>
+
+        <view wx:if="{{role>55}}" class="bottom-icon-box" data-path="{{'/pages/tax-status/tax-status'}}" data-index="{{1}}" bindtap="switchTab">
+            <image class="tab-icon"
+                   src="{{selected===1?'/assets/svg/progress-active.svg':'/assets/svg/progress.svg'}}"
+            ></image>
+            <view class="tab-name {{selected===1?'tab-active':''}}">报税</view>
+        </view>
+        <view class="bottom-icon-box" data-path="{{'/pages/setting/setting'}}" data-index="{{2}}" bindtap="switchTab">
+            <image class="tab-icon"
+                   src="{{selected===2?'/assets/svg/settings-active.svg':'/assets/svg/settings.svg'}}"
+            ></image>
+            <view class="tab-name {{selected===2?'tab-active':''}}">设置</view>
+        </view>
+
+    </view>
+
+</view>

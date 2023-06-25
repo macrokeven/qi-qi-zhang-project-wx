@@ -1,0 +1,32 @@
+/* pages/me/me.wxss */
+.avatar {
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 16rpx;
+    background: cornflowerblue;
+    margin-left: 48rpx;
+}
+.username {
+    position: static;
+    color: rgb(31, 34, 38);
+    font-family: Barlow;
+    font-size: 36rpx;
+    font-weight: 700;
+    line-height: 52rpx;
+    letter-spacing: 0;
+    text-align: left;
+    padding: 0;
+    flex-grow: 0;
+    margin: 0 16rpx 0 16rpx;
+}
+
+.tips {
+    color: rgba(31, 34, 38, 0.5);
+    font-family: Barlow;
+    font-size: 24rpx;
+    font-weight: 700;
+    line-height: 32rpx;
+    letter-spacing: 0;
+    text-align: left;
+    margin: 8rpx 16rpx 0 16rpx;
+}

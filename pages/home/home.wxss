@@ -1,0 +1,141 @@
+.user-info {
+    z-index: 10;
+    width: 100%;
+    height: 250rpx;
+    display: flex;
+    justify-content: center;
+}
+.login-text{
+    margin-top: 10rpx;
+    font-size: 40rpx;
+    margin-left: 10rpx;
+    color: #ffffff;
+}
+.user-avatar {
+    border-radius: 50%;
+    height: 120rpx;
+    width: 120rpx;
+    margin: 10rpx 40rpx 0 40rpx;
+}
+
+.username {
+    font-size: 35rpx;
+    color: #ffffff;
+}
+.welcome-text{
+    margin-top: 10rpx;
+    font-size: 25rpx;
+    color: #ffffff;
+}
+.copy-button{
+    margin: 0 20rpx;
+    width: 120rpx;
+    height: 50rpx;
+    border-radius: 12rpx;
+    border: 2rpx solid #fff;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 25rpx;
+    color: #fff;
+
+}
+.user-level {
+    margin-top: 10rpx;
+    height: 50rpx;
+    display: flex;
+    background: blueviolet;
+    border-radius: 10rpx;
+    padding: 0 10rpx;
+}
+
+.level-pic {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.user-level-name {
+    color: #ffffff;
+    font-size: 18rpx;
+    margin-left: 10rpx;
+}
+
+.function-box {
+    display: flex;
+    flex-direction: column;
+    width: 33.333%;
+    height: 150rpx;
+}
+
+.function-panel {
+    z-index: 10;
+    width: 90%;
+    /* background: #2969FF; */
+    background: #ffffff;
+    border-radius: 16rpx;
+    margin-top: 30rpx;
+}
+
+.function-icon {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.function-name {
+    margin-top: 20rpx;
+    color: #000000;
+    font-size: 25rpx;
+}
+
+.notification-title {
+    font-size: 30rpx;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 30rpx 0 30rpx 45rpx;
+    width: 200rpx;
+}
+
+.notification-pic {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 18rpx;
+    margin: 0 10rpx 0 50rpx;
+}
+
+.notification-content {
+    color: #ffffff;
+    font-size: 15px;
+    margin:0 50rpx;
+    line-height: 50rpx;
+    width: calc(100% - 100rpx);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;/*省略几行写几*/
+    -webkit-box-orient: vertical;
+}
+.tool-box {
+    display: flex;
+    flex-direction: column;
+    width: 150rpx;
+    border-radius: 10rpx;
+    height: 150rpx;
+    transition: 0.3s;
+}
+.tool-box:active{
+    background: #e0e0e0;
+}
+.tool-icon{
+    width: 50rpx;
+    height: 50rpx;
+}
+.tool-name{
+    margin-top: 18rpx;
+    color: #ffffff;
+    font-size: 23rpx;
+}
+.blue-background{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}

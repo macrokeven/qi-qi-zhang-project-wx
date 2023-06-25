@@ -1,0 +1,12 @@
+{
+    "navigationBarBackgroundColor": "#2969FF",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "增值税率查询",
+    "usingComponents": {
+        "t-collapse": "tdesign-miniprogram/collapse/collapse",
+        "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
+        "t-tab-bar": "tdesign-miniprogram/tab-bar/tab-bar",
+        "t-tab-bar-item": "tdesign-miniprogram/tab-bar-item/tab-bar-item",
+        "t-loading": "tdesign-miniprogram/loading/loading"
+    }
+}

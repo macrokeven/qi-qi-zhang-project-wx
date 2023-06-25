@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "t-input": "tdesign-miniprogram/input/input",
+        "t-button": "tdesign-miniprogram/button/button",
+        "t-dialog": "tdesign-miniprogram/dialog/dialog",
+        "t-message": "tdesign-miniprogram/message/message"
+    },
+    "navigationBarBackgroundColor": "#2969FF",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "个人资料"
+}

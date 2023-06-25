@@ -1,0 +1,14 @@
+{
+    "usingComponents": {
+        "t-input": "tdesign-miniprogram/input/input",
+        "t-button": "tdesign-miniprogram/button/button",
+        "t-dialog": "tdesign-miniprogram/dialog/dialog",
+        "t-message": "tdesign-miniprogram/message/message",
+        "t-picker": "tdesign-miniprogram/picker/picker",
+        "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+        "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker"
+    },
+    "navigationBarBackgroundColor": "#2969FF",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "新增转让"
+}

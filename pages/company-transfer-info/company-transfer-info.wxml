@@ -1,0 +1,9 @@
+<t-popup visible="{{true}}" placement="left">
+    <view class="block">
+        <view class="header">
+            <view class="btn btn--cancel" aria-role="button">取消</view>
+            <view class="title">标题文字</view>
+            <view class="btn btn--confirm" aria-role="button">确定</view>
+        </view>
+    </view>
+</t-popup>

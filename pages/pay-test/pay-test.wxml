@@ -1,0 +1,1 @@
+<button bindtap="handlePay">支付 0.01 元</button>

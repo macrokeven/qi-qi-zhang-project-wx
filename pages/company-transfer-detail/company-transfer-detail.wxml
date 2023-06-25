@@ -1,0 +1,225 @@
+<view class="l-container" style="background:rgb(244,244,244)">
+    <view class="f-card">
+        <view class="l-row l-center" style="padding:20rpx 0 0 0;background:#ffffff">
+            <t-search placeholder="搜索待转让公司..." style="width:95%"/>
+        </view>
+        <view class="l-row h-scroll-box" style="padding: 0 2.5% 0 2.5%">
+            <view class="scroll-panel">
+                <view class="popup-button {{areaValue[0]!==0?'chose-value':''}}" data-name="taxStatus"
+                      bindtap="onAreaPicker">
+                    {{areaValue[0] === 0 ? '地区' : areaText}}
+                    <image wx:if="{{areaValue[0]===0}}" src="./../../assets/svg/triangle.svg" class="triangle {{areaVisible?'rotate':''}}"></image>
+                    <image wx:if="{{areaValue[0]!==0}}" src="./../../assets/svg/triangle-b.svg" class="triangle {{areaVisible?'rotate':''}}"></image>
+                </view>
+
+                <view class="popup-button {{establishYear!==0?'chose-value':''}}" data-name="establishYear"
+                      bindtap="openPopup">
+                    {{establishYearMap[establishYear]}}
+                    <image wx:if="{{establishYear===0}}" src="./../../assets/svg/triangle.svg" class="triangle {{establishYearPopup?'rotate':''}}"></image>
+                    <image wx:if="{{establishYear!==0}}" src="./../../assets/svg/triangle-b.svg" class="triangle {{establishYearPopup?'rotate':''}}"></image>
+                </view>
+                <view class="popup-button {{taxLevel!==0?'chose-value':''}}" data-name="taxLevel" bindtap="openPopup">
+                    {{taxLevelMap[taxLevel]}}
+                    <image wx:if="{{taxLevel===0}}" src="./../../assets/svg/triangle.svg" class="triangle {{taxLevelPopup?'rotate':''}}"></image>
+                    <image wx:if="{{taxLevel!==0}}" src="./../../assets/svg/triangle-b.svg" class="triangle {{taxLevelPopup?'rotate':''}}"></image>
+                </view>
+                <view class="popup-button" data-name="other" bindtap="openPopup">其他筛选</view>
+                <!--                <t-dropdown-menu>-->
+                <!--                    <t-dropdown-item options="{{taxLevel.options}}" default-value="{{taxLevel.value}}"/>-->
+                <!--                </t-dropdown-menu>-->
+                <!--                <t-dropdown-menu>-->
+                <!--                    <t-dropdown-item options="{{establishYear.options}}" default-value="{{establishYear.value}}"/>-->
+                <!--                </t-dropdown-menu>-->
+                <!--                <t-dropdown-menu>-->
+                <!--                    <t-dropdown-item options="{{price.options}}" default-value="{{price.value}}"/>-->
+                <!--                </t-dropdown-menu>-->
+                <!--                <view class="popup-button" bindtap="openPopup">其他筛选</view>-->
+            </view>
+        </view>
+
+
+        <t-popup visible="{{taxLevelPopup}}"  bind:visible-change="onVisibleChange" placement="bottom">
+            <view class="popup-card">
+                <view class="card-title">公司税务等级</view>
+                <view class="single-pick-box {{taxLevel===0?'s-p-b-active':''}}" data-name="taxLevel"
+                      data-value="{{0}}" bindtap="chooseSingleItem">全部税务等级
+                </view>
+                <view class="single-pick-box {{taxLevel===1?'s-p-b-active':''}}" data-name="taxLevel"
+                      data-value="{{1}}" bindtap="chooseSingleItem">A
+                </view>
+                <view class="single-pick-box {{taxLevel===2?'s-p-b-active':''}}" data-name="taxLevel"
+                      data-value="{{2}}" bindtap="chooseSingleItem">B
+                </view>
+                <view class="single-pick-box {{taxLevel===3?'s-p-b-active':''}}" data-name="taxLevel"
+                      data-value="{{3}}" bindtap="chooseSingleItem">C
+                </view>
+                <view class="single-pick-box {{taxLevel===4?'s-p-b-active':''}}" data-name="taxLevel"
+                      data-value="{{4}}" bindtap="chooseSingleItem">D
+                </view>
+                <view class="single-pick-box {{taxLevel===5?'s-p-b-active':''}}" data-name="taxLevel"
+                      data-value="{{5}}" bindtap="chooseSingleItem">M
+                </view>
+            </view>
+            <view class="safe-box"></view>
+        </t-popup>
+
+        <t-popup visible="{{establishYearPopup}}" bind:visible-change="onVisibleChange" placement="bottom">
+            <view class="popup-card">
+                <view class="card-title">公司成立年限</view>
+                <view class="single-pick-box {{establishYear===0?'s-p-b-active':''}}" data-name="establishYear"
+                      data-value="{{0}}" bindtap="chooseSingleItem">不限
+                </view>
+                <view class="single-pick-box {{establishYear===1?'s-p-b-active':''}}" data-name="establishYear"
+                      data-value="{{1}}" bindtap="chooseSingleItem">1年以下
+                </view>
+                <view class="single-pick-box {{establishYear===2?'s-p-b-active':''}}" data-name="establishYear"
+                      data-value="{{2}}" bindtap="chooseSingleItem">1-2年
+                </view>
+                <view class="single-pick-box {{establishYear===3?'s-p-b-active':''}}" data-name="establishYear"
+                      data-value="{{3}}" bindtap="chooseSingleItem">3-5年
+                </view>
+                <view class="single-pick-box {{establishYear===4?'s-p-b-active':''}}" data-name="establishYear"
+                      data-value="{{4}}" bindtap="chooseSingleItem">5年以上
+                </view>
+                <view class="single-pick-box empty"></view>
+            </view>
+            <view class="safe-box"></view>
+        </t-popup>
+
+        <t-popup visible="{{otherPopup}}" bind:visible-change="onVisibleChange" placement="bottom"
+                 style="overflow-y:scroll">
+            <view class="popup-card" style="padding-bottom:20rpx">
+                <view class="card-title" style="width:calc(100% - 110rpx)">转让价格</view>
+                <image src="./../../assets/svg/close.svg" class="close-svg" bindtap="closeOtherPopup"></image>
+                <view class="l-row" style="align-items:center;justify-content:space-between">
+                <input class="my-round-input" placeholder="最小"></input>
+                    至
+                <input class="my-round-input" placeholder="最大"></input>
+                </view>
+                <view class="single-pick-box triple {{price===0?'s-p-b-active':''}}" data-name="price"
+                      data-value="{{0}}" bindtap="chooseSingleItem">全部价格
+                </view>
+                <view class="single-pick-box triple {{price===1?'s-p-b-active':''}}" data-name="price"
+                      data-value="{{1}}" bindtap="chooseSingleItem">1千以下
+                </view>
+                <view class="single-pick-box triple {{price===2?'s-p-b-active':''}}" data-name="price"
+                      data-value="{{2}}" bindtap="chooseSingleItem">1-2千
+                </view>
+               <view class="single-pick-box triple {{price===3?'s-p-b-active':''}}" data-name="price"
+                      data-value="{{3}}" bindtap="chooseSingleItem">2-5千
+                </view>
+                <view class="single-pick-box triple {{price===4?'s-p-b-active':''}}" data-name="price"
+                      data-value="{{4}}" bindtap="chooseSingleItem">5千-1万
+                </view>
+                <view class="single-pick-box triple {{price===5?'s-p-b-active':''}}" data-name="price"
+                      data-value="{{5}}" bindtap="chooseSingleItem">1万以上
+                </view>
+
+                <view class="card-title">税务情况</view>
+                <view class="single-pick-box {{taxStatus===0?'s-p-b-active':''}}" data-name="taxStatus"
+                      data-value="{{0}}" bindtap="chooseSingleItem">不限
+                </view>
+                <view class="single-pick-box {{taxStatus===1?'s-p-b-active':''}}" data-name="taxStatus"
+                      data-value="{{1}}" bindtap="chooseSingleItem">零申报
+                </view>
+                <view class="single-pick-box {{taxStatus===2?'s-p-b-active':''}}" data-name="taxStatus"
+                      data-value="{{2}}" bindtap="chooseSingleItem">有开票
+                </view>
+                <view class="single-pick-box {{taxStatus===3?'s-p-b-active':''}}" data-name="taxStatus"
+                      data-value="{{3}}" bindtap="chooseSingleItem">有交税
+                </view>
+                <view class="card-title">公司类型</view>
+                <view class="single-pick-box {{companyType===1?'s-p-b-active':''}}" data-name="companyType"
+                      data-value="{{1}}" bindtap="chooseSingleItem">内资
+                </view>
+                <view class="single-pick-box {{companyType===2?'s-p-b-active':''}}" data-name="companyType"
+                      data-value="{{2}}" bindtap="chooseSingleItem">外资
+                </view>
+                <view class="card-title">许可证</view>
+                <view class="single-pick-box {{hasLicenses?'s-p-b-active':''}}" data-name="hasLicenses"
+                      data-value="{{true}}" bindtap="chooseSingleItem">是
+                </view>
+                <view class="single-pick-box {{!hasLicenses?'s-p-b-active':''}}" data-name="hasLicenses"
+                      data-value="{{false}}" bindtap="chooseSingleItem">否
+                </view>
+                <view class="card-title">公司情况</view>
+                <view class="single-pick-box triple {{companyStatus===1?'s-p-b-active':''}}" data-name="companyStatus"
+                      data-value="{{1}}" bindtap="chooseSingleItem">税务登记
+                </view>
+                <view class="single-pick-box triple {{companyStatus===2?'s-p-b-active':''}}" data-name="companyStatus"
+                      data-value="{{2}}" bindtap="chooseSingleItem">银行开户
+                </view>
+                <view class="single-pick-box triple {{companyStatus===3?'s-p-b-active':''}}" data-name="companyStatus"
+                      data-value="{{3}}" bindtap="chooseSingleItem">刻章
+                </view>
+            </view>
+            <view class="l-row">
+                <view class="bottom-button">重置</view>
+                <view class="bottom-button blue-button">确定</view>
+            </view>
+            <view class="safe-box"></view>
+        </t-popup>
+
+        <t-picker
+                visible="{{areaVisible}}"
+                value="{{areaValue}}"
+                title="选择地区"
+                bind:visible-change="onAreaClose"
+                cancelBtn="取消"
+                confirmBtn="确认"
+                bindchange="onPickerChange"
+                bindpick="onColumnChange"
+                bindcancel="onPickerCancel"
+        >
+            <t-picker-item options="{{provinces}}"></t-picker-item>
+            <t-picker-item options="{{cities}}"></t-picker-item>
+            <t-picker-item options="{{counties}}"></t-picker-item>
+        </t-picker>
+
+        <view class="comp-detail-card" wx:for="{{dataList}}" wx:for-item="company" wx:key="index">
+            <view class="l-row" style="margin:20rpx 20rpx 0 20rpx;align-items:center;width:calc(100% - 40rpx)">
+                <image src="./../../assets/pics/transfer-icon-1.svg" class="detail-fire"></image>
+                <view class="comp-name">{{company.companyName}}</view>
+                <view class="price-panel">
+                    <view class="price" wx:if="{{!company.faceNegate}}">{{company.transferPrice}}</view>
+                    <view class="price" wx:if="{{company.faceNegate}}">面议</view>
+                    <view class="unit" wx:if="{{!company.faceNegate}}">元</view>
+                </view>
+            </view>
+
+            <view class="l-row" style="margin:20rpx 20rpx 16rpx 20rpx;width:calc(100% - 40rpx)">
+                <view class="comp-info">{{taxStatusMap[company.taxStatus]}}</view>
+                <view class="comp-info">{{companyStatusMap[company.companyStatus]}}</view>
+            </view>
+
+            <view class="l-row" style="margin:0 20rpx 16rpx 20rpx;width:calc(100% - 40rpx)">
+                <view class="comp-base-info">
+                    <view class="des">行业类型：</view>
+                    <view class="content">{{companyIndustry[company.companyIndustry]}}</view>
+                </view>
+                <view class="comp-base-info">
+                    <view class="des">公司地址：</view>
+                    <view class="content">{{counties[company.companyArea]}}</view>
+                </view>
+            </view>
+
+            <view class="l-row" style="margin:0 20rpx 16rpx 20rpx;width:calc(100% - 40rpx)">
+                <view class="comp-base-info">
+                    <view class="des">成立时间：</view>
+                    <view class="content">{{company.establishDate === 0 ? '新设立' : company.establishDate + '年'}}
+                    </view>
+                </view>
+                <view class="comp-base-info">
+                    <view class="des">纳税类型：</view>
+                    <view class="content">{{taxStatusMap[company.taxStatus]}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="float-button-box">
+            <t-button size="large" icon="add" bindtap="openNewTransfer" shape="round" theme="light">我也要转让
+            </t-button>
+        </view>
+    </view>
+
+
+</view>

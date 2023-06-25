@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "t-popup": "tdesign-miniprogram/popup/popup"
+    },
+    "navigationBarBackgroundColor": "#2969FF",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "设置"
+}

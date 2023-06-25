@@ -1,0 +1,50 @@
+<view class="l-container">
+    <view class="l-card">
+        <view class="l-row">
+            <t-tab-bar style="width:100%;margin-top:10rpx;" bordered="{{false}}" split="{{false}}" safe-area-inset-bottom="{{false}}" value="{{isSingleTax}}" fixed="{{false}}" bindchange="onChange" theme="tag">
+                <t-tab-bar-item  value="{{true}}"> 小规模纳税人 </t-tab-bar-item>
+                <t-tab-bar-item  value="{{false}}"> 一般纳税人 </t-tab-bar-item>
+            </t-tab-bar>
+        </view>
+        <view wx:if="{{isSingleTax&&!loadingData}}" class="l-col" style="padding: 0 20rpx;width:calc(100% - 40rpx)" wx:for="{{taxInfoA}}" wx:for-item="item" wx:key="index">
+            <view class="l-row tax-row" wx:if="{{!item.children}}">
+                <view class="tax-name">{{item.item}} {{item.taxRate}}</view>
+                <view class="tax-rate"></view>
+            </view>
+            <view wx:if="{{!item.children}}" class="grey-line"></view>
+            <view wx:if="{{item.children}}" class="l-row tax-row">
+                <t-collapse style="width:100%;font-size:20rpx" value="{{activeValues}}" bind:change="handleChange">
+                    <t-collapse-panel value="{{index}}" expandIcon>
+                        <view slot="header" style="font-size:25rpx">{{item.item + ' '+ item.taxRate}}</view>
+                        <view wx:for="{{item.children}}" wx:for-item="child" wx:key="index">
+                            {{child.item}}
+                        </view>
+                    </t-collapse-panel>
+                </t-collapse>
+            </view>
+        </view>
+        <view wx:if="{{!isSingleTax&&!loadingData}}" class="l-col" style="padding: 0 20rpx;width:calc(100% - 40rpx)" wx:for="{{taxInfoB}}" wx:for-item="item" wx:key="index">
+            <view class="l-row tax-row" wx:if="{{!item.children}}">
+                <view class="tax-name">{{item.item}} {{item.taxRate}}</view>
+                <view class="tax-rate"></view>
+            </view>
+            <view wx:if="{{!item.children}}" class="grey-line"></view>
+            <view wx:if="{{item.children}}" class="l-row tax-row">
+                <t-collapse style="width:100%;font-size:20rpx" value="{{activeValues}}" bind:change="handleChange">
+                    <t-collapse-panel value="{{index}}" expandIcon>
+                        <view slot="header" style="font-size:25rpx">{{item.item + ' '+ item.taxRate}}</view>
+                        <view wx:for="{{item.children}}" wx:for-item="child" wx:key="index">
+                            {{child.item}}
+                        </view>
+                    </t-collapse-panel>
+                </t-collapse>
+            </view>
+        </view>
+        <view wx:if="{{loadingData}}" class="loading-panel">
+            <t-loading theme="circular" size="60rpx" class="wrapper"/>
+            <view class="loading-text">正在加载数据</view>
+        </view>
+
+    </view>
+    <view class="l-bottom-box"></view>
+</view>

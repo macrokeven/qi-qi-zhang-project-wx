@@ -1,0 +1,39 @@
+<view class="card b-black">
+                    <image src="./../../assets/svg/apple.svg" class="card-logo"></image>
+                    <image src="./../../assets/svg/like.svg" class="card-like"></image>
+                    <view class="l-row" style="flex-direction:column;margin: 32rpx 0 0 150rpx;width: fit-content;">
+                        <view class="tax-name">个人所得税</view>
+                        <view class="tax-date">2022-08-13</view>
+                    </view>
+                    <view class="l-row" style="margin:90rpx 0 0 0;align-items:center;height:40rpx">
+                        <image src="./../../assets/svg/location.svg" class="card-s-logo"></image>
+                        <view class="tax-name" style="font-size:25rpx">广东省税务局</view>
+                        <view class="tax-name" style="font-size:40rpx;margin:0 32rpx 0 auto">审核中</view>
+                    </view>
+                </view>
+                <view class="card b-red">
+                    <image src="./../../assets/svg/icon1.svg" class="card-logo"></image>
+                    <image src="./../../assets/svg/like.svg" class="card-like"></image>
+                    <view class="l-row" style="flex-direction:column;margin: 32rpx 0 0 150rpx;width: fit-content;">
+                        <view class="tax-name">广东省税务局</view>
+                        <view class="tax-date">2022-08-13</view>
+                    </view>
+                    <view class="l-row" style="margin:90rpx 0 0 0;align-items:center;height:40rpx">
+                        <image src="./../../assets/svg/location.svg" class="card-s-logo"></image>
+                        <view class="tax-name" style="font-size:25rpx">广东省税务局</view>
+                        <view class="tax-name" style="font-size:40rpx;margin:0 32rpx 0 auto">审核中</view>
+                    </view>
+                </view>
+                <view class="card b-purple">
+                    <image src="./../../assets/svg/icon1.svg" class="card-logo"></image>
+                    <image src="./../../assets/svg/like.svg" class="card-like"></image>
+                    <view class="l-row" style="flex-direction:column;margin: 32rpx 0 0 150rpx;width: fit-content;">
+                        <view class="tax-name">企业所得税</view>
+                        <view class="tax-date">2022-08-13</view>
+                    </view>
+                    <view class="l-row" style="margin:90rpx 0 0 0;align-items:center;height:40rpx">
+                        <image src="./../../assets/svg/location.svg" class="card-s-logo"></image>
+                        <view class="tax-name" style="font-size:25rpx">广东省税务局</view>
+                        <view class="tax-name" style="font-size:40rpx;margin:0 32rpx 0 auto">审核中</view>
+                    </view>
+                </view>

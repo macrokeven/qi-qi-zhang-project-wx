@@ -1,0 +1,70 @@
+/* pages/new-transfer/new-transfer.wxss */
+.l-card {
+    width: 100%;
+    border-radius: 20rpx;
+    background: #ffffff;
+    margin-top: 20rpx;
+    display: flex;
+    flex-direction: column;
+    font-family: "PingFang SC", Serif, serif;
+}
+.l-card:first-child{
+    margin-top: 0;
+    border-radius: 0 0 20rpx 20rpx;
+}
+.card-row{
+    margin: 16rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.form-head {
+    display: flex;
+    font-size: 32rpx;
+    font-weight: 400;
+    margin: 20rpx 0 0 40rpx;
+}
+.red-spot{
+    color: #E34D59;
+}
+.card-title {
+    font-size: 50rpx;
+    font-weight: 600;
+    margin: 40rpx 0 0 40rpx;
+}
+
+.picker-label {
+    margin: 0 40rpx;
+    padding: 20rpx 0;
+    font-size: 32rpx;
+    border-bottom: 1rpx solid #e7e7e7;
+    color: #2969FF;
+}
+.picker-label:last-child{
+    margin-bottom: 20rpx;
+}
+
+.grey {
+    color: #a9a9a9;
+}
+
+.my-input {
+    margin: 0 40rpx 0 20rpx;
+    font-size: 32rpx !important;
+}
+.t-input__wrap .t-input__content{
+    font-size: 32rpx !important;
+}
+
+.t-input {
+    padding: 10rpx 20rpx !important;
+}
+.blue-icon{
+    width: 4rpx;
+    height: 30rpx;
+    margin: 0 10rpx 0 30rpx;
+}
+.card-head{
+    font-size: 36rpx;
+    color: #0052D9;
+}

@@ -1,0 +1,94 @@
+<navigation-bar title="慧友米" showBack="{{true}}" showLogo="{{true}}"></navigation-bar>
+<view class="l-container">
+    <view class="blue-background" style="height: 100rpx;background: #2969FF;">
+
+    </view>
+    <image class="blue-background" style="top: 100rpx;" src="./../../assets/pics/waves.png"/>
+
+    <view class="user-info">
+        <view class="l-row">
+            <view class="l-col" style="justify-content: center;margin-top:-10rpx">
+                <image src="{{login?avatar:'./../../assets/pics/no-avatar.png'}}" class="user-avatar"
+                       bindtap="checkLogin"></image>
+            </view>
+            <view class="l-col" style="justify-content: center;" wx:if="{{login}}">
+                <view class="username" wx:if="{{bindCompany}}">{{customerBaseInfo.customerName}}</view>
+                <view class="l-row" wx:if="{{bindCompany}}" style="margin: 10rpx 0">
+                    <view class="welcome-text" style="margin-bottom:20rpx">税号：{{customerBaseInfo.taxpayerCode}}</view>
+                    <view class="copy-button" bindtap="copyTaxpayerCode">复制</view>
+                </view>
+                <view class="username" wx:if="{{!bindCompany}}">请绑定公司</view>
+                <view class="welcome-text">欢迎回来！</view>
+                <!-- <view class="user-level l-center">
+                    <image class="level-pic" src="./../../assets/svg/Vip.svg"></image>
+                    <view class="user-level-name">高级版会员</view>
+                </view> -->
+            </view>
+            <view class="l-col" style="justify-content: center;" wx:if="{{!login}}">
+                <view class="login-text">登录体验更多功能</view>
+            </view>
+        </view>
+
+    </view>
+
+
+    <!--    <view class="l-row l-center">-->
+    <!--        <view class="function-panel l-row">-->
+    <!--            <view class="function-box l-center">-->
+    <!--                <image class="function-icon" src="./../../assets/svg/internet.svg"></image>-->
+    <!--                <view class="function-name">ICP代办</view>-->
+    <!--            </view>-->
+    <!--            <view class="function-box l-center">-->
+    <!--                <image class="function-icon" src="./../../assets/svg/transfer.svg"></image>-->
+    <!--                <view class="function-name">公司转让</view>-->
+    <!--            </view>-->
+    <!--            <view class="function-box l-center">-->
+    <!--                <image class="function-icon" src="./../../assets/svg/deal.svg"></image>-->
+    <!--                <view class="function-name">商标交易</view>-->
+    <!--            </view>-->
+    <!--        </view>-->
+    <!--    </view>-->
+
+    <view class="l-row l-center">
+        <view class="function-panel" style="background:#ffffff;">
+            <view class="notification-title" style="color:#000000;margin: 30rpx 0 10rpx 45rpx;">最新消息</view>
+            <view class="l-row" style="align-items:center;margin-bottom: 30rpx;">
+                <!-- <image src="./../../assets/pics/new.jpg" class="notification-pic" /> -->
+                <view class="notification-content" style="color:#000000">
+                    {{systemNotification.content}}
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="l-row l-center">
+        <view class="function-panel l-col" style="background:#ffffff">
+            <view class="notification-title" style="color:#000000">实用工具</view>
+            <view class="l-row"
+                  style="align-items:center;margin-bottom:30rpx;flex-wrap: wrap;">
+                <view class="l-center" style="width:33.333%;display:flex">
+                    <view class="tool-box l-center" bindtap="openPage" data-path="value-add-tax-info">
+                        <image src="./../../assets/svg/person-fax.svg" class="tool-icon"></image>
+                        <view class="tool-name" style="color:#000000">增值税率查询</view>
+                    </view>
+                </view>
+                <view class="l-center" style="width:33.333%;display:flex">
+                    <view class="tool-box l-center">
+                        <image src="./../../assets/svg/table-fill.svg" class="tool-icon"></image>
+                        <view class="tool-name" style="color:#000000">增值税计算器</view>
+                    </view>
+                </view>
+                <view class="l-center" style="width:33.333%;display:flex">
+                    <view class="tool-box l-center" bindtap="switchPage" data-path="company-transfer">
+                        <image src="./../../assets/svg/company-transfer.svg" class="tool-icon"></image>
+                        <view class="tool-name" style="color:#000000">公司转让</view>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+    </view>
+    {{taxInfoA}}
+    <view class="tab-box"></view>
+    <t-message id="t-message"></t-message>
+</view>

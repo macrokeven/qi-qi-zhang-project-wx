@@ -1,0 +1,57 @@
+<view class="l-container">
+    <view class="l-col" style="align-items:center;">
+        <view class="user-profile-card" bindtap="checkLogin">
+            <image wx:if="{{login}}" class="avatar" src="{{avatar}}" bindtap="openBottomBar"></image>
+            <image wx:if="{{!login}}" class="default-avatar" src="./../../assets/pics/no-avatar.png"></image>
+            <!--                <view style="font-size:20rpx;margin-top:10rpx">请登录</view>-->
+
+            <view wx:if="{{login}}" class="l-col" style="justify-content: center;margin-left:50rpx">
+                <view class="username">{{nickname}}</view>
+                <view class="l-row" style="height:50rpx;align-items:center;margin-top:10rpx">
+                    <image class="vip-icon" src="./../../assets/svg/vip-2.svg"></image>
+                    <view class="vip-level">超级会员</view>
+                </view>
+            </view>
+            <view wx:if="{{!login}}" class="l-col" style="justify-content: center;margin-left:50rpx">
+                <view class="username">登录体验完整功能</view>
+
+            </view>
+        </view>
+        <view class="profile-button" bindtap="openPage" data-route="{{'company-info'}}">
+            <image class="button-icon" src="./../../assets/svg/publish.svg"></image>
+            <view class="button-text">我的发布</view>
+            <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
+        </view>
+        <view class="profile-button" bindtap="openPage" data-route="{{'user-info'}}">
+            <image class="button-icon" src="./../../assets/svg/persion.svg"></image>
+            <view class="button-text">个人资料</view>
+            <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
+        </view>
+        <view class="profile-button" bindtap="openPage" data-route="{{'company-info'}}">
+            <image class="button-icon" src="./../../assets/svg/company.svg"></image>
+            <view class="button-text">企业信息</view>
+            <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
+        </view>
+
+        <!--        <view class="profile-button">-->
+        <!--            <image class="button-icon" src="./../../assets/svg/link.svg"></image>-->
+        <!--            <view class="button-text">帐无忧绑定</view>-->
+        <!--        </view>-->
+
+        <view class="profile-button" style="margin-top:50rpx">
+            <image class="button-icon" src="../../assets/svg/customer-service.svg"></image>
+            <view class="button-text">联系我们</view>
+            <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
+        </view>
+
+        <!--        <view class="profile-button">-->
+        <!--            <image class="button-icon" src="./../../assets/svg/close.svg"></image>-->
+        <!--            <view class="button-text">退出登录</view>-->
+        <!--        </view>-->
+
+        <t-popup visible="{{bottomMenuVisible}}" bind:visible-change="onVisibleChange" placement="{{'bottom'}}">
+            <view class="my-btn">退出登录</view>
+            <view class="safe-box"></view>
+        </t-popup>
+    </view>
+</view>

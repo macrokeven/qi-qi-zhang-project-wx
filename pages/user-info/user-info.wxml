@@ -1,0 +1,48 @@
+<view class="l-container">
+    <view class="l-card">
+        <view class="form-head">昵称</view>
+        <t-input style="margin:0 40rpx 0 20rpx" disabled="{{!editNickname}}"  bind:change="getNickname" value="{{nickname}}" placeholder="请输入昵称">
+            <t-button slot="suffix" theme="primary" size="extra-small" bindtap="changeEditNickname">
+                {{editNickname?'保存':'修改昵称'}} </t-button>
+        </t-input>
+        <view class="form-head">手机号</view>
+        <t-input style="margin:0 40rpx 0 20rpx" placeholder="" value="{{phoneNumber}}" disabled />
+        <t-button theme="primary" style="width:90%;margin:40rpx 5%" bindtap="openBindDialog">修改绑定手机</t-button>
+    </view>
+    <t-dialog
+            visible="{{bindPhoneDialogVisible}}"
+            title="验证手机"
+            confirm-btn="{{ { content: '提交', variant: 'base' } }}"
+            cancel-btn="取消"
+            bind:confirm="closeDialog"
+            bind:cancel="closeDialog"
+    >
+        <view slot="content">
+            <t-input value="{{nickname}}" placeholder="请输入手机号码">
+                <t-button slot="suffix" theme="primary" size="extra-small" bindtap="changeEditNickname">
+                    发送验证码 </t-button>
+            </t-input>
+            <t-input  value="{{nickname}}" placeholder="请输入验证码">
+            </t-input>
+        </view>
+    </t-dialog>
+    <t-dialog
+            visible="{{newPhoneDialogVisible}}"
+            title="验证新手机"
+            confirm-btn="{{ { content: '提交', variant: 'base' } }}"
+            cancel-btn="取消"
+            bind:confirm="closeNewDialog"
+            bind:cancel="closeNewDialog"
+    >
+        <view slot="content">
+            <t-input value="{{nickname}}" placeholder="请输入新手机号码">
+                <t-button slot="suffix" theme="primary" size="extra-small" bindtap="changeEditNickname">
+                    发送验证码 </t-button>
+            </t-input>
+            <t-input  value="{{nickname}}" placeholder="请输入验证码">
+            </t-input>
+        </view>
+    </t-dialog>
+
+</view>
+<t-message id="t-message"></t-message>

@@ -1,0 +1,248 @@
+<view class="l-container" style="background:rgb(244,244,244)">
+    <view class="l-card">
+        <view class="card-row" style="margin-top:32rpx">
+            <image class="blue-icon" src="./../../assets/svg/blue.svg"></image>
+            <view class="card-head">基本信息</view>
+        </view>
+        <view class="form-head"><view class="red-spot">*</view>公司全称
+        </view>
+        <t-input class="my-input" value="{{companyName}}" data-name="companyName" bind:change="onUserInput"
+                 placeholder-style="font-size:32rpx" style="font-size:32rpx" placeholder="请输入公司全称"/>
+
+        <view class="form-head"><view class="red-spot">*</view>公司行业
+        </view>
+        <t-picker
+                visible="{{companyIndustry.visible}}"
+                title="选择公司经营行业"
+                value="{{[companyIndustry.value]}}"
+                cancelBtn="取消"
+                confirmBtn="确认"
+                bindpick="onPick"
+                bindconfirm="onPickerConfirm"
+        >
+            <t-picker-item options="{{companyIndustry.options}}"/>
+        </t-picker>
+        <view bindtap="openPicker" data-picker="companyIndustry" class="picker-label {{companyIndustry.value===0?'grey':''}}">
+            {{companyIndustry.value === 0 ? '选择公司经营行业' : companyIndustry.label}}
+        </view>
+
+        <view class="form-head"><view class="red-spot">*</view>地区
+        </view>
+        <view bindtap="onAreaPicker"  class="picker-label {{companyArea===0?'grey':''}}">
+            {{companyArea === 0 ? '选择公司所在地区' : areaText}}
+        </view>
+
+        <t-picker
+                visible="{{areaVisible}}"
+                value="{{[areaValue]}}"
+                title="选择地区"
+                bind:visible-change="onAreaClose"
+                cancelBtn="取消"
+                confirmBtn="确认"
+                bindchange="onPickerChange"
+                bindpick="onColumnChange"
+                bindcancel="onPickerCancel"
+        >
+            <t-picker-item options="{{provinces}}"></t-picker-item>
+            <t-picker-item options="{{cities}}"></t-picker-item>
+            <t-picker-item options="{{counties}}"></t-picker-item>
+        </t-picker>
+
+        <view class="form-head"><view class="red-spot">*</view>成立日期
+        </view>
+        <view bindtap="showDatePicker" class="picker-label {{establishDate===''?'grey':''}}">
+            {{establishDate === "" ? '请选择公司成立日期' : establishDate}}
+        </view>
+        <t-date-time-picker
+                title="选择日期"
+                visible="{{dateVisible}}"
+                defaultValue="{{date}}"
+                mode="date"
+                format="YYYY-MM-DD"
+                bindchange="onConfirm"
+                bindcancel="hidePicker"
+                start="{{start}}"
+                end="{{end}}"
+        />
+
+<!--        <view class="form-head"><view class="red-spot">*</view>成立年限-->
+<!--        </view>-->
+<!--        <t-picker-->
+<!--                visible="{{establishYear.visible}}"-->
+<!--                title="选择公司成立年限"-->
+<!--                cancelBtn="取消"-->
+<!--                confirmBtn="确认"-->
+<!--                bindpick="onPick"-->
+<!--                bindconfirm="onPickerConfirm"-->
+<!--        >-->
+<!--            <t-picker-item options="{{establishYear.options}}"/>-->
+<!--        </t-picker>-->
+<!--        <view bindtap="openPicker" data-picker="establishYear"-->
+<!--              class="picker-label {{establishYear.value===0?'grey':''}}">-->
+<!--            {{establishYear.value === 0 ? '请选择公司成立年限' : establishYear.label}}-->
+<!--        </view>-->
+    </view>
+    <view class="l-card">
+
+        <view class="card-row" style="margin-top:32rpx">
+            <image class="blue-icon" src="./../../assets/svg/blue.svg"></image>
+            <view class="card-head">公司税务情况</view>
+        </view>
+
+        <view class="form-head"><view class="red-spot">*</view>公司税务情况
+        </view>
+        <t-picker
+                visible="{{taxStatus.visible}}"
+                title="选择公司税务情况"
+                value="{{[taxStatus.value]}}"
+                cancelBtn="取消"
+                confirmBtn="确认"
+                bindpick="onPick"
+                bindconfirm="onPickerConfirm"
+        >
+            <t-picker-item options="{{taxStatus.options}}"/>
+        </t-picker>
+        <view bindtap="openPicker" data-picker="taxStatus" class="picker-label {{taxStatus.value===0?'grey':''}}">
+            {{taxStatus.value === 0 ? '请选择税务情况' : taxStatus.label}}
+        </view>
+
+        <view class="form-head"><view class="red-spot">*</view>税务等级
+        </view>
+        <t-picker
+                visible="{{taxLevel.visible}}"
+                value="{{[taxLevel.value]}}"
+                title="选择税务等级"
+                cancelBtn="取消"
+                confirmBtn="确认"
+                bindpick="onPick"
+                bindconfirm="onPickerConfirm"
+        >
+            <t-picker-item options="{{taxLevel.options}}"/>
+        </t-picker>
+        <view bindtap="openPicker" data-picker="taxLevel" class="picker-label {{taxLevel.value===0?'grey':''}}">
+            {{taxLevel.value === 0 ? '请选择税务等级' : taxLevel.label}}
+        </view>
+
+        <view class="form-head">拥有的许可证（没有请填写无）
+        </view>
+        <t-input class="my-input" value="{{licenses}}" data-name="licenses" bind:change="onUserInput"
+                 placeholder-style="font-size:32rpx" placeholder="请输入拥有的许可证"/>
+
+        <view class="form-head"><view class="red-spot">*</view>公司情况
+        </view>
+        <t-picker
+                visible="{{companyStatus.visible}}"
+                title="选择公司情况"
+                value="{{[companyStatus.value]}}"
+                cancelBtn="取消"
+                confirmBtn="确认"
+                bindpick="onPick"
+                bindconfirm="onPickerConfirm"
+        >
+            <t-picker-item options="{{companyStatus.options}}"/>
+        </t-picker>
+        <view bindtap="openPicker" data-picker="companyStatus"
+              class="picker-label {{companyStatus.value===0?'grey':''}}">
+            {{companyStatus.value === 0 ? '请选择公司情况' : companyStatus.label}}
+        </view>
+
+        <view class="form-head"><view class="red-spot">*</view>公司类型
+        </view>
+        <t-picker
+                visible="{{companyType.visible}}"
+                title="选择公司情况"
+                value="{{[companyType.value]}}"
+                cancelBtn="取消"
+                confirmBtn="确认"
+                bindpick="onPick"
+                bindconfirm="onPickerConfirm"
+        >
+            <t-picker-item options="{{companyType.options}}"/>
+        </t-picker>
+        <view bindtap="openPicker" data-picker="companyType"
+              class="picker-label {{companyType.value===0?'grey':''}}">
+            {{companyType.value === 0 ? '请选择公司情况' : companyType.label}}
+        </view>
+
+    </view>
+    
+    <view class="l-card">
+        <view class="card-row" style="margin-top:32rpx">
+            <image class="blue-icon" src="./../../assets/svg/blue.svg"></image>
+            <view class="card-head">转让信息</view>
+        </view>
+        <view class="form-head"><view class="red-spot">*</view>价格是否面议
+        </view>
+        <t-picker
+                visible="{{faceNegate.visible}}"
+                title="选择是否面议"
+                value="{{[faceNegate.value]}}"
+                cancelBtn="取消"
+                confirmBtn="确认"
+                bindpick="onPick"
+                bindconfirm="onPickerConfirm"
+        >
+            <t-picker-item options="{{faceNegate.options}}"/>
+        </t-picker>
+        <view bindtap="openPicker" data-picker="faceNegate"
+              class="picker-label {{faceNegate.value  === 0 ?'grey':''}}">
+            {{faceNegate.value === 0 ? '请选择是否面议' : faceNegate.label}}
+        </view>
+
+        <view wx:if="{{!faceNegate.value}}" class="form-head"><view class="red-spot">*</view>转让价格
+        </view>
+        <t-input wx:if="{{!faceNegate.value}}" class="my-input" placeholder-style="font-size:32rpx" type="number"
+                 value="{{transferPrice}}" data-name="transferPrice" bind:change="onUserInput"
+                 placeholder="请输入转让价格..."/>
+        <view class="form-head"><view class="red-spot">*</view>公司变更
+        </view>
+        <t-picker
+                visible="{{companyChange.visible}}"
+                title="选择公司情况"
+                value="{{[companyChange.value]}}"
+                cancelBtn="取消"
+                confirmBtn="确认"
+                bindpick="onPick"
+                bindconfirm="onPickerConfirm"
+        >
+            <t-picker-item options="{{companyChange.options}}"/>
+        </t-picker>
+        <view  bindtap="openPicker" data-picker="companyChange"
+              class="picker-label {{companyChange.value===0?'grey':''}}">
+            {{companyChange.value === 0 ? '请选择公司变更情况' : companyChange.label}}
+        </view>
+    </view>
+
+    <view class="l-card">
+
+        <view class="card-row" style="margin-top:32rpx">
+            <image class="blue-icon" src="./../../assets/svg/blue.svg"></image>
+            <view class="card-head">联系方式</view>
+        </view>
+
+
+        <view class="form-head"><view class="red-spot">*</view>联系人
+        </view>
+        <t-input class="my-input" placeholder-style="font-size:32rpx" value="{{sellerName}}" data-name="sellerName" bind:change="onUserInput"
+                 placeholder="请输入联系人姓名"/>
+
+        <view class="form-head"><view class="red-spot">*</view>联系电话
+        </view>
+        <t-input class="my-input" placeholder-style="font-size:32rpx"
+                 value="{{sellerPhone}}" data-name="sellerPhone" bind:change="onUserInput"
+                 placeholder="请输入联系人电话"/>
+    </view>
+
+    <view class="l-card">
+
+        <view class="form-head"><view class="red-spot">*</view>备注
+        </view>
+        <t-input class="my-input" placeholder-style="font-size:32rpx"
+                 value="{{comment}}" data-name="comment" bind:change="onUserInput"
+                 placeholder="请填写备注"/>
+
+
+        <t-button theme="primary" style="width:90%;margin:40rpx 5%" bindtap="submitNewTransfer">提交</t-button>
+    </view>
+</view>
+<t-message id="t-message"></t-message>

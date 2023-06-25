@@ -1,0 +1,17 @@
+{
+    "navigationBarBackgroundColor": "#2969FF",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "公司转让",
+    "usingComponents": {
+        "t-loading": "tdesign-miniprogram/loading/loading",
+        "t-popup": "tdesign-miniprogram/popup/popup",
+        "t-input": "tdesign-miniprogram/input/input",
+        "t-search": "tdesign-miniprogram/search/search",
+        "t-tag": "tdesign-miniprogram/tag/tag",
+        "t-check-tag": "tdesign-miniprogram/check-tag/check-tag",
+        "t-picker": "tdesign-miniprogram/picker/picker",
+        "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+        "t-dropdown-menu": "tdesign-miniprogram/dropdown-menu/dropdown-menu",
+        "t-dropdown-item": "tdesign-miniprogram/dropdown-item/dropdown-item"
+    }
+}

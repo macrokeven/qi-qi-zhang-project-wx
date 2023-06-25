@@ -1,0 +1,116 @@
+<view wx:if="{{login&&bindCompany}}" class="l-container" style="position:relative">
+    <!--    <view class="l-row" style="align-items:center;margin-top: 40rpx;position:relative">-->
+    <!--        <image src="./../../assets/svg/search.svg" class="search-icon"></image>-->
+    <!--        <input value="" class="search-box" placeholder="查询申报历史"></input>-->
+    <!--        &lt;!&ndash;        <image class="alert" src="./../../assets/svg/alert.svg"></image>&ndash;&gt;-->
+    <!--    </view>-->
+    <view wx:if="{{loadingData}}" class="l-row" style="margin-top:35rpx">
+        <view class="title-label">
+            本月待申报项
+            <t-tag style="margin-left:10rpx" theme="primary">{{currentMonthTaxInfoData.length}}</t-tag>
+        </view>
+        <!--        <view class="l-btn b-blue" bindtap="test">全部</view>-->
+    </view>
+    <view wx:if="{{loadingData}}" class="l-row">
+        <view class="scroll-h">
+            <view class="l-row" style="width:fit-content;margin:0 20rpx">
+                <view class="card b-blue" wx:for="{{currentMonthTaxInfoData}}" wx:for-item="item" wx:key="index">
+                    <image src="./../../assets/svg/icon1.svg" class="card-logo"></image>
+                    <!--                    <image src="./../../assets/svg/like.svg" class="card-like"></image>-->
+                    <view class="l-row" style="flex-direction:column;margin: 32rpx 0 0 150rpx;width: fit-content;">
+                        <view class="tax-name">{{item.taxKind}}</view>
+                        <view class="tax-date">{{item.taxAmount}}</view>
+                    </view>
+                    <view class="l-row" style="margin:90rpx 0 0 0;align-items:center;height:40rpx">
+                        <!--                        <image src="./../../assets/svg/date2.svg" class="card-s-logo"></image>-->
+                        <view class="tax-name" style="font-size:25rpx;margin-left:32rpx">
+                            所属帐期：{{year + "-" + month}}
+                        </view>
+                        <view class="tax-name" style="font-size:40rpx;margin:0 32rpx 0 auto">
+                            <t-tag wx:if="{{currentMonthTaxInfoStatus===undefined||currentMonthTaxInfoStatus===null}}"
+                                   theme="default" variant="light">
+                                未填写税金
+                            </t-tag>
+                            <t-tag wx:if="{{currentMonthTaxInfoStatus===1}}" theme="success" variant="light">
+                                已填写税金
+                            </t-tag>
+                            <t-tag wx:if="{{currentMonthTaxInfoStatus===2}}" theme="default" variant="light">已审税金
+                            </t-tag>
+                            <t-tag wx:if="{{currentMonthTaxInfoStatus===3}}" theme="primary" variant="light">反审
+                            </t-tag>
+                            <t-tag wx:if="{{currentMonthTaxInfoStatus===4}}" theme="warning" variant="light">已确认
+                            </t-tag>
+                            <t-tag wx:if="{{currentMonthTaxInfoStatus===5}}" theme="error" variant="light">打回</t-tag>
+                            <t-tag wx:if="{{currentMonthTaxInfoStatus===6}}" theme="success" variant="light">已报税
+                            </t-tag>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+    </view>
+    <view wx:if="{{loadingData}}" class="l-row" style="justify-content:center">
+        <view class="card-container l-center">
+            <view class="l-row" style="margin-top:25rpx">
+                <view class="title-label">
+                    上月完成申报
+                    <t-tag style="margin-left:10rpx" theme="success">{{lastMonthTaxInfoData.length}}</t-tag>
+                </view>
+                <!--                <view class="tax-name t-blue" style="margin: 0  50rpx 0 auto">全部</view>-->
+            </view>
+            <view class="l-row" style="flex-direction:column;justify-content:center;align-items:center">
+                <view class="card-n" wx:for="{{lastMonthTaxInfoData}}" wx:for-item="item" wx:key="index">
+                    <view class="l-row"
+                          style="flex-direction:column;width: fit-content;height:fit-content;margin:29rpx 0 0 20rpx">
+                        <view class="tax-name t-black" style="font-weight:700">{{item.taxKind}}</view>
+                        <view class="tax-date t-grey">税金：¥ {{item.taxAmount ? item.taxAmount : '0.00'}} 元</view>
+                    </view>
+                    <!-- <view class="l-row" style="margin:37rpx 0 0 0;align-items:center;height:40rpx;width:fit-content">
+                       <image src="./../../assets/svg/location-grey.svg" class="card-s-logo" style="margin-left:15rpx"></image>
+                       <view class="tax-name t-grey" style="font-size:25rpx">广东省税务局</view>
+                    </view> -->
+                    <view class="tax-status-box">
+                        <t-tag wx:if="{{lastMonthTaxInfoStatus===undefined}}" theme="default" variant="light">
+                            未填写税金
+                        </t-tag>
+                        <t-tag wx:if="{{lastMonthTaxInfoStatus===1}}" theme="success" variant="light">已填写税金</t-tag>
+                        <t-tag wx:if="{{lastMonthTaxInfoStatus===2}}" theme="default" variant="light">已审税金</t-tag>
+                        <t-tag wx:if="{{lastMonthTaxInfoStatus===3}}" theme="primary" variant="light">反审</t-tag>
+                        <t-tag wx:if="{{lastMonthTaxInfoStatus===4}}" theme="warning" variant="light">已确认</t-tag>
+                        <t-tag wx:if="{{lastMonthTaxInfoStatus===5}}" theme="error" variant="light">打回</t-tag>
+                        <t-tag wx:if="{{lastMonthTaxInfoStatus===6}}" theme="success" variant="light">已报税</t-tag>
+                    </view>
+
+                </view>
+
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{loadingData}}" class="tab-box"></view>
+    <view wx:if="{{!loadingData}}" class="loading-panel">
+        <t-loading theme="circular" size="60rpx" class="wrapper"/>
+        <view class="loading-text">正在加载数据</view>
+    </view>
+
+</view>
+<view wx:if="{{!bindCompany&&login}}" class="l-container" style="position:relative">
+    <view class="no-data-box l-center">
+        <image class="no-data-img" src="./../../assets/pics/no-data.png"></image>
+        <view class="no-data-text">
+            未绑定公司
+        </view>
+        <t-button style="margin-top:200rpx" theme="primary" bindtap="goBindPage">前往绑定</t-button>
+    </view>
+</view>
+
+<view wx:if="{{!login}}" class="l-container" style="position:relative">
+    <view class="no-data-box l-center">
+        <image class="no-data-img" style="width: calc(300rpx / 2554 * 2150 )"
+               src="./../../assets/pics/need-login.png"></image>
+        <view class="no-data-text">
+            登录以使用报税进度功能
+        </view>
+        <t-button style="margin-top:200rpx;width:200rpx" theme="primary" bindtap="goLogin">登录</t-button>
+    </view>
+</view>

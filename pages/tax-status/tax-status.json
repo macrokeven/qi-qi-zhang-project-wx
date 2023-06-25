@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "t-tag": "tdesign-miniprogram/tag/tag",
+        "t-check-tag": "tdesign-miniprogram/check-tag/check-tag",
+        "t-loading": "tdesign-miniprogram/loading/loading"
+    },
+    "navigationBarBackgroundColor": "#2969FF",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "报税信息"
+}
