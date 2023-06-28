@@ -1,1 +1,208 @@
 /* pages/company-transfer-info/company-transfer-info.wxss */
+.l-container{
+    position: relative;
+    width: 100%;
+    height: 1026px;
+
+    /* bgF5 */
+    background: rgb(245, 245, 245);
+    z-index: 0;
+}
+.l-container-main{
+    position: absolute;
+    width: 100%;
+    height: 938px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 88px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0rpx;
+}
+
+.l-card {
+    width: 100%;
+    border-radius: 20rpx;
+    background: #ffffff;
+    padding: 0rpx 0rpx 20rpx;
+    margin-top: 20rpx;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.form-row{
+
+    width: calc( 100% - 40rpx );
+    font-size: 32rpx;
+    height: 49px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10rpx;
+
+}
+.form-d-row{
+    width: calc(100% - 60rpx);
+    height: 48rpx;
+    margin-top: 30rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.form-row:nth-child(2n){
+    background-color: #FAFBFF;
+}
+
+.l-left-massage{
+    padding-left:15rpx ;
+    color: rgba(0, 0, 0, 0.6);
+}
+.l-right-massage{
+    margin-left:auto;
+    padding-right:15rpx;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.card-row{
+    width: 100%;
+    height: 96rpx;
+    display: flex;
+    border-radius: 20rpx;
+    flex-direction: row;
+    background: #ffffff;
+    align-items: center;
+}
+.card-d-row{
+    width: calc(100% - 60rpx);
+    height: 56rpx;
+    border-radius: 10rpx;
+    margin-top: 10rpx;
+    background: #f6f9ff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.blue-icon{
+    width: 4rpx;
+    height: 30rpx;
+    margin: 0 10rpx 0 30rpx;
+}
+
+.green-icon{
+
+    background: url("./../../assets/svg/verify.svg");
+    width: 20.6rpx;
+    height: 24.54rpx;
+    margin: 13rpx;
+
+}
+
+.card-head{
+    border-radius: 20rpx;
+    font-size: 36rpx;
+    color: #0052D9;
+    font-weight: 400;
+
+}
+.tips{
+
+    font-size: 24rpx;
+    color: rgb(0, 82, 217);
+    font-weight: 200;
+}
+.i-change{
+    font-size: 28rpx;
+    color:rgb(72, 199, 156);
+    margin-left: auto;
+}
+.cash{
+    font-size: 24rpx;
+    font-weight: 400;
+    color: red;
+}
+.c-n{
+    display: inline-block;
+    font-size: 36rpx;
+}
+.head-row{
+    display:flex;
+    width: 100%;
+    background: #ffffff;
+    align-items: center;
+
+}
+.com-name{
+    width: calc(100% - 60rpx);
+    margin-top: 30rpx;
+    margin-left: 30rpx;
+    font-size: 40rpx;
+    font-weight: 400;
+
+}
+.tab-bar{
+    position: fixed;
+    display: flex;
+
+    bottom: 0rpx;
+    background:#ffffff;
+    width: 750rpx;
+    height: 176rpx;
+    z-index: 100;
+    justify-content: center;
+}
+.tb-button{
+    /*display: fixed;*/
+    margin-top: 16rpx;
+    width: 404rpx;
+    height: 80rpx;
+    border-radius:40rpx;
+    background: rgb(52, 96, 247);
+    color: #ffffff;
+    font-size: 36rpx;
+    font-weight: 600;
+    text-justify:center;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8rpx 0;
+
+}
+.icon-row{
+    display: flex;
+    margin: 16rpx 0rpx 0rpx 27rpx;
+    width: 240rpx;
+    height: 96rpx;
+    flex-direction:row;
+    flex-basis:2;
+    /*background: beige;*/
+}
+.icon-sc{
+    margin: 4rpx 20rpx 0 40rpx ;
+    width: 40rpx;
+    height: 40rpx;
+}
+.icon-fd{
+    margin: 4rpx 20rpx 0 50rpx ;
+     width: 40rpx;
+     height: 40rpx;
+ }
+.text-sc{
+    margin: 0rpx 30rpx 0 40rpx ;
+    font-size:20rpx;
+    width: 40rpx;
+    height: 40rpx;
+}
+.text-fd{
+    margin: 0rpx 30rpx 0 50rpx ;
+    font-size:20rpx;
+    width: 40rpx;
+    height: 40rpx;
+ }
