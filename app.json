@@ -12,7 +12,8 @@
         "pages/company-transfer/company-transfer",
         "pages/new-transfer/new-transfer",
         "pages/company-transfer-detail/company-transfer-detail",
-        "pages/company-transfer-info/company-transfer-info"
+        "pages/company-transfer-info/company-transfer-info",
+        "pages/tax-cal/tax-cal"
     ],
     "usingComponents": {
         "t-demo": "./components/demo-block/index",
