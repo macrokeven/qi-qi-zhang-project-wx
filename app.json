@@ -1,7 +1,6 @@
 {
     "pages": [
         "pages/home/home",
-        "pages/me/me",
         "pages/pay-test/pay-test",
         "pages/tax-status/tax-status",
         "pages/setting/setting",

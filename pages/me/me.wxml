@@ -1,9 +1,0 @@
-<view class="l-container">
-    <view class="l-row" style="margin-top:48rpx">
-        <view class="avatar"></view>
-        <view class="l-row" style="flex-direction: column;width: fit-content;">
-            <view class="username">Hi, 工程师李</view>
-            <view class="tips">欢迎回来</view>
-        </view>
-    </view>
-</view>
