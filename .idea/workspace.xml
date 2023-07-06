@@ -5,33 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c7b5886-6935-4618-90d2-3b2cf158eb17" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/app.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/navigation-bar/navigation-bar.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/components/navigation-bar/navigation-bar.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom-tab-bar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/custom-tab-bar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/AreaData.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/AreaData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/company-transfer/company-transfer.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer/company-transfer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/company-transfer/company-transfer.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer/company-transfer.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/me/me.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/me/me.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/new-transfer/new-transfer.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/new-transfer/new-transfer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/new-transfer/new-transfer.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/new-transfer/new-transfer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/new-transfer/new-transfer.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/new-transfer/new-transfer.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/new-transfer/new-transfer.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/new-transfer/new-transfer.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/setting/setting.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/setting/setting.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/tax-status/tax-status.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tax-status/tax-status.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/MyRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/MyRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/TDesignLogo@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.wxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.wxss" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +55,8 @@
       <workItem from="1688459921073" duration="4739000" />
       <workItem from="1688561063254" duration="191000" />
       <workItem from="1688621436322" duration="53000" />
+      <workItem from="1688634444923" duration="2111000" />
+      <workItem from="1688645660822" duration="641000" />
     </task>
     <servers />
   </component>
