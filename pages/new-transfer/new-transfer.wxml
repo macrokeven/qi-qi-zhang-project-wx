@@ -167,8 +167,8 @@
             </view>
         </t-popup>
         <view bindtap="openPicker" data-picker="companyStatus"
-              class="picker-label {{companyStatus.value===0?'grey':''}}">
-            {{companyStatus.value === 0 ? '请选择公司情况' : companyStatus.label}}
+              class="picker-label {{companyStatusTextValue===''?'grey':''}}">
+            {{companyStatusTextValue === "" ? '请选择公司情况' : companyStatusTextValue}}
         </view>
 
         <view class="form-head"><view class="red-spot">*</view>公司类型

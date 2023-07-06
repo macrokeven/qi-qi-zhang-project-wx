@@ -101,7 +101,7 @@ Page({
                 taxStatus: this.data.taxStatus.value,
                 taxLevel: this.data.taxLevel.value,
                 licenses: this.data.licenses,
-                companyStatus: this.data.companyStatusValueMap,
+                companyStatus: this.getMapBooleanValueToString(this.data.companyStatusValueMap),
                 transferPrice: this.data.transferPrice,
                 companyChangeStatus: this.data.companyChange.value,
                 faceNegate: this.data.faceNegate.value,
@@ -127,6 +127,9 @@ Page({
 
             }
         })
+    },
+    getMapBooleanValueToString(map) {
+        return Object.keys(map).filter(key => map[key]).join(",");
     },
     onUserInput(e) {
         this.setData({
@@ -396,15 +399,25 @@ Page({
         areaCode: 0,
         areaValue: [],
         companyStatusValueMap: [],
-        companyStatusVisible:false,
+        companyStatusMap: {
+            1: "税务登记",
+            2: "银行开户",
+            3: "刻章"
+        },
+        companyStatusTextValue: "",
+        companyStatusVisible: false,
     },
     chooseMultipleItem(e) {
         let oldValueMap = this.data[`${e.currentTarget.dataset.name}` + 'ValueMap'];
-        oldValueMap[e.currentTarget.dataset.value] = !oldValueMap[e.currentTarget.dataset.value]
+        oldValueMap[e.currentTarget.dataset.value] = !oldValueMap[e.currentTarget.dataset.value];
+        let text = Object.keys(oldValueMap)
+            .filter(key => oldValueMap[key])
+            .map(key => this.data[`${e.currentTarget.dataset.name}` + 'Map'][key])
+            .join(" ");
         this.setData({
             [`${e.currentTarget.dataset.name}` + 'ValueMap']: oldValueMap,
+            [`${e.currentTarget.dataset.name}` + 'TextValue']: text,
         });
-        console.log(this.data[`${e.currentTarget.dataset.name}` + 'ValueMap'])
     },
 
     /**
@@ -456,7 +469,7 @@ Page({
     },
     onVisibleChange(e) {
         let companyStatus = this.data.companyStatus;
-        companyStatus.visible =  e.detail.visible
+        companyStatus.visible = e.detail.visible
         this.setData({
             companyStatus,
         });
