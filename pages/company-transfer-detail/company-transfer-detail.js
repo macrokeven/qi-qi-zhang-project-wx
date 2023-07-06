@@ -2,7 +2,6 @@
 const {API: $api} = require("../../utils/MyRequest");
 const areaList = require("./../../data/AreaData").areaList;
 const getOptions = (obj, filter) => {
-    console.log(areaList)
     const res = Object.keys(obj).map((key) => ({value: key, label: obj[key]}));
     if (filter) {
         return res.filter(filter);
@@ -13,16 +12,6 @@ const getOptions = (obj, filter) => {
 const match = (v1, v2, size) => v1.toString().slice(0, size) === v2.toString().slice(0, size);
 
 Page({
-    openPickerBox() {
-        this.setData({
-            cityVisible: true
-        })
-    },
-    moneyFormat(num) {
-        num = String(num)
-        const len = num.length
-        return len <= 3 ? num : this.moneyFormat(num.substr(0, len - 3)) + ',' + num.substr(len - 3, 3)
-    },
     getData() {
         $api.authRequest(
             "POST",
@@ -38,27 +27,38 @@ Page({
     },
     formatData(dataList) {
         dataList.forEach((item) => {
-            console.log(item)
             item.establishDate = this.data.year - item.establishDate.split(" ")[0].split("-")[0];
-
         })
         return dataList;
     },
+
     openNewTransfer() {
-        wx.navigateTo({
-            url: "/pages/new-transfer/new-transfer"
-        })
+        if (!getApp().globalData.userInfo.login) {
+            wx.navigateTo({
+                url: "/pages/login/login"
+            })
+        } else {
+            wx.navigateTo({
+                url: "/pages/new-transfer/new-transfer"
+            })
+        }
     },
     openPopup(e) {
-        this.setData({
-            currentPopup: e.target.dataset.name,
-            [`${e.target.dataset.name}` + 'Popup']: true,
-        });
+        if (e.currentTarget.dataset.name) {
+            this.setData({
+                currentPopup: e.currentTarget.dataset.name,
+                [`${e.currentTarget.dataset.name}` + 'Popup']: true,
+            });
+        }
+
     },
     onVisibleChange(e) {
-        this.setData({
-            [`${this.data.currentPopup}` + 'Popup']: e.detail.visible,
-        });
+        if (this.data.currentPopup !== undefined) {
+            this.setData({
+                [`${this.data.currentPopup}` + 'Popup']: e.detail.visible,
+            });
+            this.queryByConditions();
+        }
     },
     onAreaClose(e) {
         this.setData({
@@ -67,14 +67,24 @@ Page({
     },
     chooseSingleItem(e) {
         this.setData({
-            [`${e.target.dataset.name}`]: e.target.dataset.value,
+            [`${e.currentTarget.dataset.name}`]: e.currentTarget.dataset.value,
         });
-
     },
     closeOtherPopup() {
         this.setData({
             otherPopup: false
         })
+    },
+    openTransferInfo(e) {
+        if (!getApp().globalData.userInfo.login) {
+            wx.navigateTo({
+                url: "/pages/login/login"
+            })
+        } else {
+            wx.navigateTo({
+                url: "/pages/company-transfer-info/company-transfer-info?tId=" + e.currentTarget.dataset.tId,
+            });
+        }
     },
     /**
      * 页面的初始数据
@@ -86,16 +96,14 @@ Page({
         establishYearPopup: false,
         otherPopup: false,
         currentChoice: 0,
-        companyStatus: 0,
-        year: "",
-        month: "",
-        day: "",
+        companyStatus: [],
+        year: new Date().getFullYear(),
         taxStatus: 0,
         taxLevel: 0,
         establishYear: 0,
         price: 0,
         companyType: 0,
-        hasLicenses: null,
+        hasLicenses: 0,
         pickerItem: [
             {
                 title: "请选择税务情况",
@@ -190,12 +198,19 @@ Page({
         ],
         areaText: '',
         areaValue: [0],
-        provinces: getOptions(areaList.provinces),
+        provinces: [{"value": "000000", "label": "全部"}, {
+            "value": "290000",
+            "label": "广东省",
+        }, ...getOptions(areaList.provinces).filter((province) =>
+            province.value !== "000000" && province.value !== "290000"
+        )],
         cities: [],
         counties: [],
         areaVisible: false,
         areaCode: 0,
-        companyIndustry:{
+        minPrice: 0,
+        maxPrice: 0,
+        companyIndustry: {
             1000001: "综合类",
             1000002: "环保类",
             1000003: "供应链",
@@ -213,42 +228,30 @@ Page({
             1000015: "设计/企划类",
             1000016: "材料类",
             1000017: "工程类",
-        }
+        },
+        companyStatusValueMap: {}
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
+    chooseMultipleItem(e) {
+        let oldValueMap = this.data[`${e.currentTarget.dataset.name}` + 'ValueMap'];
+        oldValueMap[e.currentTarget.dataset.value] = !oldValueMap[e.currentTarget.dataset.value]
+        this.setData({
+            [`${e.currentTarget.dataset.name}` + 'ValueMap']: oldValueMap,
+        });
     },
 
     onColumnChange(e) {
-        console.log('pick:', e.detail);
         const {column, index} = e.detail;
         const {provinces, cities} = this.data;
-
         if (column === 0) {
             // 更改省份
             const {cities, counties} = this.getCities(provinces[index].value);
-
             this.setData({cities, counties});
         }
-
         if (column === 1) {
             // 更改城市
             const counties = this.getCounties(cities[index].value);
-
             this.setData({counties});
         }
-
         if (column === 2) {
             // 更改区县
         }
@@ -257,24 +260,26 @@ Page({
     getCities(provinceValue) {
         const cities = getOptions(areaList.cities, (city) => match(city.value, provinceValue, 2));
         const counties = this.getCounties(cities[0].value);
-
         return {cities, counties};
     },
 
     getCounties(cityValue) {
         return getOptions(areaList.counties, (county) => match(county.value, cityValue, 4));
     },
-
+    getInputValue(e) {
+        this.setData({
+            [`${e.currentTarget.dataset.name}`]: e.detail.value,
+        });
+        console.log(this.data)
+    },
     onPickerChange(e) {
         const {value, label} = e.detail;
-
-        console.log('picker confirm:', e.detail);
-        console.log(value)
         this.setData({
             areaVisible: false,
-            areaValue: value[2],
-            areaText: label[2],
+            areaValue: value,
+            areaText: label[1],
         });
+        this.queryByConditions();
     },
 
     onPickerCancel(e) {
@@ -286,68 +291,44 @@ Page({
     onAreaPicker() {
         this.setData({areaVisible: true});
     },
+    getChosenValueFromMap(map) {
+        return Object.keys(map).filter(key => map[key]);
+    },
+    queryByConditions() {
+        $api.authRequest(
+            "POST",
+            "CompanyTransferInfo/GetCompanyTransferInfoByConditions",
+            {
+                minPrice: this.data.minPrice,
+                maxPrice: this.data.maxPrice,
+                priceStatus: this.data.price,
+                taxStatusList: this.data.taxStatus === 0 ? [] : [this.data.taxStatus],
+                companyStatusList: this.getChosenValueFromMap(this.data.companyStatusValueMap),
+                companyTypeList: this.data.companyType === 0 ? [] : [this.data.companyType],
+                area: this.data.areaValue[1] ? this.data.areaValue[1] : 0,
+                establishYear: this.data.establishYear,
+                taxLevel: this.data.taxLevel === 0 ? [] : [this.data.taxLevel]
+            }
+        ).then(res => {
+            if (res.status === 0) {
+                this.setData({
+                    dataList: this.formatData(res.data)
+                })
+            }
+            this.setData({
+                otherPopup: false
+            })
+        });
+    },
 
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        this.getDate();
         this.getData();
         const {provinces} = this.data;
-        console.log(provinces)
         const {cities, counties} = this.getCities(provinces[0].value);
-        this.setData({cities, counties: areaList.counties});
-    },
-    getDate() {
-        let date = new Date();
-        let year = date.getFullYear();
-        let month = date.getMonth() + 1;
-        let day = date.getDate();
-        this.setData({
-            year,
-            month,
-            day
-        })
-        return {
-            year,
-            month,
-            day
-        }
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
+        this.setData({cities, counties, countryValues: areaList.counties});
     }
 })

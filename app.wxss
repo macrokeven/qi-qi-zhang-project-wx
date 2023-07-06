@@ -1,7 +1,7 @@
 /**app.wxss**/
 page {
     background: #F5F9FD;
-    font-family: PingFang-SC-Regular;
+    font-family: "PingFang-SC-Regular";
 }
 
 .container {

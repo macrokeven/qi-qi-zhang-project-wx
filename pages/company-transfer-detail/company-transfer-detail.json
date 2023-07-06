@@ -12,6 +12,7 @@
         "t-picker": "tdesign-miniprogram/picker/picker",
         "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
         "t-dropdown-menu": "tdesign-miniprogram/dropdown-menu/dropdown-menu",
-        "t-dropdown-item": "tdesign-miniprogram/dropdown-item/dropdown-item"
+        "t-dropdown-item": "tdesign-miniprogram/dropdown-item/dropdown-item",
+        "t-message": "tdesign-miniprogram/message/message"
     }
 }

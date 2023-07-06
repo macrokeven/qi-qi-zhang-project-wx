@@ -6,7 +6,6 @@
     margin-top: 20rpx;
     display: flex;
     flex-direction: column;
-    font-family: "PingFang SC", Serif, serif;
 }
 .l-card:first-child{
     margin-top: 0;
@@ -40,9 +39,6 @@
     border-bottom: 1rpx solid #e7e7e7;
     color: #2969FF;
 }
-.picker-label:last-child{
-    margin-bottom: 20rpx;
-}
 
 .grey {
     color: #a9a9a9;
@@ -67,4 +63,59 @@
 .card-head{
     font-size: 36rpx;
     color: #0052D9;
+}
+.pop-card-title {
+    color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    font-weight: 600;
+    font-size: 32rpx;
+    padding-left: 40rpx;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+}
+.pop-card-title:first-child{
+    margin-top: 0;
+}
+.single-pick-box {
+    border: 2rpx solid rgb(243, 243, 243);
+    background: rgb(243, 243, 243);
+    border-radius: 50rpx;
+    width: 240rpx;
+    text-align: center;
+    height: fit-content;
+    padding: 20rpx 30rpx;
+    margin: 15rpx 20rpx;
+}
+.triple{
+    width: 140rpx;
+    margin: 15rpx 10rpx;
+}
+.s-p-b-active {
+    /* 功能色/品牌色/Brand1-Light */
+    border: 2rpx solid #ECF2FE;
+    background: #ECF2FE;
+    color: #0052D9;
+}
+
+.chose-value {
+    color: #0052D9;
+}
+
+.popup-card {
+    width: calc(100% - 44rpx);
+    height: fit-content;
+    border-radius: 40rpx 40rpx 0 0;
+    background: #ffffff;
+    padding-top: 40rpx;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
+    overflow-y: scroll;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+    border: 2rpx solid #ffffff;
 }

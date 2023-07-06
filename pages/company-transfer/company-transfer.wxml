@@ -33,7 +33,7 @@
         <view class="more-comp" bindtap="openMoreTransfer">更多公司>>></view>
     </view>
 
-    <view class="comp-detail-card" wx:for="{{dataList}}" wx:for-item="company" wx:key="index">
+    <view class="comp-detail-card" wx:for="{{dataList}}" wx:for-item="company" wx:key="index"  bindtap="openTransferInfo" data-t-id="{{company.tId}}">
         <view class="l-row" style="margin:20rpx 20rpx 0 20rpx;align-items:center;width:calc(100% - 40rpx)">
             <image src="./../../assets/pics/transfer-icon-1.svg" class="detail-fire"></image>
             <view class="comp-name">{{company.companyName}}</view>

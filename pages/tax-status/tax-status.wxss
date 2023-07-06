@@ -17,7 +17,6 @@
     height: 108rpx;
     font-size: 30rpx;
     padding: 0 0 0 100rpx;
-    font-family: "Microsoft YaHei UI";
     font-weight: 500;
     line-height: 22px;
     letter-spacing: 0;
@@ -33,7 +32,6 @@
 .title-label {
     margin: 0 0 0 40rpx;
     color: rgb(31, 34, 38);
-    font-family: Barlow;
     display: flex;
     align-items: center;
     font-size: 36rpx;

@@ -101,10 +101,10 @@ Page({
                 taxStatus: this.data.taxStatus.value,
                 taxLevel: this.data.taxLevel.value,
                 licenses: this.data.licenses,
-                companyStatus: this.data.companyStatus.value,
+                companyStatus: this.data.companyStatusValueMap,
                 transferPrice: this.data.transferPrice,
                 companyChangeStatus: this.data.companyChange.value,
-                faceNegate: false,
+                faceNegate: this.data.faceNegate.value,
                 sellerName: this.data.sellerName,
                 sellerPhone: this.data.sellerPhone,
                 comment: this.data.comment,
@@ -119,9 +119,12 @@ Page({
                     duration: 5000,
                     content: ' 发布成功!',
                 })
-                wx.navigateTo({
-                    url: "/pages/company-transfer-detail/company-transfer-detail"
-                })
+                setTimeout(() => {
+                    wx.navigateTo({
+                        url: "/pages/company-transfer-detail/company-transfer-detail"
+                    })
+                }, 500)
+
             }
         })
     },
@@ -219,6 +222,10 @@ Page({
                     value: 1000017,
                     label: '工程类',
                 },
+                {
+                    value: 1000018,
+                    label: '其他',
+                },
 
             ]
         },
@@ -239,9 +246,20 @@ Page({
                     value: 3,
                     label: '有开票有纳税',
                 },
+            ],
+        },
+        tType: {
+            visible: false,
+            label: "",
+            value: 0,
+            options: [
                 {
-                    value: 4,
-                    label: '有开票后期零申报',
+                    value: 1,
+                    label: '个体户',
+                },
+                {
+                    value: 2,
+                    label: '公司',
                 },
             ],
         },
@@ -306,18 +324,14 @@ Page({
             options: [
                 {
                     value: 1,
-                    label: '无',
-                },
-                {
-                    value: 2,
                     label: '已税务登记',
                 },
                 {
-                    value: 3,
+                    value: 2,
                     label: '已开户',
                 },
                 {
-                    value: 4,
+                    value: 3,
                     label: '已刻章',
                 },
             ],
@@ -380,7 +394,17 @@ Page({
         counties: [],
         areaVisible: false,
         areaCode: 0,
-        areaValue: []
+        areaValue: [],
+        companyStatusValueMap: [],
+        companyStatusVisible:false,
+    },
+    chooseMultipleItem(e) {
+        let oldValueMap = this.data[`${e.currentTarget.dataset.name}` + 'ValueMap'];
+        oldValueMap[e.currentTarget.dataset.value] = !oldValueMap[e.currentTarget.dataset.value]
+        this.setData({
+            [`${e.currentTarget.dataset.name}` + 'ValueMap']: oldValueMap,
+        });
+        console.log(this.data[`${e.currentTarget.dataset.name}` + 'ValueMap'])
     },
 
     /**
@@ -404,7 +428,6 @@ Page({
      */
     onShow() {
         const {provinces} = this.data;
-        console.log(provinces)
         const {cities, counties} = this.getCities(provinces[0].value);
         this.setData({cities, counties: areaList.counties});
     },
@@ -430,6 +453,13 @@ Page({
         if (column === 2) {
             // 更改区县
         }
+    },
+    onVisibleChange(e) {
+        let companyStatus = this.data.companyStatus;
+        companyStatus.visible =  e.detail.visible
+        this.setData({
+            companyStatus,
+        });
     },
 
     /**

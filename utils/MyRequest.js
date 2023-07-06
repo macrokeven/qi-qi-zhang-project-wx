@@ -30,7 +30,7 @@ function noAuthRequest(method, url, data) {
                 reject(err)
             }
         })
-    })
+    }) 
 }
 
 function authRequest(method, url, data) {

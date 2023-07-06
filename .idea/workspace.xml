@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1c7b5886-6935-4618-90d2-3b2cf158eb17" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/app.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/navigation-bar/navigation-bar.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/components/navigation-bar/navigation-bar.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom-tab-bar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/custom-tab-bar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/AreaData.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/AreaData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-detail/company-transfer-detail.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer-info/company-transfer-info.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer/company-transfer.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer/company-transfer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer/company-transfer.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer/company-transfer.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/me/me.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/me/me.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/new-transfer/new-transfer.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/new-transfer/new-transfer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/new-transfer/new-transfer.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/new-transfer/new-transfer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/new-transfer/new-transfer.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/new-transfer/new-transfer.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/new-transfer/new-transfer.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/new-transfer/new-transfer.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/setting/setting.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/setting/setting.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/tax-status/tax-status.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tax-status/tax-status.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/MyRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/MyRequest.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2S02hJRYfK3oDu2sKjFxNHtaqVC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1c7b5886-6935-4618-90d2-3b2cf158eb17" name="Changes" comment="" />
+      <created>1688269295166</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1688269295166</updated>
+      <workItem from="1688269296195" duration="11000" />
+      <workItem from="1688269312707" duration="49000" />
+      <workItem from="1688269366284" duration="11747000" />
+      <workItem from="1688382165031" duration="3238000" />
+      <workItem from="1688459921073" duration="4739000" />
+      <workItem from="1688561063254" duration="191000" />
+      <workItem from="1688621436322" duration="53000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

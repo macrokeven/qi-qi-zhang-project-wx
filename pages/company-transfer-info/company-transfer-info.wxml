@@ -1,84 +1,98 @@
 <view class="l-container">
     <view class="l-container-main">
         <view class="l-card">
-            <view class="head-row"><view class="com-name">珠海乐**********有限公司</view></view>
-            <view class="form-d-row">
-                <view class="cash">￥<view class="c-n">50000</view>元</view>
-                <view class="i-change"> 含变更</view>
+            <view class="head-row">
+                <view class="com-name">{{companyInfo.companyName}}</view>
             </view>
-            <view class="card-d-row" >
-                <image class="green-icon" src="./../../assets/svg/verify.svg" ></image>
+            <view class="form-d-row">
+                <view class="cash" wx:if="{{!companyInfo.faceNegate}}">￥<view class="c-n">{{companyInfo.transferPrice}}</view>元
+                </view>
+                <view class="cash" wx:if="{{companyInfo.faceNegate}}"><view class="c-n">面议</view>
+                </view>
+                <view class="i-change">{{companyChangeMap[companyInfo.companyChangeStatus]}}</view>
+            </view>
+            <view class="card-d-row">
+                <image class="green-icon" src="./../../assets/svg/verify.svg"></image>
                 <view class="tips">郑重承诺：企企帐提供安全交易、信息保真！</view>
             </view>
 
         </view>
         <view class="l-card">
-        <view class="card-row" >
-            <image class="blue-icon"></image>
-            <view class="card-head">基本信息</view>
-        </view>
-        <view class="form-row">
-            <view class="l-left-massage">科技类型</view>
-            <view class="l-right-massage">公司行业</view>
-        </view>
+            <view class="card-row">
+                <image class="blue-icon"></image>
+                <view class="card-head">基本信息</view>
+            </view>
+            <view class="form-row">
+                <view class="l-left-massage">行业类型</view>
+                <view class="l-right-massage">{{companyIndustryMap[companyInfo.companyIndustry]}}</view>
+            </view>
             <view class="form-row">
                 <view class="l-left-massage">地区</view>
-                <view class="l-right-massage">广东 珠海 斗门</view>
-            </view> <view class="form-row">
-            <view class="l-left-massage">成立日期</view>
-            <view class="l-right-massage">2023年5月3日</view>
-        </view> <view class="form-row">
-            <view class="l-left-massage">年限</view>
-            <view class="l-right-massage">1年</view>
-        </view> <view class="form-row">
-            <view class="l-left-massage">税务情况</view>
-            <view class="l-right-massage">有发票</view>
-        </view> <view class="form-row">
-            <view class="l-left-massage">税务等级</view>
-            <view class="l-right-massage">A</view>
-        </view> <view class="form-row">
-            <view class="l-left-massage">公司情况</view>
-            <view class="l-right-massage">已开户</view>
-        </view> <view class="form-row">
-            <view class="l-left-massage">公司类型</view>
-            <view class="l-right-massage">内资</view>
-        </view> <view class="form-row">
-            <view class="l-left-massage">是否有许可</view>
-            <view class="l-right-massage">/</view>
-        </view> <view class="form-row">
-            <view class="l-left-massage">备注</view>
-            <view class="l-right-massage">/</view>
+                <view class="l-right-massage">{{areaMap[companyInfo.companyArea]}}</view>
+            </view>
+            <view class="form-row">
+                <view class="l-left-massage">成立日期</view>
+                <view class="l-right-massage">{{companyInfo.establishDate}}</view>
+            </view>
+            <view class="form-row">
+                <view class="l-left-massage">年限</view>
+                <view class="l-right-massage">{{year}}年</view>
+            </view>
+            <view class="form-row">
+                <view class="l-left-massage">税务情况</view>
+                <view class="l-right-massage">{{taxStatusMap[companyInfo.taxStatus]}}</view>
+            </view>
+            <view class="form-row">
+                <view class="l-left-massage">税务等级</view>
+                <view class="l-right-massage">{{taxLevelMap[companyInfo.taxLevel]}}</view>
+            </view>
+            <view class="form-row">
+                <view class="l-left-massage">公司情况</view>
+                <view class="l-right-massage">{{companyStatusMap[companyInfo.companyStatus]}}</view>
+            </view>
+            <view class="form-row">
+                <view class="l-left-massage">公司类型</view>
+                <view class="l-right-massage">{{companyTypeMap[companyInfo.companyType]}}</view>
+            </view>
+            <view class="form-row">
+                <view class="l-left-massage">是否有许可</view>
+                <view class="l-right-massage">{{licenses}}</view>
+            </view>
+            <view class="form-row">
+                <view class="l-left-massage">备注</view>
+                <view class="l-right-massage">{{comment}}</view>
+            </view>
+
         </view>
 
-    </view>
-
         <view class="l-card">
-            <view class="card-row" >
+            <view class="card-row">
                 <image class="blue-icon" src="./../../assets/svg/blue.svg"></image>
                 <view class="card-head">联系信息</view>
             </view>
-            <view class="form-row">
-                <view class="l-left-massage">联系电话</view>
-                <view class="l-right-massage">131****9981</view>
-            </view>
+<!--            <view class="form-row">-->
+<!--                <view class="l-left-massage">联系电话</view>-->
+<!--                <view class="l-right-massage">{{companyInfo.sellerPhone}}</view>-->
+<!--            </view>-->
             <view class="form-row">
                 <view class="l-left-massage">联系人</view>
-                <view class="l-right-massage">朱小姐</view>
+                <view class="l-right-massage">{{companyInfo.sellerName}}</view>
             </view>
         </view>
     </view>
     <view class="tab-bar">
-            <view class="icon-row">
-                <view>
-                    <image class="icon-sc" src="./../../assets/svg/do.svg"></image>
-                    <view class="text-sc">收藏</view>
-                </view>
-                <view>
-                    <image class="icon-fd" src="./../../assets/svg/di.svg"></image>
-                    <view class="text-fd">转发</view>
-                </view>
-
+        <view class="icon-row">
+            <view class="l-col">
+                <image class="icon-sc" src="./../../assets/svg/do.svg"></image>
+                <view class="text-sc">收藏</view>
             </view>
-            <button class="tb-button">立即沟通</button>
+            <view class="l-col">
+                <button open-type="share" class="icon-fd"></button>
+                <view class="text-fd">转发</view>
+            </view>
+
+        </view>
+        <button class="tb-button" bindtap="callUser" data-phone="{{companyInfo.sellerPhone}}">立即沟通</button>
     </view>
+    <view class="tab-box"></view>
 </view>

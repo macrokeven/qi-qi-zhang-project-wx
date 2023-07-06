@@ -8,9 +8,15 @@ Page({
         })
     },
     openTransfer() {
-        wx.navigateTo({
-            url: "/pages/new-transfer/new-transfer"
-        })
+        if (!getApp().globalData.userInfo.login) {
+            wx.navigateTo({
+                url: "/pages/login/login"
+            })
+        } else {
+            wx.navigateTo({
+                url: "/pages/new-transfer/new-transfer"
+            })
+        }
     },
     getData() {
         $api.authRequest(
@@ -24,6 +30,18 @@ Page({
                 })
             }
         })
+    },
+    openTransferInfo(e) {
+        if (!getApp().globalData.userInfo.login) {
+            wx.navigateTo({
+                url: "/pages/login/login"
+            })
+        } else {
+            wx.navigateTo({
+                url: "/pages/company-transfer-info/company-transfer-info?tId=" + e.currentTarget.dataset.tId,
+            });
+        }
+
     },
     formatData(dataList) {
         dataList.forEach((item) => {
