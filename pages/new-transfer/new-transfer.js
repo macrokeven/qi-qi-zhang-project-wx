@@ -1,3 +1,7 @@
+/* TODO: recommendations
+    转让价格 -> 转让价格(元)
+*/
+
 // pages/new-transfer/new-transfer.js
 import Message from 'tdesign-miniprogram/message/index';
 
@@ -13,6 +17,101 @@ const getOptions = (obj, filter) => {
 
 const match = (v1, v2, size) => v1.toString().slice(0, size) === v2.toString().slice(0, size);
 
+// const nonRequiredItems = [
+//     'taxLevel',
+//     'licenses',
+//     'comment'
+// ];
+
+const formDataFilters = {
+    submit: [
+        'companyName',
+        'companyIndustry',
+        'companyArea',
+        'establishDate',
+        'taxStatus',
+        'taxLevel',
+        'licenses',
+        'companyStatus',
+        'transferPrice',
+        'companyChangeStatus',
+        'faceNegate',
+        'sellerName',
+        'sellerPhone',
+        'comment',
+        'companyType',
+    ],
+    required: [
+        /* 基本信息 */
+        'companyName',
+        'tType',
+        'companyIndustry',
+        'companyArea',
+        'establishDate',
+        /* 税务情况 */
+        'taxStatus',
+        'companyStatus',
+        'companyType',
+        /* 转让信息 */
+        'faceNegate',
+        'transferPrice',
+        'companyChangeStatus',
+        'sellerName',
+        'sellerPhone',
+    ]
+}
+
+const formItemNames = {
+    companyName: '公司全称',
+    tType: '企业类型',
+    companyIndustry: '公司行业',
+    companyArea: '地区',
+    establishDate: '成立日期',
+    /* 税务情况 */
+    taxStatus: '公司税务情况',
+    taxLevel: '税务等级',
+    licenses: '拥有的许可证',
+    companyStatus: '公司情况',
+    companyType: '公司类型',
+    /* 转让信息 */
+    faceNegate: '价格是否面议',
+    transferPrice: '转让价格',
+    companyChangeStatus: '公司变更',
+    /* 联系方式 */
+    sellerName: '联系人',
+    sellerPhone: '联系电话',
+    comment: '备注',
+}
+
+/* all of these regexs are global-matching */
+/* @return
+    true = pass
+*/
+const formDataFormats = {
+    /* 公司全称: 不少于三个字符 */
+    companyName: '.{3,}',
+    /* 转让价格: 不少于一个数字 */
+    transferPrice: '[0-9]+',
+    /* 联系人姓名: (目前仅限国人)不少于两个中文字符 */
+    sellerName: '[\u4e00-\u9fa5]{2,}',
+    /* 手机号: 自定义多项规则 */
+    sellerPhone: (v)=>{
+        const rs = [
+            /* Mobile */
+            '^[1]{1}(([3]{1}[4-9]{1})|([5]{1}[012789]{1})|([8]{1}[12378]{1})|([4]{1}[7]{1}))[0-9]{8}$',
+            /* Union */
+            '^[1]{1}(([3]{1}[0-2]{1})|([5]{1}[56]{1})|([8]{1}[56]{1}))[0-9]{8}$',
+            /* Telecom */
+            '^[1]{1}(([3]{1}[3]{1})|([5]{1}[3]{1})|([8]{1}[09]{1}))[0-9]{8}$'
+        ];
+
+        if(v.match('^[0-9]{11}$')){
+            for(let r of rs) if(v.match(r)) return true;
+        }
+        return false;
+    }
+}
+
 Page({
     getCities(provinceValue) {
         const cities = getOptions(areaList.cities, (city) => match(city.value, provinceValue, 2));
@@ -22,6 +121,91 @@ Page({
     },
     getCounties(cityValue) {
         return getOptions(areaList.counties, (county) => match(county.value, cityValue, 4));
+    },
+    // TODO
+    getFormData(filterName = '', toArray = false) {
+        let allData = {
+            /* 基本信息 */
+            companyName: this.data.companyName,
+            tType: this.data.tType.value,
+            companyIndustry: this.data.companyIndustry.value,
+            companyArea: this.data.companyArea,
+            establishDate: this.data.establishDate,
+            /* 税务情况 */
+            taxStatus: this.data.taxStatus.value,
+            taxLevel: this.data.taxLevel.value,
+            licenses: this.data.licenses,
+            companyStatus: this.getMapBooleanValueToString(this.data.companyStatusValueMap),
+            companyType: this.data.companyType.value,
+            /* 转让信息 */
+            faceNegate: this.data.faceNegate.value,
+            transferPrice: this.data.transferPrice,
+            companyChangeStatus: this.data.companyChange.value,
+            /* 联系方式 */
+            sellerName: this.data.sellerName,
+            sellerPhone: this.data.sellerPhone,
+            comment: this.data.comment,
+        }
+
+        const filter = formDataFilters[filterName];
+        if(filter){
+            // [[k1, v1], [k2, v2], ...]
+            if(toArray) return filter.map(k=>[k, allData[k]]);
+            let newData = {};
+            for(let k of filter) newData[k] = allData[k];
+            return newData;
+        }
+        return allData;
+    },
+    checkForm() {
+        let formRequiredDataList = this.getFormData('required', true);
+        let formRequiredDataObj = this.getFormData('required');
+        /* using DOM to fetch form list may be too tricky */
+        // console.log(wx.createSelectorQuery().select('.form-head'))
+
+        /* to filter transferPrice when faceNegate gets true */
+        if(formRequiredDataObj.faceNegate){
+            formRequiredDataList = formRequiredDataList.filter(([k])=>k!=='transferPrice');
+            delete formRequiredDataObj.transferPrice;
+        }
+
+        /* for readability and portability */
+
+        /* 1: find an empty item */
+        let emptyItem = formRequiredDataList.
+            /* an empty item (requires defaults to 0) */
+            find(([k, v])=>(!v && v!==false) ||
+            /* OR a multi-selectable item that selects nothing */ 
+                (v instanceof Array && !v.find(v=>v)));
+        // console.log('hi', emptyItem, formRequiredDataList.find(([k])=>k=='companyStatus'));
+        if(emptyItem) return {
+            ok: false,
+            type: 'empty',
+            itemKey: emptyItem[0],
+            itemName: formItemNames[emptyItem[0]]
+        }
+
+        /* 2: find an invalid field */
+        let invalidItem = Object.entries(formDataFormats).
+            find(([k, regex])=>{
+                if(typeof(regex) == 'string') regex = ((regex)=>(
+                    (v)=>!!v.match(`^${regex}$`)
+                ))(regex);
+                if(!formRequiredDataObj[k]) return false;
+                return !regex(formRequiredDataObj[k]);
+            });
+        if(invalidItem) return {
+            ok: false,
+            type: 'invalid',
+            itemKey: invalidItem[0],
+            // itemValue: formRequiredDataObj[invalidItem[0]],
+            itemName: formItemNames[invalidItem[0]]
+        }
+
+        /* 3: pass */
+        return {
+            ok: true
+        };
     },
     onPickerChange(e) {
         const {value, label} = e.detail;
@@ -51,7 +235,6 @@ Page({
         this.setData(obj);
     },
     onPick(e) {
-        let initObj = this.data.currentObj.options[0]
         let obj = this.data.currentObj;
         obj.value = e.detail.value[0];
         obj.label = e.detail.label[0];
@@ -90,26 +273,24 @@ Page({
         this.hidePicker();
     },
     submitNewTransfer() {
+        let result = this.checkForm();
+        if(!result.ok){
+            let content = result.type === 'empty'?
+                ` ${result.itemName} 不能为空`:
+                ` ${result.itemName} 格式错误`;
+            Message.error({
+                context: this,
+                offset: [20, 32],
+                marquee: {loop: 0},
+                duration: 5000,
+                content,
+            });
+            return;
+        }
         $api.authRequest(
             "POST",
             "CompanyTransferInfo/InsertNewCompanyTransferInfoByCompanyTransferInfo",
-            {
-                companyName: this.data.companyName,
-                companyIndustry: this.data.companyIndustry.value,
-                companyArea: this.data.companyArea,
-                establishDate: this.data.establishDate,
-                taxStatus: this.data.taxStatus.value,
-                taxLevel: this.data.taxLevel.value,
-                licenses: this.data.licenses,
-                companyStatus: this.getMapBooleanValueToString(this.data.companyStatusValueMap),
-                transferPrice: this.data.transferPrice,
-                companyChangeStatus: this.data.companyChange.value,
-                faceNegate: this.data.faceNegate.value,
-                sellerName: this.data.sellerName,
-                sellerPhone: this.data.sellerPhone,
-                comment: this.data.comment,
-                companyType: this.data.companyType.value,
-            }
+            this.getFormData('submit')
         ).then(res => {
             if (res.status === 0) {
                 Message.success({
@@ -445,7 +626,6 @@ Page({
         this.setData({cities, counties: areaList.counties});
     },
     onColumnChange(e) {
-        console.log('pick:', e.detail);
         const {column, index} = e.detail;
         const {provinces, cities} = this.data;
 
