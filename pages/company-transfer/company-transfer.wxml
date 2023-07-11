@@ -71,6 +71,11 @@
             </view>
         </view>
     </view>
+
+    <view class="l-row" class="more-info-btn" bindtap="gotoDetails">
+        查看更多
+    </view>
+
     <view class="tab-box"></view>
 
 </view>
