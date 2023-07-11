@@ -32,7 +32,7 @@
     border-radius: 20rpx;
     background: #ffffff;
     width: calc(100% - 40rpx);
-    margin: 20rpx 20rpx;
+    margin: 13rpx 20rpx;
 }
 
 /*.comp-detail-card:last-child{*/
@@ -42,14 +42,13 @@
 .detail-fire {
     width: 28rpx;
     height: 32.27rpx;
-    margin-left: 20rpx;
     margin-right: 10rpx;
 }
 
 .comp-name {
     color: rgba(0, 0, 0, 0.9);
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 600;
     line-height: 48rpx;
     letter-spacing: 0;
     text-align: left;
@@ -58,8 +57,7 @@
 .price-panel {
     margin: 0 20rpx 0 auto;
     color: rgb(227, 77, 89);
-    font-weight: 400;
-
+    font-weight: 600;
     letter-spacing: 0;
     align-items: flex-end;
     display: flex;
@@ -86,8 +84,12 @@
     padding: 6rpx;
 }
 
+.comp-info:first-child{
+    margin-left: 0;
+}
+
 .comp-base-info {
-    font-size: 23rpx;
+    font-size: 25rpx;
     letter-spacing: 0;
     text-align: left;
     display: flex;
