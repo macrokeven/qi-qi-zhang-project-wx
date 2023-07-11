@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1c7b5886-6935-4618-90d2-3b2cf158eb17" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/company-transfer/company-transfer.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/company-transfer/company-transfer.wxss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +53,7 @@
       <workItem from="1688621436322" duration="53000" />
       <workItem from="1688634444923" duration="2111000" />
       <workItem from="1688645660822" duration="3817000" />
+      <workItem from="1689055259765" duration="1288000" />
     </task>
     <servers />
   </component>
@@ -64,7 +66,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/pages/new-transfer/new-transfer.js</url>
           <line>553</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
