@@ -65,6 +65,24 @@
     margin: 10rpx 0;
 }
 
+.tb-button{
+    width: 95%;
+    height: 100rpx;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 16rpx;
+    display: flex;
+    align-items: center;
+    margin: 10rpx 0;
+    text-justify: center;
+    padding: 0;
+    font-size: 29rpx;
+}
+
+.tb-button::after {
+    border: none;
+}
+
 .button-icon {
     width: 50rpx;
     height: 50rpx;

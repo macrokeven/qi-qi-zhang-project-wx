@@ -37,12 +37,11 @@
         <!--            <image class="button-icon" src="./../../assets/svg/link.svg"></image>-->
         <!--            <view class="button-text">帐无忧绑定</view>-->
         <!--        </view>-->
-
-        <view class="profile-button" style="margin-top:50rpx">
+        <button class="tb-button" bindtap="callUser" >
             <image class="button-icon" src="../../assets/svg/customer-service.svg"></image>
             <view class="button-text">联系我们</view>
             <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
-        </view>
+        </button>
 
         <!--        <view class="profile-button">-->
         <!--            <image class="button-icon" src="./../../assets/svg/close.svg"></image>-->

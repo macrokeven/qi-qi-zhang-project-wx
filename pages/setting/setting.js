@@ -80,6 +80,12 @@ Page({
 
     },
 
+    callUser: function() {
+        wx.makePhoneCall({
+            phoneNumber: "13138129981"
+        })
+    },
+
     /**
      * Page event handler function--Called when user drop down
      */

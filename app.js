@@ -3,12 +3,12 @@ import gulpError from './utils/gulpError';
 App({
     onShow() {
 
-        wx.loadFontFace({
-            family: 'PingFang-SC-Regular',
-            global:true,
-            source:
-                'url("https://letoy-resource-1311015785.cos.ap-nanjing.myqcloud.com/fonts/PingFang-SC-Regular.ttf")',
-        })
+        // wx.loadFontFace({
+        //     family: 'PingFang-SC-Regular',
+        //     global:true,
+        //     source:
+        //         'url("https://letoy-resource-1311015785.cos.ap-nanjing.myqcloud.com/fonts/PingFang-SC-Regular.ttf")',
+        // })
     },
     globalData: {
         userInfo: {
