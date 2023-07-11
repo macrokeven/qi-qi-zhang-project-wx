@@ -51,6 +51,11 @@ Page({
         })
         return dataList;
     },
+    gotoDetails(){
+        wx.navigateTo({
+            url: "/pages/company-transfer-detail/company-transfer-detail",
+        });
+    },
     /**
      * 页面的初始数据
      */
