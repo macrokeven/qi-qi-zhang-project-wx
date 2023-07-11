@@ -15,15 +15,15 @@ Page({
     getData() {
         $api.authRequest(
             "POST",
-            "CompanyTransferInfo/GetAllCompanyTransferInfos",
+            `CompanyTransferInfo/GetCompanyTransferInfosByUid`,
             {}
         ).then(res => {
             if (res.status === 0) {
                 this.setData({
                     dataList: this.formatData(res.data)
-                })
+                });
             }
-        })
+        });
     },
     formatData(dataList) {
         dataList.forEach((item) => {

@@ -54,6 +54,10 @@
     text-align: left;
 }
 
+.order-status {
+    margin: 10rpx;
+}
+
 .price-panel {
     margin: 0 20rpx 0 auto;
     color: rgb(227, 77, 89);

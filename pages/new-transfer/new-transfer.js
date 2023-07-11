@@ -24,23 +24,23 @@ const match = (v1, v2, size) => v1.toString().slice(0, size) === v2.toString().s
 // ];
 
 const formDataFilters = {
-    submit: [
-        'companyName',
-        'companyIndustry',
-        'companyArea',
-        'establishDate',
-        'taxStatus',
-        'taxLevel',
-        'licenses',
-        'companyStatus',
-        'transferPrice',
-        'companyChangeStatus',
-        'faceNegate',
-        'sellerName',
-        'sellerPhone',
-        'comment',
-        'companyType',
-    ],
+    // submit: [
+    //     'companyName',
+    //     'companyIndustry',
+    //     'companyArea',
+    //     'establishDate',
+    //     'taxStatus',
+    //     'taxLevel',
+    //     'licenses',
+    //     'companyStatus',
+    //     'transferPrice',
+    //     'companyChangeStatus',
+    //     'faceNegate',
+    //     'sellerName',
+    //     'sellerPhone',
+    //     'comment',
+    //     'companyType',
+    // ],
     required: [
         /* 基本信息 */
         'companyName',

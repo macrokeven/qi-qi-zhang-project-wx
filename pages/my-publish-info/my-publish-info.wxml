@@ -273,7 +273,8 @@
         </view>
     </view>
     <view class="l-card l-center">
-        <view class="my-btn"  bindtap="submitNewTransfer">一键发布</view>
+        <view class="my-btn" bindtap="modifyTransfer">更改并发布</view>
+        <view class="my-btn serious-btn" bindtap="removeTransfer">撤销转让申请</view>
     </view>
 </view>
 <t-message id="t-message"></t-message>

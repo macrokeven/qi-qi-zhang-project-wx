@@ -24,23 +24,23 @@ const match = (v1, v2, size) => v1.toString().slice(0, size) === v2.toString().s
 // ];
 
 const formDataFilters = {
-    submit: [
-        'companyName',
-        'companyIndustry',
-        'companyArea',
-        'establishDate',
-        'taxStatus',
-        'taxLevel',
-        'licenses',
-        'companyStatus',
-        'transferPrice',
-        'companyChangeStatus',
-        'faceNegate',
-        'sellerName',
-        'sellerPhone',
-        'comment',
-        'companyType',
-    ],
+    // submit: [
+    //     'companyName',
+    //     'companyIndustry',
+    //     'companyArea',
+    //     'establishDate',
+    //     'taxStatus',
+    //     'taxLevel',
+    //     'licenses',
+    //     'companyStatus',
+    //     'transferPrice',
+    //     'companyChangeStatus',
+    //     'faceNegate',
+    //     'sellerName',
+    //     'sellerPhone',
+    //     'comment',
+    //     'companyType',
+    // ],
     required: [
         /* 基本信息 */
         'companyName',
@@ -122,7 +122,6 @@ Page({
     getCounties(cityValue) {
         return getOptions(areaList.counties, (county) => match(county.value, cityValue, 4));
     },
-    // TODO
     getFormData(filterName = '', toArray = false) {
         let allData = {
             /* 基本信息 */
@@ -156,6 +155,45 @@ Page({
             return newData;
         }
         return allData;
+    },
+    setAllFormData(data){
+        const resetItemForOptions = (data, value)=>({
+            ...data,
+            value,
+            label: data.options.find(v=>v.value == value)?.label
+        });
+
+        let companyStatusValues = data.companyStatus.split(',').map(v=>parseInt(v));
+        this.setData({
+            /* 基本信息 */
+            companyName: data.companyNameFull,
+            tType: resetItemForOptions(this.data.tType, data.tType),
+            companyIndustry: resetItemForOptions(this.data.companyIndustry, data.companyIndustry),
+
+            /* shown areaText should be converted */
+            companyArea: data.companyArea,
+            areaText: areaList.counties[data.companyArea],
+
+            establishDate: data.establishDate,
+            /* 税务情况 */
+            taxStatus: resetItemForOptions(this.data.taxStatus, data.taxStatus),
+            taxLevel: resetItemForOptions(this.data.taxLevel, data.taxLevel),
+            licenses: data.licenses,
+
+            /* non-standard variables */
+            companyStatusValueMap: companyStatusValues.reduce((p, n)=>(p[n] = true, p), []),
+            companyStatusTextValue: companyStatusValues.map(key => this.data.companyStatusMap[key]).join(" "),
+
+            companyType: resetItemForOptions(this.data.companyType, data.companyType),
+            /* 转让信息 */
+            faceNegate: resetItemForOptions(this.data.faceNegate, data.faceNegate),
+            transferPrice: data.transferPrice,
+            companyChange: resetItemForOptions(this.data.companyChange, data.companyChangeStatus),
+            /* 联系方式 */
+            sellerName: data.sellerName,
+            sellerPhone: data.sellerPhone,
+            comment: data.comment,
+        });
     },
     checkForm() {
         let formRequiredDataList = this.getFormData('required', true);
@@ -272,7 +310,7 @@ Page({
         });
         this.hidePicker();
     },
-    submitNewTransfer() {
+    modifyTransfer() {
         let result = this.checkForm();
         if(!result.ok){
             let content = result.type === 'empty'?
@@ -287,27 +325,32 @@ Page({
             });
             return;
         }
-        $api.authRequest(
-            "POST",
-            "CompanyTransferInfo/InsertNewCompanyTransferInfoByCompanyTransferInfo",
-            this.getFormData('submit')
-        ).then(res => {
-            if (res.status === 0) {
-                Message.success({
-                    context: this,
-                    offset: [20, 32],
-                    marquee: {loop: 0},
-                    duration: 5000,
-                    content: ' 发布成功!',
-                })
-                setTimeout(() => {
-                    wx.navigateTo({
-                        url: "/pages/company-transfer-detail/company-transfer-detail"
+        try{
+            $api.authRequest(
+                "POST",
+                `CompanyTransferInfo/UpdateCompanyTransferInfoByCompanyTransferInfoAndUid`,
+                this.getFormData()
+            ).then(res => {
+                if (res.status === 0) {
+                    Message.success({
+                        context: this,
+                        offset: [20, 32],
+                        marquee: {loop: 0},
+                        duration: 5000,
+                        content: ' 发布成功!',
                     })
-                }, 500)
-
-            }
-        })
+                    setTimeout(() => {
+                        wx.navigateTo({
+                            url: "/pages/company-transfer-detail/company-transfer-detail"
+                        })
+                    }, 500)
+    
+                }
+            })
+        }catch(e){console.log(e)}
+    },
+    removeTransfer(){
+        
     },
     getMapBooleanValueToString(map) {
         return Object.keys(map).filter(key => map[key]).join(",");
@@ -322,6 +365,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        tId: null,
         dateVisible: false,
         date: new Date().getTime(), // 支持时间戳传入
         start: '2000-01-01 00:00:00',
@@ -600,13 +644,28 @@ Page({
             [`${e.currentTarget.dataset.name}` + 'TextValue']: text,
         });
     },
+    
+    updateFormData(){
+        $api.authRequest(
+            "POST",
+            `CompanyTransferInfo/UpdateCompanyTransferInfoByCompanyTransferInfoAndUid`,
+            {}
+        ).then(res => {
+            if (res.status === 0) {
+                this.setData({
+                    dataList: this.formatData(res.data)
+                });
+            }
+        });
+    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
         this.setData({
-            currentObj: this.data.taxStatus
+            currentObj: this.data.taxStatus,
+            tId: options.tId
         })
     },
 
@@ -621,9 +680,23 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        const {provinces} = this.data;
-        const {cities, counties} = this.getCities(provinces[0].value);
-        this.setData({cities, counties: areaList.counties});
+        // const {provinces} = this.data;
+        // const {cities, counties} = this.getCities(provinces[0].value);
+        // this.setData({cities, counties: areaList.counties});
+        
+        $api.authRequest(
+            "POST",
+            "CompanyTransferInfo/GetCompanyTransferInfoByUidAndTId",
+            {
+                tId: this.data.tId
+            }
+        ).then(res => {
+            if (res.status === 0) {
+                let allData = res.data;
+                console.log(allData);
+                this.setAllFormData(allData);
+            }
+        })
     },
     onColumnChange(e) {
         const {column, index} = e.detail;
