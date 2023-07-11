@@ -9,11 +9,6 @@ App({
             source:
                 'url("https://letoy-resource-1311015785.cos.ap-nanjing.myqcloud.com/fonts/PingFang-SC-Regular.ttf")',
         })
-        if (gulpError !== 'gulpErrorPlaceHolder') {
-            wx.redirectTo({
-                url: `/pages/gulp-error/index?gulpError=${gulpError}`,
-            });
-        }
     },
     globalData: {
         userInfo: {

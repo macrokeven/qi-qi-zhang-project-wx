@@ -9,7 +9,8 @@
                 </view>
                 <view class="cash" wx:if="{{companyInfo.faceNegate}}"><view class="c-n">面议</view>
                 </view>
-                <view class="i-change">{{companyChangeMap[companyInfo.companyChangeStatus]}}</view>
+                <view class="i-change" style="{{companyInfo.companyChangeStatus===2?'color:#E34D59':''}}">
+                    {{companyChangeMap[companyInfo.companyChangeStatus]}}</view>
             </view>
             <view class="card-d-row">
                 <image class="green-icon" src="./../../assets/svg/verify.svg"></image>
@@ -19,7 +20,7 @@
         </view>
         <view class="l-card">
             <view class="card-row">
-                <image class="blue-icon"></image>
+                <image class="blue-icon" src="./../../assets/svg/blue.svg"></image>
                 <view class="card-head">基本信息</view>
             </view>
             <view class="form-row">

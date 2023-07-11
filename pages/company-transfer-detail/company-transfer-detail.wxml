@@ -4,7 +4,7 @@
             <t-search placeholder="搜索待转让公司..." style="width:95%"/>
         </view>
 
-        <view class="l-row h-scroll-box" style="padding: 0 2.5% 0 2.5%">
+        <view class="l-row h-scroll-box" style="padding: 0 2.5% 0 2.5%;margin-bottom:13rpx">
             <view class="scroll-panel">
                 <view class="popup-button {{areaValue[0]!==0?'chose-value':''}}" data-name="taxStatus"
                       bindtap="onAreaPicker">
@@ -173,7 +173,10 @@
             <t-picker-item options="{{provinces}}"></t-picker-item>
             <t-picker-item options="{{cities}}"></t-picker-item>
         </t-picker>
-
+        <view wx:if="{{dataList.length===0}}" class="l-col l-center">
+            <image class="no-result-img" src="./../../assets/svg/no-result.svg"></image>
+            <view class="no-result-label">暂无结果</view>
+        </view>
         <view class="comp-detail-card" wx:for="{{dataList}}" wx:for-item="company" wx:key="index" bindtap="openTransferInfo" data-t-id="{{company.tId}}">
             <view class="l-row" style="margin:20rpx 20rpx 0 20rpx;align-items:center;width:calc(100% - 40rpx)">
                 <image src="./../../assets/pics/transfer-icon-1.svg" class="detail-fire"></image>
@@ -215,7 +218,7 @@
         </view>
         <view class="safe-box buff"></view>
         <view class="float-button-box">
-            <t-button size="large" icon="add" bindtap="openNewTransfer" shape="round" theme="light">我也要转让
+            <t-button size="large" icon="add" style="box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.05);opacity:0.9" bindtap="openNewTransfer" shape="round" theme="light">我也要转让
             </t-button>
         </view>
     </view>

@@ -75,14 +75,14 @@ Page({
             otherPopup: false
         })
     },
-    openTransferInfo(e) {
+    openPublishInfo(e) {
         if (!getApp().globalData.userInfo.login) {
             wx.navigateTo({
                 url: "/pages/login/login"
             })
         } else {
             wx.navigateTo({
-                url: "/pages/company-transfer-info/company-transfer-info?tId=" + e.currentTarget.dataset.tId,
+                url: "/pages/my-publish-info/my-publish-info?tId=" + e.currentTarget.dataset.tId,
             });
         }
     },

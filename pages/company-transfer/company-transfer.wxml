@@ -23,17 +23,17 @@
                 <image class="text-logo" src="./../../assets/pics/transfer-pic-2.png"></image>
                 <view class="tips-content">朱小姐发布了一家广东珠海科技类公司海科技类公司海科技类公司</view>
             </view>
-
         </view>
     </view>
 
     <view class="card-row" style="margin-top:32rpx;height:60rpx">
         <image class="blue-icon" src="./../../assets/svg/blue.svg"></image>
         <view class="card-head">优质公司推荐</view>
-        <view class="more-comp" bindtap="openMoreTransfer">更多公司>>></view>
+        <view class="more-comp" bindtap="openMoreTransfer">更多公司 >>></view>
     </view>
 
-    <view class="comp-detail-card" wx:for="{{dataList}}" wx:for-item="company" wx:key="index"  bindtap="openTransferInfo" data-t-id="{{company.tId}}">
+    <view class="comp-detail-card" wx:for="{{dataList}}" wx:for-item="company" wx:key="index"
+          bindtap="openTransferInfo" data-t-id="{{company.tId}}">
         <view class="l-row" style="margin:20rpx 20rpx 0 20rpx;align-items:center;width:calc(100% - 40rpx)">
             <image src="./../../assets/pics/transfer-icon-1.svg" class="detail-fire"></image>
             <view class="comp-name">{{company.companyName}}</view>
@@ -63,7 +63,8 @@
         <view class="l-row" style="margin:0 20rpx 16rpx 20rpx;width:calc(100% - 40rpx)">
             <view class="comp-base-info">
                 <view class="des">成立时间：</view>
-                <view class="content">{{company.establishDate === 0 ? '新设立' : company.establishDate + '年'}}</view>
+                <view class="content">{{company.establishDate === 0 ? '新设立' : company.establishDate + '年'}}
+                </view>
             </view>
             <view class="comp-base-info">
                 <view class="des">纳税类型：</view>
@@ -72,9 +73,12 @@
         </view>
     </view>
 
-    <view class="l-row" class="more-info-btn" bindtap="gotoDetails">
-        查看更多
+    <view class="l-row l-center">
+        <view class="more-info-btn" bindtap="gotoDetails">
+            查看更多
+        </view>
     </view>
+
 
     <view class="tab-box"></view>
 

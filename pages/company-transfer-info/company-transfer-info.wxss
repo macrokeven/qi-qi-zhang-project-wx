@@ -34,6 +34,10 @@
 
 }
 
+.l-card:first-child{
+    margin-top: 0;
+}
+
 .form-row {
 
     width: calc(100% - 40rpx);
@@ -130,7 +134,7 @@
 
 .cash {
     font-size: 24rpx;
-    font-weight: 400;
+    font-weight: 600;
     color: red;
 }
 
@@ -152,7 +156,7 @@
     margin-top: 30rpx;
     margin-left: 30rpx;
     font-size: 40rpx;
-    font-weight: 400;
+    font-weight: 600;
 
 }
 

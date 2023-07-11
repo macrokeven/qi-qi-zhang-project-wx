@@ -17,7 +17,7 @@
 
             </view>
         </view>
-        <view class="profile-button" bindtap="openPage" data-route="{{'company-info'}}">
+        <view class="profile-button" bindtap="openPage" data-route="{{'my-publish'}}">
             <image class="button-icon" src="./../../assets/svg/publish.svg"></image>
             <view class="button-text">我的发布</view>
             <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
