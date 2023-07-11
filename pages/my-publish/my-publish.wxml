@@ -2,17 +2,17 @@
     <view class="f-card">
         <view wx:if="{{dataList.length===0}}" class="l-col l-center">
             <image class="no-result-img" src="./../../assets/svg/no-result.svg"></image>
-            <view class="no-result-label">暂无结果</view>
+            <view class="no-result-label">未发布</view>
         </view>
         <view class="comp-detail-card" wx:for="{{dataList}}" wx:for-item="company" wx:key="index" bindtap="openPublishInfo" data-t-id="{{company.tId}}">
             <view class="l-row" style="margin:20rpx 20rpx 0 20rpx;align-items:center;width:calc(100% - 40rpx)">
                 <image src="./../../assets/pics/transfer-icon-1.svg" class="detail-fire"></image>
                 <view class="comp-name">{{company.companyName}}</view>
                 <view class="order-status">
-                    <t-tag wx:if="{{ company.tStatus == 1 }}" theme="default">未审核</t-tag>
-                    <t-tag wx:if="{{ company.tStatus == 2 }}" theme="success">审核通过</t-tag>
-                    <t-tag wx:if="{{ company.tStatus == 3 }}" theme="danger">内容不合规</t-tag>
-                    <t-tag wx:if="{{ company.tStatus == 3 }}" theme="warning">已下架</t-tag>
+                    <t-tag wx:if="{{ company.tStatus === 1 }}" theme="default">未审核</t-tag>
+                    <t-tag wx:if="{{ company.tStatus === 2 }}" theme="success">审核通过</t-tag>
+                    <t-tag wx:if="{{ company.tStatus === 3 }}" theme="danger">内容不合规</t-tag>
+                    <t-tag wx:if="{{ company.tStatus === 4 }}" theme="warning">已下架</t-tag>
                 </view>
                 <view class="price-panel">
                     <view class="price" wx:if="{{!company.faceNegate}}">{{company.transferPrice}}</view>

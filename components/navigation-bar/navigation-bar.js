@@ -37,6 +37,7 @@ Component({
     methods: {
       goBack() {
         if (this.properties.showBack) {
+            console.log("fuck")
           wx.navigateBack()
         }
       },

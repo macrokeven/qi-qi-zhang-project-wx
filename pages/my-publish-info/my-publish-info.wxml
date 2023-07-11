@@ -272,9 +272,12 @@
             *完整的信息更利于快速转让，尽可能完善呦~
         </view>
     </view>
-    <view class="l-card l-center">
-        <view class="my-btn" bindtap="modifyTransfer">更改并发布</view>
-        <view class="my-btn serious-btn" bindtap="removeTransfer">撤销转让申请</view>
+    <view class="l-card">
+        <view class="l-row">
+        <view class="my-btn serious-btn" style="width:180rpx" bindtap="removeTransfer">下架</view>
+        <view class="my-btn" style="width:calc( 100% - 300rpx)" bindtap="modifyTransfer">更改并发布</view>
+        </view>
+
     </view>
 </view>
 <t-message id="t-message"></t-message>

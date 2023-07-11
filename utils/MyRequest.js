@@ -1,7 +1,7 @@
-const devURL = getApp().globalData.requestUrl;
+const devURL = "http://localhost:8001/";
 const devIpURL = 'http://192.168.3.46:8001/';
 const publishURL = getApp().globalData.requestUrl;
-const myUrl = devURL;
+const myUrl = publishURL;
 
 function handleRequest(method, url, data, authHeader = false) {
     return new Promise((resolve, reject) => {

@@ -43,7 +43,7 @@ const formDataFilters = {
     // ],
     required: [
         /* 基本信息 */
-        'companyName',
+        'companyNameFull',
         'tType',
         'companyIndustry',
         'companyArea',
@@ -124,8 +124,9 @@ Page({
     },
     getFormData(filterName = '', toArray = false) {
         let allData = {
+            tId:this.data.tId,
             /* 基本信息 */
-            companyName: this.data.companyName,
+            companyNameFull: this.data.companyName,
             tType: this.data.tType.value,
             companyIndustry: this.data.companyIndustry.value,
             companyArea: this.data.companyArea,
@@ -160,7 +161,7 @@ Page({
         const resetItemForOptions = (data, value)=>({
             ...data,
             value,
-            label: data.options.find(v=>v.value == value)?.label
+            label: data.options.find(v=>v.value === value)?.label
         });
 
         let companyStatusValues = data.companyStatus.split(',').map(v=>parseInt(v));
@@ -227,7 +228,7 @@ Page({
         let invalidItem = Object.entries(formDataFormats).
             find(([k, regex])=>{
                 if(typeof(regex) == 'string') regex = ((regex)=>(
-                    (v)=>!!v.match(`^${regex}$`)
+                    (v)=>!!(`${v}`).match(`^${regex}$`)
                 ))(regex);
                 if(!formRequiredDataObj[k]) return false;
                 return !regex(formRequiredDataObj[k]);
@@ -340,9 +341,7 @@ Page({
                         content: ' 发布成功!',
                     })
                     setTimeout(() => {
-                        wx.navigateTo({
-                            url: "/pages/company-transfer-detail/company-transfer-detail"
-                        })
+                        wx.navigateBack();
                     }, 500)
     
                 }
@@ -663,6 +662,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        console.log(options.tId)
         this.setData({
             currentObj: this.data.taxStatus,
             tId: options.tId

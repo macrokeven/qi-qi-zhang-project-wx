@@ -129,16 +129,20 @@
 }
 
 .my-btn{
-    width:60%;
+    width:300rpx;
     height: 80rpx;
     line-height: 80rpx;
     color: #ffffff;
     border-radius: 40rpx;
     background: rgb(52, 96, 247);
     text-align: center;
-    margin: 16rpx 5%;
+    margin: 16rpx 20rpx;
     margin-bottom: calc( 16rpx + constant(safe-area-inset-bottom));
     margin-bottom: calc( 16rpx + env(safe-area-inset-bottom));
+}
+
+.my-btn:first-child{
+    margin-left: 40rpx;
 }
 
 .serious-btn {
