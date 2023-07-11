@@ -138,7 +138,7 @@
                 <view class="single-pick-box {{hasLicenses===1?'s-p-b-active':''}}" data-name="hasLicenses"
                       data-value="{{1}}" bindtap="chooseSingleItem">是
                 </view>
-                <view class="single-pick-box {{!hasLicenses===2?'s-p-b-active':''}}" data-name="hasLicenses"
+                <view class="single-pick-box {{hasLicenses===2?'s-p-b-active':''}}" data-name="hasLicenses"
                       data-value="{{2}}" bindtap="chooseSingleItem">否
                 </view>
                 <view class="card-title">公司情况</view>
