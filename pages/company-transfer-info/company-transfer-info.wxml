@@ -28,6 +28,10 @@
                 <view class="l-right-massage">{{companyIndustryMap[companyInfo.companyIndustry]}}</view>
             </view>
             <view class="form-row">
+                <view class="l-left-massage">公司类型</view>
+                <view class="l-right-massage">{{tTypeMap[companyInfo.tType]}}</view>
+            </view>
+            <view class="form-row">
                 <view class="l-left-massage">地区</view>
                 <view class="l-right-massage">{{areaMap[companyInfo.companyArea]}}</view>
             </view>
@@ -43,13 +47,13 @@
                 <view class="l-left-massage">税务情况</view>
                 <view class="l-right-massage">{{taxStatusMap[companyInfo.taxStatus]}}</view>
             </view>
-            <view class="form-row">
+            <view class="form-row" wx:if="{{companyInfo.taxLevel!==0}}">
                 <view class="l-left-massage">税务等级</view>
                 <view class="l-right-massage">{{taxLevelMap[companyInfo.taxLevel]}}</view>
             </view>
-            <view class="form-row">
+            <view class="form-row" wx:if="{{companyStatusText!==''}}">
                 <view class="l-left-massage">公司情况</view>
-                <view class="l-right-massage">{{companyStatusMap[companyInfo.companyStatus]}}</view>
+                <view class="l-right-massage">{{companyStatusText}}</view>
             </view>
             <view class="form-row">
                 <view class="l-left-massage">公司类型</view>

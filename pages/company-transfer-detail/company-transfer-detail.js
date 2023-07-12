@@ -197,7 +197,11 @@ Page({
             1000016: "材料类",
             1000017: "工程类",
         },
-        companyStatusValueMap: {}
+        companyStatusValueMap: {},
+        tTypeMap:{
+            1:"个体户",
+            2:"公司"
+        },
     },
     chooseMultipleItem(e) {
         let oldValueMap = this.data[`${e.currentTarget.dataset.name}` + 'ValueMap'];

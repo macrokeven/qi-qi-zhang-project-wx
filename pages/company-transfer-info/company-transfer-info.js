@@ -23,6 +23,7 @@ Page({
             comment: "",
             companyType: "",
         },
+        companyStatusText:"",
         areaMap: areaList.counties,
         companyIndustryMap: {
             1000001: '综合类',
@@ -49,6 +50,10 @@ Page({
             3: 'C',
             4: 'D',
             5: 'M'
+        },
+        tTypeMap:{
+            1:"个体户",
+            2:"公司"
         },
         companyStatusMap: {
             1: '已税务登记',
@@ -82,15 +87,20 @@ Page({
             }
         ).then(res => {
             if (res.status === 0) {
-                let licenses = res.licenses;
-                let comment = res.comment;
+                let licenses = res.data.licenses;
+                let comment = res.data.comment;
                 if (!licenses || licenses === "" || licenses === "无" || licenses === null || licenses === undefined) {
                     licenses = "无";
                 }
                 if (!comment || comment === "" || comment === "无" || comment === null || comment === undefined) {
                     comment = "无";
                 }
+                let companyStatusText = "";
+                res.data.companyStatus.split(",").forEach((item)=>{
+                    companyStatusText = companyStatusText +" " + this.data.companyStatusMap[item];
+                })
                 this.setData({
+                    companyStatusText,
                     companyInfo: res.data,
                     year: new Date().getFullYear() - res.data.establishDate.split("-")[0],
                     licenses,

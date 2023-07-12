@@ -12,7 +12,6 @@ Page({
                     "ActiveCode/GetLoginPhoneNumberActiveCodeByPhoneNumber",
                     {phoneNumber: that.data.phoneNumber}
                 ).then(res => {
-                    console.log(res)
                     if (res.status === 0) {
                         Message.success({
                             context: this,
@@ -39,12 +38,12 @@ Page({
                             }
                         }, 1000);
                     } else {
-                        Message.warning({
+                        Message.error({
                             context: this,
                             offset: [20, 32],
                             marquee: {loop: 0},
                             duration: 5000,
-                            content: res.msg,
+                            content: "激活码错误或失效",
                         })
                     }
                 })
