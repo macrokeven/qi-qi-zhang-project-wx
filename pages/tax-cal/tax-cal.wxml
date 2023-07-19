@@ -6,7 +6,7 @@
         <view class="l-row">
             <view class="l-l-row">含税销售额(元)</view>
             <view class="l-r-row">
-                <input class="i-num" style="width:300rpx" type="number" placeholder="请输入不含税销售额" placeholder-style="color:rgba(0,0,0,0.3);font-size:32rpx;"/>
+                <input class="i-num" style="width:300rpx" type="number" placeholder="请输入不含税销售额" placeholder-style="color:rgba(0,0,0,0.3);font-size:32rpx;" bind:change="calcTaxFromInput"/>
             </view>
         </view>
         <view class="l-row">
@@ -29,11 +29,11 @@
         </view>
         <view class="l-row-c c-cal">
             <view class="l-l-row">不含税销售额：</view>
-            <view class="l-r-row" >0</view>
+            <view class="l-r-row" >{{ finalSale }}</view>
         </view>
         <view class="l-row-c c-cal">
             <view class="l-l-row">增值税额：</view>
-            <view class="l-r-row">0</view>
+            <view class="l-r-row">{{ finalTax }}</view>
         </view>
         <view class="c-cal" style="width:90%;height:40rpx; font-size:22rpx; margin:auto;margin-top:0;color:#aaaaaa">
             *小规模纳税人季度销售额30万（月额度10万）以下免增值税
@@ -52,7 +52,7 @@
     </t-picker>
     <t-picker
             visible="{{taxValue.visible}}"
-            title="选择纳税人类型"
+            title="增值税率"
             value="{{[taxValue.value]}}"
             cancelBtn="取消"
             confirmBtn="确认"

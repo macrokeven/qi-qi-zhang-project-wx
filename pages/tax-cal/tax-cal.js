@@ -1,10 +1,14 @@
 // pages/tax-cal/tax-cal.js
+
+const toFixed2 = v=>((v*100)|0)/100;
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        inputPrice: 0,
         product: {
             value: 'all',
             options: [
@@ -38,6 +42,18 @@ Page({
         taxValue:{
             value: 3,
             options: [
+                {
+                    value: 0,
+                    label: '0%',
+                },
+                {
+                    value: 1,
+                    label: '1%',
+                },
+                {
+                    value: 2,
+                    label: '2%',
+                },
                 {
                     value: 3,
                     label: '3%',
@@ -99,7 +115,7 @@ Page({
                     label: '17%',
                 },
             ],
-        }
+        },
         // sorter: {
         //     value: 'default',
         //     options: [
@@ -113,9 +129,23 @@ Page({
         //         },
         //     ],
         // },
-
+        finalSale: 0,
+        finalTax: 0
     },
-
+    calcTaxFromInput(e){
+        this.data.inputPrice = e.detail.value;
+        this.calcTax();
+    },
+    calcTax(){
+        const inputPrice = parseFloat(this.data.inputPrice);
+        const taxRate = this.data.taxValue.value/100;
+        const remains = inputPrice / (1+taxRate);
+        const tax = inputPrice - remains;
+        this.setData({
+            finalSale: toFixed2(remains),
+            finalTax: toFixed2(tax)
+        });
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -152,6 +182,7 @@ Page({
         result[this.data.currentName] = obj;
         result["currentObj"] = obj;
         this.setData(result);
+        this.calcTax();
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
