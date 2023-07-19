@@ -6,7 +6,7 @@
         <view class="l-row">
             <view class="l-l-row">含税销售额(元)</view>
             <view class="l-r-row">
-                <input class="i-num" type="number" placeholder="请输入不含税销售额" placeholder-style="color:rgba(0,0,0,0.3);font-size:25rpx;"/>
+                <input class="i-num" style="width:300rpx" type="number" placeholder="请输入不含税销售额" placeholder-style="color:rgba(0,0,0,0.3);font-size:32rpx;"/>
             </view>
         </view>
         <view class="l-row">

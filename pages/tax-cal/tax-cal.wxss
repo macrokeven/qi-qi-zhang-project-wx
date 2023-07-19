@@ -73,16 +73,15 @@
     margin-top: auto;
     width: 220rpx;
     text-align: end;
-
 }
+
 .l-row-c{
     display: flex;
     /*background: cornflowerblue;*/
     font-size: 32rpx;
     width: 90%;
     height: 60rpx;
-    margin: auto;
-    margin-top: 30rpx;
+    margin: 30rpx auto auto;
     box-sizing: border-box;
     font-weight: 500;
 }

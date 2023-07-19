@@ -73,7 +73,7 @@
                     </view>
                 </view>
                 <view class="l-center" style="width:33.333%;display:flex">
-                    <view class="tool-box l-center">
+                    <view class="tool-box l-center" bindtap="openPage" data-path="tax-cal">
                         <image src="./../../assets/svg/table-fill.svg" class="tool-icon"></image>
                         <view class="tool-name" style="color:#000000">增值税计算器</view>
                     </view>
