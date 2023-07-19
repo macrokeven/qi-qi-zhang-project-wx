@@ -1,5 +1,10 @@
 <view class="l-container" style="background:rgb(244,244,244)">
     <view class="f-card">
+        <view class="l-row l-center" wx:if="{{dataList==null}}">
+            <view class="loading-panel l-center">
+                <t-loading theme="circular" size="80rpx" class="wrapper"/>
+            </view>
+        </view>
         <view wx:if="{{dataList.length===0}}" class="l-col l-center">
             <image class="no-result-img" src="./../../assets/svg/no-result.svg"></image>
             <view class="no-result-label">未发布</view>

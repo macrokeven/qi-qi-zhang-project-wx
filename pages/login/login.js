@@ -43,7 +43,7 @@ Page({
                             offset: [20, 32],
                             marquee: {loop: 0},
                             duration: 5000,
-                            content: "激活码错误或失效",
+                            content: "请求次数过多，请稍后再试",
                         })
                     }
                 })
@@ -115,6 +115,14 @@ Page({
                         url: "/pages/home/home"
                     });
                 }, 500)
+            }else {
+                Message.error({
+                    context: this,
+                    offset: [20, 32],
+                    marquee: {loop: 0},
+                    duration: 5000,
+                    content: "激活码错误或失效",
+                })
             }
             console.log(getApp().globalData.userInfo)
         })

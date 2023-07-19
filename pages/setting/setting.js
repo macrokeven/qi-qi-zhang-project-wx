@@ -5,10 +5,10 @@ Page({
      * Page initial data
      */
     data: {
-        login:false,
+        login: false,
         nickname: "",
         avatar: "",
-        bottomMenuVisible:false
+        bottomMenuVisible: false
     },
 
     /**
@@ -38,7 +38,7 @@ Page({
         this.setData({
             nickname: getApp().globalData.userInfo.nickname,
             avatar: getApp().globalData.userInfo.avatar,
-            login:getApp().globalData.userInfo.login
+            login: getApp().globalData.userInfo.login
         })
     },
     checkLogin() {
@@ -60,7 +60,7 @@ Page({
             bottomMenuVisible: e.detail.visible,
         });
     },
-    openBottomBar(){
+    openBottomBar() {
         this.setData({
             bottomMenuVisible: true,
         });
@@ -80,9 +80,15 @@ Page({
 
     },
 
-    callUser: function() {
+    callUser: function () {
         wx.makePhoneCall({
-            phoneNumber: "13138129981"
+            phoneNumber: "13138129981",
+            success(res) {
+                console.log(res)
+            },
+            fail(res) {
+                console.log(res)
+            }
         })
     },
 

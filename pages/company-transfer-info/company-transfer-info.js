@@ -23,7 +23,7 @@ Page({
             comment: "",
             companyType: "",
         },
-        companyStatusText:"",
+        companyStatusText: "",
         areaMap: areaList.counties,
         companyIndustryMap: {
             1000001: '综合类',
@@ -51,9 +51,9 @@ Page({
             4: 'D',
             5: 'M'
         },
-        tTypeMap:{
-            1:"个体户",
-            2:"公司"
+        tTypeMap: {
+            1: "个体户",
+            2: "公司"
         },
         companyStatusMap: {
             1: '已税务登记',
@@ -76,7 +76,7 @@ Page({
         year: new Date().getFullYear(),
         licenses: '',
         comment: '',
-        tId:""
+        tId: ""
     },
     getData() {
         $api.authRequest(
@@ -96,8 +96,8 @@ Page({
                     comment = "无";
                 }
                 let companyStatusText = "";
-                res.data.companyStatus.split(",").forEach((item)=>{
-                    companyStatusText = companyStatusText +" " + this.data.companyStatusMap[item];
+                res.data.companyStatus.split(",").forEach((item) => {
+                    companyStatusText = companyStatusText + " " + this.data.companyStatusMap[item];
                 })
                 this.setData({
                     companyStatusText,
@@ -110,9 +110,28 @@ Page({
             }
         })
     },
-    callUser: function(e) {
+    callUser: function (e) {
+        let that = this;
         wx.makePhoneCall({
-            phoneNumber: e.currentTarget.dataset.phone
+            phoneNumber: e.currentTarget.dataset.phone,
+            success(res) {
+                $api.authRequest(
+                    "POST",
+                    "CompanyTransferPhoneCallRecordInfo/CreateContactCompanyTransferPhoneCallRecordInfo",
+                    {
+                        tId: that.data.tId
+                    }
+                ).then(r => {})
+            },
+            fail(res) {
+                $api.authRequest(
+                    "POST",
+                    "CompanyTransferPhoneCallRecordInfo/CreateCancelCompanyTransferPhoneCallRecordInfo",
+                    {
+                        tId: that.data.tId
+                    }
+                ).then(r => {})
+            }
         })
     },
 
@@ -122,7 +141,7 @@ Page({
     onLoad(options) {
         console.log(options)
         this.setData({
-            tId:options.tId
+            tId: options.tId
         })
         this.getData();
     },

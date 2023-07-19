@@ -1,0 +1,36 @@
+<view class="l-container" style="background:rgb(244,244,244)">
+    <view class="f-card">
+        <view class="l-row l-center" wx:if="{{dataList==null}}">
+            <view class="loading-panel l-center">
+                <t-loading theme="circular" size="80rpx" class="wrapper"/>
+            </view>
+        </view>
+
+        <view wx:if="{{dataList.length===0 }}" class="l-col l-center">
+            <image class="no-result-img" src="./../../assets/svg/no-result.svg"></image>
+            <view class="no-result-label">没有联系记录</view>
+        </view>
+
+
+        <view class="comp-detail-card" wx:for="{{dataList}}" wx:for-item="company" wx:key="index"
+              data-t-id="{{company.tId}}">
+            <view class="l-row" style="margin:20rpx 20rpx 0 20rpx;align-items:center;width:calc(100% - 40rpx)">
+                <view class="comp-name">{{company.data.companyName}}</view>
+                <view class="price-panel">
+                    <view class="price">已联系 {{company.contactTimes}} 次</view>
+
+                </view>
+            </view>
+            <view class="l-row" style="margin:0 20rpx 16rpx 20rpx;width:calc(100% - 40rpx)">
+                <view class="comp-base-info">
+                    <view class="des">最后一次联系时间：</view>
+                    <view class="content">{{company.lastCallTime}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="safe-box buff"></view>
+    </view>
+
+
+</view>

@@ -11,11 +11,15 @@
         </view>
         <view class="l-row">
             <view class="l-l-row">纳税人类型</view>
-            <view class="l-r-row" options="{{product.options}}" value="{{product.value}}" bindchange="onChange">小规模纳税人</view>
+            <view bindtap="openPicker" data-picker="peopleType" class="l-r-row">
+                {{peopleType.value === 0 ? '小规模纳税人' : peopleType.label}}
+            </view>
         </view>
         <view class="l-row">
             <view class="l-l-row">增值税率</view>
-            <view class="l-r-row">3%</view>
+            <view bindtap="openPicker" data-picker="taxValue" class="l-r-row">
+                {{taxValue.value === 3 ? '3%' : taxValue.label}}
+            </view>
         </view>
     </view>
     <view class="cal-display">
@@ -35,4 +39,26 @@
             *小规模纳税人季度销售额30万（月额度10万）以下免增值税
         </view>
     </view>
+    <t-picker
+            visible="{{peopleType.visible}}"
+            title="选择纳税人类型"
+            value="{{[peopleType.value]}}"
+            cancelBtn="取消"
+            confirmBtn="确认"
+            bindpick="onPick"
+            bindconfirm="onPickerConfirm"
+    >
+        <t-picker-item options="{{peopleType.options}}"/>
+    </t-picker>
+    <t-picker
+            visible="{{taxValue.visible}}"
+            title="选择纳税人类型"
+            value="{{[taxValue.value]}}"
+            cancelBtn="取消"
+            confirmBtn="确认"
+            bindpick="onPick"
+            bindconfirm="onPickerConfirm"
+    >
+        <t-picker-item options="{{taxValue.options}}"/>
+    </t-picker>
 </view>

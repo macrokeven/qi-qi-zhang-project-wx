@@ -1,0 +1,9 @@
+{
+    "navigationBarBackgroundColor": "#2969FF",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "联系记录",
+    "usingComponents": {
+        "t-loading": "tdesign-miniprogram/loading/loading",
+        "t-image": "tdesign-miniprogram/image/image"
+    }
+}

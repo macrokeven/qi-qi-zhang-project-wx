@@ -1,5 +1,6 @@
 const {API: $api} = require("../../utils/MyRequest");
 import Message from 'tdesign-miniprogram/message/index';
+
 Page({
 
     /**
@@ -9,8 +10,8 @@ Page({
         phoneNumber: "",
         editNickname: false,
         nickname: "",
-        bindPhoneDialogVisible:false,
-        newPhoneDialogVisible:false
+        bindPhoneDialogVisible: false,
+        newPhoneDialogVisible: false
     },
 
     /**
@@ -36,25 +37,25 @@ Page({
             nickname: getApp().globalData.userInfo.nickname
         })
     },
-    getNickname(e){
+    getNickname(e) {
         this.setData({
             nickname: e.detail.value
         })
     },
     changeEditNickname() {
-        if(!this.data.editNickname){
+        if (!this.data.editNickname) {
             this.setData({
                 editNickname: true
             })
-        }else{
+        } else {
             $api.authRequest(
                 "POST",
                 "UserInfo/UpdateUserInfoByUsername",
                 {
-                    username:this.data.nickname
+                    nickname: this.data.nickname
                 }
-            ).then(res=>{
-                if(res.status === 0){
+            ).then(res => {
+                if (res.status === 0) {
                     this.setData({
                         editNickname: false
                     })
@@ -62,7 +63,7 @@ Page({
                         context: this,
                         offset: [20, 32],
                         marquee: {loop: 0},
-duration: 5000,
+                        duration: 5000,
                         content: '修改成功!',
                     })
                 }
@@ -70,18 +71,18 @@ duration: 5000,
 
         }
     },
-    openBindDialog(){
+    openBindDialog() {
         this.setData({
             bindPhoneDialogVisible: true
         })
     },
-    closeDialog(){
+    closeDialog() {
         this.setData({
             bindPhoneDialogVisible: false,
             newPhoneDialogVisible: true
         })
     },
-    closeNewDialog(){
+    closeNewDialog() {
         this.setData({
             newPhoneDialogVisible: false
         })

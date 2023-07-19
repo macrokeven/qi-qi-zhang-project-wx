@@ -1,6 +1,8 @@
 {
     "usingComponents": {
-        "t-message": "tdesign-miniprogram/message/message"
+        "t-message": "tdesign-miniprogram/message/message",
+        "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+        "t-picker": "tdesign-miniprogram/picker/picker"
     },
     "navigationBarBackgroundColor": "#2969FF",
     "navigationBarTextStyle": "white",

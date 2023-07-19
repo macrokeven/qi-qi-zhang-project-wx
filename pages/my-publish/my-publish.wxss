@@ -34,7 +34,9 @@
     width: calc(100% - 40rpx);
     margin: 13rpx 20rpx;
 }
-
+.comp-detail-card:first-child{
+    margin-top: 40rpx;
+}
 /*.comp-detail-card:last-child{*/
 /*    margin-bottom: constant(safe-area-inset-bottom);*/
 /*    margin-bottom: env(safe-area-inset-bottom);*/
@@ -238,12 +240,4 @@
     height: calc( 96rpx + constant(safe-area-inset-bottom));
     height: calc( 96rpx + env(safe-area-inset-bottom));
     background: rgb(244,244,244);
-}
-.no-result-img{
-    margin-top: 200rpx;
-    width: 200rpx;
-    height: 200rpx;
-}
-.no-result-label{
-    color: #9d9d9d;
 }

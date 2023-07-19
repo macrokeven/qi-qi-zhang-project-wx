@@ -22,6 +22,11 @@
             <view class="button-text">我的发布</view>
             <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
         </view>
+        <view class="profile-button" bindtap="openPage" data-route="{{'contact-info'}}">
+            <image class="button-icon" src="./../../assets/svg/contact.svg"></image>
+            <view class="button-text">联系记录</view>
+            <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
+        </view>
         <view class="profile-button" bindtap="openPage" data-route="{{'user-info'}}">
             <image class="button-icon" src="./../../assets/svg/persion.svg"></image>
             <view class="button-text">个人资料</view>

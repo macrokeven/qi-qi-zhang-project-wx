@@ -163,7 +163,7 @@ Page({
             {label: '秋', value: '秋'},
             {label: '冬', value: '冬'},
         ],
-        dataList:[],
+        dataList:null,
         areaText: '',
         areaValue: [0],
         provinces: [{"value": "000000", "label": "全部"}, {

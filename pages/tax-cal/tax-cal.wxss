@@ -72,6 +72,7 @@
     /*background: red;*/
     margin-top: auto;
     width: 220rpx;
+    text-align: end;
 
 }
 .l-row-c{
@@ -87,4 +88,16 @@
 }
 .weight{
     font-weight: 600;
+}
+
+.picker-label {
+    margin: 0 40rpx;
+    padding: 20rpx 0;
+    font-size: 32rpx;
+    border-bottom: 1rpx solid #e7e7e7;
+    color: #2969FF;
+}
+
+.grey {
+    color: #a9a9a9;
 }
