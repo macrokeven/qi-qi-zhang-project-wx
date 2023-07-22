@@ -101,3 +101,4 @@
     </view>
     <view class="tab-box"></view>
 </view>
+<t-message id="t-message"></t-message>

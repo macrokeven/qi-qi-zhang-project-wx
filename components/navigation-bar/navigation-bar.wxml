@@ -1,6 +1,6 @@
 <view class='nav-wrap' style='height: {{height + top + 20}}rpx;display:flex'>
     <view class='nav-title' style='width: {{left - 36}}rpx;margin-top:{{top - 20}}rpx'>
-        <image wx:if="{{showLogo}}" class="nav-logo" src="./../../assets/pics/logo-white-bg.png"></image>
+        <image wx:if="{{showLogo}}" class="nav-logo" src="./../../assets/pics/logo-white-bg.jpeg"></image>
         <image class='nav-title-back' src="./../../assets/svg/back.svg"
                wx:if="{{showBack&&!showLogo}}" catchtap="goBack"></image>
         <view class='nav-title-text'>{{title}}</view>

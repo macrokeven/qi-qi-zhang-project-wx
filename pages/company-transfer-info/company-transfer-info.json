@@ -1,6 +1,6 @@
 {
     "usingComponents": {
-
+        "t-message": "tdesign-miniprogram/message/message"
     },
     "navigationBarBackgroundColor": "#2969FF",
     "navigationBarTextStyle": "white",

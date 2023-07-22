@@ -76,15 +76,9 @@ Page({
         })
     },
     openTransferInfo(e) {
-        if (!getApp().globalData.userInfo.login) {
-            wx.navigateTo({
-                url: "/pages/login/login"
-            })
-        } else {
-            wx.navigateTo({
-                url: "/pages/company-transfer-info/company-transfer-info?tId=" + e.currentTarget.dataset.tId,
-            });
-        }
+        wx.navigateTo({
+            url: "/pages/company-transfer-info/company-transfer-info?tId=" + e.currentTarget.dataset.tId,
+        });
     },
     /**
      * 页面的初始数据
@@ -129,12 +123,12 @@ Page({
             4: "有开票后期零申报",
         },
         taxLevelMap: {
-            0: "税务等级",
-            1: "税务等级A",
-            2: "税务等级B",
-            3: "税务等级C",
-            4: "税务等级D",
-            5: "税务等级M"
+            0: "无",
+            1: "A级",
+            2: "B级",
+            3: "C级",
+            4: "D级",
+            5: "M级"
         },
         priceMap: {
             0: "价格区间",
@@ -163,7 +157,7 @@ Page({
             {label: '秋', value: '秋'},
             {label: '冬', value: '冬'},
         ],
-        dataList:[],
+        dataList: [],
         areaText: '',
         areaValue: [0],
         provinces: [{"value": "000000", "label": "全部"}, {
@@ -196,11 +190,20 @@ Page({
             1000015: "设计/企划类",
             1000016: "材料类",
             1000017: "工程类",
+            1000018: "其他",
+            1000019: "文化传媒",
+            1000020: "教育咨询",
+            1000021: "建筑工程",
+            1000022: "教育科技",
+            1000023: "电子商务",
+            1000024: "实业",
+            1000025: "金属",
+            1000026: "装饰工程",
         },
         companyStatusValueMap: {},
-        tTypeMap:{
-            1:"个体户",
-            2:"公司"
+        tTypeMap: {
+            1: "个体户",
+            2: "公司"
         },
     },
     chooseMultipleItem(e) {

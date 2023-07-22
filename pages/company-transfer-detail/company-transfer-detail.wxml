@@ -195,8 +195,8 @@
 
             <view class="l-row" style="margin:0 20rpx 16rpx 20rpx;width:calc(100% - 40rpx)">
                 <view class="comp-base-info">
-                    <view class="des">行业类型：</view>
-                    <view class="content">{{companyIndustry[company.companyIndustry]}}</view>
+                    <view class="des">税务等级：</view>
+                    <view class="content">{{taxLevelMap[company.taxLevel]}}</view>
                 </view>
                 <view class="comp-base-info">
                     <view class="des">公司地址：</view>

@@ -16,31 +16,7 @@ const getOptions = (obj, filter) => {
 };
 
 const match = (v1, v2, size) => v1.toString().slice(0, size) === v2.toString().slice(0, size);
-
-// const nonRequiredItems = [
-//     'taxLevel',
-//     'licenses',
-//     'comment'
-// ];
-
 const formDataFilters = {
-    // submit: [
-    //     'companyName',
-    //     'companyIndustry',
-    //     'companyArea',
-    //     'establishDate',
-    //     'taxStatus',
-    //     'taxLevel',
-    //     'licenses',
-    //     'companyStatus',
-    //     'transferPrice',
-    //     'companyChangeStatus',
-    //     'faceNegate',
-    //     'sellerName',
-    //     'sellerPhone',
-    //     'comment',
-    //     'companyType',
-    // ],
     required: [
         /* 基本信息 */
         'companyName',
@@ -95,7 +71,7 @@ const formDataFormats = {
     /* 联系人姓名: (目前仅限国人)不少于两个中文字符 */
     sellerName: '[\u4e00-\u9fa5]{2,}',
     /* 手机号: 自定义多项规则 */
-    sellerPhone: (v)=>{
+    sellerPhone: (v) => {
         const rs = [
             /* Mobile */
             '^[1]{1}(([3]{1}[4-9]{1})|([5]{1}[012789]{1})|([8]{1}[12378]{1})|([4]{1}[7]{1}))[0-9]{8}$',
@@ -105,8 +81,8 @@ const formDataFormats = {
             '^[1]{1}(([3]{1}[3]{1})|([5]{1}[3]{1})|([8]{1}[09]{1}))[0-9]{8}$'
         ];
 
-        if(v.match('^[0-9]{11}$')){
-            for(let r of rs) if(v.match(r)) return true;
+        if (v.match('^[0-9]{11}$')) {
+            for (let r of rs) if (v.match(r)) return true;
         }
         return false;
     }
@@ -116,7 +92,6 @@ Page({
     getCities(provinceValue) {
         const cities = getOptions(areaList.cities, (city) => match(city.value, provinceValue, 2));
         const counties = this.getCounties(cities[0].value);
-
         return {cities, counties};
     },
     getCounties(cityValue) {
@@ -148,11 +123,11 @@ Page({
         }
 
         const filter = formDataFilters[filterName];
-        if(filter){
+        if (filter) {
             // [[k1, v1], [k2, v2], ...]
-            if(toArray) return filter.map(k=>[k, allData[k]]);
+            if (toArray) return filter.map(k => [k, allData[k]]);
             let newData = {};
-            for(let k of filter) newData[k] = allData[k];
+            for (let k of filter) newData[k] = allData[k];
             return newData;
         }
         return allData;
@@ -164,8 +139,8 @@ Page({
         // console.log(wx.createSelectorQuery().select('.form-head'))
 
         /* to filter transferPrice when faceNegate gets true */
-        if(formRequiredDataObj.faceNegate){
-            formRequiredDataList = formRequiredDataList.filter(([k])=>k!=='transferPrice');
+        if (formRequiredDataObj.faceNegate) {
+            formRequiredDataList = formRequiredDataList.filter(([k]) => k !== 'transferPrice');
             delete formRequiredDataObj.transferPrice;
         }
 
@@ -174,11 +149,11 @@ Page({
         /* 1: find an empty item */
         let emptyItem = formRequiredDataList.
             /* an empty item (requires defaults to 0) */
-            find(([k, v])=>(!v && v!==false) ||
-            /* OR a multi-selectable item that selects nothing */ 
-                (v instanceof Array && !v.find(v=>v)));
+            find(([k, v]) => (!v && v !== false) ||
+                /* OR a multi-selectable item that selects nothing */
+                (v instanceof Array && !v.find(v => v)));
         // console.log('hi', emptyItem, formRequiredDataList.find(([k])=>k=='companyStatus'));
-        if(emptyItem) return {
+        if (emptyItem) return {
             ok: false,
             type: 'empty',
             itemKey: emptyItem[0],
@@ -186,15 +161,14 @@ Page({
         }
 
         /* 2: find an invalid field */
-        let invalidItem = Object.entries(formDataFormats).
-            find(([k, regex])=>{
-                if(typeof(regex) == 'string') regex = ((regex)=>(
-                    (v)=>!!v.match(`^${regex}$`)
-                ))(regex);
-                if(!formRequiredDataObj[k]) return false;
-                return !regex(formRequiredDataObj[k]);
-            });
-        if(invalidItem) return {
+        let invalidItem = Object.entries(formDataFormats).find(([k, regex]) => {
+            if (typeof (regex) == 'string') regex = ((regex) => (
+                (v) => !!v.match(`^${regex}$`)
+            ))(regex);
+            if (!formRequiredDataObj[k]) return false;
+            return !regex(formRequiredDataObj[k]);
+        });
+        if (invalidItem) return {
             ok: false,
             type: 'invalid',
             itemKey: invalidItem[0],
@@ -273,41 +247,51 @@ Page({
         this.hidePicker();
     },
     submitNewTransfer() {
-        let result = this.checkForm();
-        if(!result.ok){
-            let content = result.type === 'empty'?
-                ` ${result.itemName} 不能为空`:
-                ` ${result.itemName} 格式错误`;
-            Message.error({
-                context: this,
-                offset: [20, 32],
-                marquee: {loop: 0},
-                duration: 5000,
-                content,
-            });
-            return;
-        }
-        $api.authRequest(
-            "POST",
-            "CompanyTransferInfo/InsertNewCompanyTransferInfoByCompanyTransferInfo",
-            this.getFormData('submit')
-        ).then(res => {
-            if (res.status === 0) {
-                Message.success({
+        if (!this.data.loading) {
+            this.setData({
+                loading: true
+            })
+            let result = this.checkForm();
+            if (!result.ok) {
+                let content = result.type === 'empty' ?
+                    ` ${result.itemName} 不能为空` :
+                    ` ${result.itemName} 格式错误`;
+                Message.error({
                     context: this,
                     offset: [20, 32],
                     marquee: {loop: 0},
                     duration: 5000,
-                    content: ' 发布成功!',
-                })
-                setTimeout(() => {
-                    wx.navigateTo({
-                        url: "/pages/company-transfer-detail/company-transfer-detail"
-                    })
-                }, 500)
-
+                    content,
+                });
+                return;
             }
-        })
+            $api.authRequest(
+                "POST",
+                "CompanyTransferInfo/InsertNewCompanyTransferInfoByCompanyTransferInfo",
+                this.getFormData('submit')
+            ).then(res => {
+                if (res.status === 0) {
+                    Message.success({
+                        context: this,
+                        offset: [20, 32],
+                        marquee: {loop: 0},
+                        duration: 5000,
+                        content: ' 发布成功!',
+                    })
+                    setTimeout(() => {
+                        wx.navigateTo({
+                            url: "/pages/company-transfer-detail/company-transfer-detail"
+                        })
+                    }, 500)
+
+                }
+                this.setData({
+                    loading: false
+                })
+
+            })
+        }
+
     },
     getMapBooleanValueToString(map) {
         return Object.keys(map).filter(key => map[key]).join(",");
@@ -317,11 +301,8 @@ Page({
             [`${e.target.dataset.name}`]: e.detail.value,
         });
     },
-
-    /**
-     * 页面的初始数据
-     */
     data: {
+        loading: false,
         dateVisible: false,
         date: new Date().getTime(), // 支持时间戳传入
         start: '2000-01-01 00:00:00',
@@ -410,6 +391,39 @@ Page({
                     value: 1000018,
                     label: '其他',
                 },
+                {
+                    value: 1000019,
+                    label: '文化传媒',
+                },
+
+                {
+                    value: 1000020,
+                    label: '教育咨询',
+                },
+                {
+                    value: 1000021,
+                    label: '建筑工程',
+                },
+                {
+                    value: 1000022,
+                    label: '教育科技',
+                },
+                {
+                    value: 1000023,
+                    label: '电子商务',
+                },
+                {
+                    value: 1000024,
+                    label: '实业',
+                },
+                {
+                    value: 1000025,
+                    label: '金属',
+                },
+                {
+                    value: 1000026,
+                    label: '装饰工程',
+                },
 
             ]
         },
@@ -438,13 +452,14 @@ Page({
             value: 0,
             options: [
                 {
-                    value: 1,
-                    label: '个体户',
-                },
-                {
                     value: 2,
                     label: '公司',
                 },
+                {
+                    value: 1,
+                    label: '个体户',
+                },
+
             ],
         },
         taxLevel: {

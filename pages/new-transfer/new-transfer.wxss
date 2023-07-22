@@ -138,5 +138,12 @@
     margin: 16rpx 5%;
     margin-bottom: calc( 16rpx + constant(safe-area-inset-bottom));
     margin-bottom: calc( 16rpx + env(safe-area-inset-bottom));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.t-loading__spinner{
+    --td-loading-color:#ffffff;
 }
 

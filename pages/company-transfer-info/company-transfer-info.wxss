@@ -39,10 +39,10 @@
 }
 
 .form-row {
-
+    padding: 10rpx 0;
     width: calc(100% - 40rpx);
     font-size: 32rpx;
-    height: 49px;
+    min-height: 39px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -65,11 +65,13 @@
 }
 
 .l-left-massage {
+    min-width: 184rpx;
     padding-left: 15rpx;
     color: rgba(0, 0, 0, 0.6);
 }
 
 .l-right-massage {
+    text-align: end;
     margin-left: auto;
     padding-right: 15rpx;
     color: rgba(0, 0, 0, 0.8);

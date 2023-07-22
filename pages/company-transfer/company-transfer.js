@@ -1,6 +1,7 @@
 // pages/company-transfer/company-transfer.js
 const {API: $api} = require("../../utils/MyRequest");
 const areaList = require("./../../data/AreaData").areaList;
+
 Page({
     openMoreTransfer() {
         wx.navigateTo({
@@ -32,16 +33,9 @@ Page({
         })
     },
     openTransferInfo(e) {
-        if (!getApp().globalData.userInfo.login) {
-            wx.navigateTo({
-                url: "/pages/login/login"
-            })
-        } else {
             wx.navigateTo({
                 url: "/pages/company-transfer-info/company-transfer-info?tId=" + e.currentTarget.dataset.tId,
             });
-        }
-
     },
     formatData(dataList) {
         dataList.forEach((item) => {
@@ -266,11 +260,28 @@ Page({
             1000015: "设计/企划类",
             1000016: "材料类",
             1000017: "工程类",
+            1000018: "其他",
+            1000019: "文化传媒",
+            1000020: "教育咨询",
+            1000021: "建筑工程",
+            1000022: "教育科技",
+            1000023: "电子商务",
+            1000024: "实业",
+            1000025: "金属",
+            1000026: "装饰工程",
         },
         counties: [],
         tTypeMap:{
             1:"个体户",
             2:"公司"
+        },
+        taxLevelMap: {
+            0: "无",
+            1: "A级",
+            2: "B级",
+            3: "C级",
+            4: "D级",
+            5: "M级"
         },
     },
 

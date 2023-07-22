@@ -17,11 +17,11 @@
     </view>
     <view class="login-btn" wx:if="{{loginMethod===1}}" bind:tap="login">登录</view>
     <button wx:if="{{loginMethod===0}}" class="login-btn" style="letter-spacing:5rpx;margin-top:80rpx;font-size:35rpx"
-            open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键授权登录
+            open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号快捷登录
     </button>
 
     <view class="l-row security-box">
-        <t-checkbox icon="rectangle" default-checked style="padding:0"/>
+        <t-checkbox icon="rectangle" style="padding:0"/>
         <view class="security-text" style="width:80%;margin-left:20rpx">
             我已阅读同意用户协议和隐私政策，未注册绑定的手机号验证成功后将自动注册
         </view>

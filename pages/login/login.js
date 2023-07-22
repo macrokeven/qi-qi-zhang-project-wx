@@ -60,6 +60,7 @@ Page({
         }
     },
     getPhoneNumber(e) {
+        console.log(e);
         if (e.detail.errMsg === "getPhoneNumber:ok") {
             $api.authRequest(
                 "POST",
@@ -77,9 +78,7 @@ Page({
                         content: '登录成功!',
                     })
                     setTimeout(() => {
-                        wx.switchTab({
-                            url: "/pages/home/home"
-                        });
+                        wx.navigateBack();
                     }, 500)
                 }
             })

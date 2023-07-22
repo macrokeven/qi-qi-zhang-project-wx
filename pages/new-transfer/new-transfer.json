@@ -7,7 +7,8 @@
         "t-picker": "tdesign-miniprogram/picker/picker",
         "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
         "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
-        "t-popup": "tdesign-miniprogram/popup/popup"
+        "t-popup": "tdesign-miniprogram/popup/popup",
+        "t-loading": "tdesign-miniprogram/loading/loading"
     },
     "navigationBarBackgroundColor": "#2969FF",
     "navigationBarTextStyle": "white",

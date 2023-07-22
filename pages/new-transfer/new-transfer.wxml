@@ -149,7 +149,8 @@
 
         <view class="form-head"><view class="red-spot">*</view>公司情况
         </view>
-        <t-popup visible="{{companyStatus.visible}}" title="选择公司情况" placement="bottom" bind:visible-change="onVisibleChange" close-btn="{{true}}">
+        <t-popup visible="{{companyStatus.visible}}" title="选择公司情况" placement="bottom"
+                 bind:visible-change="onVisibleChange" close-btn="{{true}}">
             <view class="popup-card">
                 <view class="pop-card-title">请选择公司情况</view>
                 <view class="single-pick-box triple {{companyStatusValueMap[1]?'s-p-b-active':''}}"
@@ -273,7 +274,12 @@
         </view>
     </view>
     <view class="l-card l-center">
-        <view class="my-btn"  bindtap="submitNewTransfer">一键发布</view>
+        <view class="my-btn" bindtap="submitNewTransfer">
+            <t-loading theme="circular"
+                       wx:if="{{loading}}"
+                       size="40rpx" class="wrapper"
+                       style="margin-right:20rpx;"/>一键发布
+        </view>
     </view>
 </view>
 <t-message id="t-message"></t-message>
