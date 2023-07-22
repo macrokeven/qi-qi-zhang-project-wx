@@ -247,24 +247,24 @@ Page({
         this.hidePicker();
     },
     submitNewTransfer() {
+        let result = this.checkForm();
+        if (!result.ok) {
+            let content = result.type === 'empty' ?
+                ` ${result.itemName} 不能为空` :
+                ` ${result.itemName} 格式错误`;
+            Message.error({
+                context: this,
+                offset: [20, 32],
+                marquee: {loop: 0},
+                duration: 5000,
+                content,
+            });
+            return;
+        }
         if (!this.data.loading) {
             this.setData({
                 loading: true
-            })
-            let result = this.checkForm();
-            if (!result.ok) {
-                let content = result.type === 'empty' ?
-                    ` ${result.itemName} 不能为空` :
-                    ` ${result.itemName} 格式错误`;
-                Message.error({
-                    context: this,
-                    offset: [20, 32],
-                    marquee: {loop: 0},
-                    duration: 5000,
-                    content,
-                });
-                return;
-            }
+            });
             $api.authRequest(
                 "POST",
                 "CompanyTransferInfo/InsertNewCompanyTransferInfoByCompanyTransferInfo",
