@@ -84,10 +84,8 @@ Page({
         wx.makePhoneCall({
             phoneNumber: "13138129981",
             success(res) {
-                console.log(res)
             },
             fail(res) {
-                console.log(res)
             }
         })
     },

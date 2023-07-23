@@ -6,7 +6,6 @@ Page({
             this.setData({
                 loadingData: false
             })
-            console.log("work")
             const date = this.getDate();
             const period = date.year + "-" + (date.month) + "-" + this.getDay(date.year, date.month - 1);
             $api.authRequest(
@@ -18,7 +17,6 @@ Page({
                     taxCode: getApp().globalData.userInfo.taxpayerCode
                 }
             ).then(res => {
-                console.log("work1")
                 if (res.status === 0) {
                     let data = JSON.parse(res.data);
                     data.forEach((item) => {
@@ -40,7 +38,6 @@ Page({
                                 lastMonthTaxInfoData: []
                             });
                         }
-                        console.log("work2")
                     })
                 }
                 this.setData({

@@ -247,7 +247,6 @@ Page({
         this.setData({
             [`${e.currentTarget.dataset.name}`]: e.detail.value,
         });
-        console.log(this.data)
     },
     onPickerChange(e) {
         const {value, label} = e.detail;

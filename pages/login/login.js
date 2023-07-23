@@ -60,7 +60,6 @@ Page({
         }
     },
     getPhoneNumber(e) {
-        console.log(e);
         if (e.detail.errMsg === "getPhoneNumber:ok") {
             $api.authRequest(
                 "POST",
@@ -123,7 +122,6 @@ Page({
                     content: "激活码错误或失效",
                 })
             }
-            console.log(getApp().globalData.userInfo)
         })
     },
     getInputPhoneNumber(e) {

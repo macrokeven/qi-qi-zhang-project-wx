@@ -39,7 +39,6 @@ Page({
     },
     formatData(dataList) {
         dataList.forEach((item) => {
-            console.log(item)
             item.establishDate = this.data.year - item.establishDate.split(" ")[0].split("-")[0];
 
         })
@@ -312,7 +311,6 @@ Page({
         this.setData({
             counties: areaList.counties
         })
-        console.log(this.data.c)
         this.getDate();
         this.getData();
     },

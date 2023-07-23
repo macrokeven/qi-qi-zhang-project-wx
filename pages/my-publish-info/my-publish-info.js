@@ -695,7 +695,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options.tId)
         this.setData({
             currentObj: this.data.taxStatus,
             tId: options.tId
@@ -726,7 +725,6 @@ Page({
         ).then(res => {
             if (res.status === 0) {
                 let allData = res.data;
-                console.log(allData);
                 this.setAllFormData(allData);
             }
         })
