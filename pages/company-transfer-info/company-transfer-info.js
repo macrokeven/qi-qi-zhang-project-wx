@@ -1,4 +1,6 @@
 // pages/company-transfer-info/company-transfer-info.js
+import {data as NewTransferData} from "../../data/NewTransferData";
+
 const {API: $api} = require("../../utils/MyRequest");
 const areaList = require("./../../data/AreaData").areaList;
 import Message from 'tdesign-miniprogram/message/index';
@@ -26,64 +28,13 @@ Page({
         },
         companyStatusText: "",
         areaMap: areaList.counties,
-        companyIndustryMap: {
-            1000001: "综合类",
-            1000002: "环保类",
-            1000003: "供应链",
-            1000004: "金融类",
-            1000005: "房产类",
-            1000006: "人才类",
-            1000007: "代理类",
-            1000008: "物流类",
-            1000009: "贸易类",
-            1000010: "投资类",
-            1000011: "科技类",
-            1000012: "产品类",
-            1000013: "管理类",
-            1000014: "服务类",
-            1000015: "设计/企划类",
-            1000016: "材料类",
-            1000017: "工程类",
-            1000018: "其他",
-            1000019: "文化传媒",
-            1000020: "教育咨询",
-            1000021: "建筑工程",
-            1000022: "教育科技",
-            1000023: "电子商务",
-            1000024: "实业",
-            1000025: "金属",
-            1000026: "装饰工程",
-        },
-        taxLevelMap: {
-            0:'无',
-            1: 'A级',
-            2: 'B级',
-            3: 'C级',
-            4: 'D级',
-            5: 'M级'
-        },
-        tTypeMap: {
-            1: "个体户",
-            2: "公司"
-        },
-        companyStatusMap: {
-            1: '已税务登记',
-            2: '已开户',
-            3: '已刻章'
-        },
-        companyChangeMap: {
-            1: '包含变更',
-            2: '不包含变更'
-        },
-        companyTypeMap: {
-            1: '内资',
-            2: '外资'
-        },
-        taxStatusMap: {
-            1: '零申报',
-            2: '有开票无纳税',
-            3: '有开票有纳税'
-        },
+        taxStatusMap: NewTransferData.taxStatusMap,
+        taxLevelMap: NewTransferData.taxLevelMap,
+        companyStatusMap: NewTransferData.companyStatusMap,
+        companyIndustryMap: NewTransferData.companyIndustryMap,
+        tTypeMap: NewTransferData.tTypeMap,
+        companyChangeMap: NewTransferData.companyChangeMap,
+        companyTypeMap: NewTransferData.companyTypeMap,
         year: new Date().getFullYear(),
         licenses: '',
         comment: '',

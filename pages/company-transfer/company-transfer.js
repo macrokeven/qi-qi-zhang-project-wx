@@ -1,6 +1,7 @@
 // pages/company-transfer/company-transfer.js
 const {API: $api} = require("../../utils/MyRequest");
 const areaList = require("./../../data/AreaData").areaList;
+const NewTransferData = require("./../../data/NewTransferData").data;
 
 Page({
     openMoreTransfer() {
@@ -57,60 +58,8 @@ Page({
         year: "",
         month: "",
         day: "",
-        taxStatus: {
-            value: 0,
-            options: [
-                {
-                    value: 0,
-                    label: '全部税务情况',
-                },
-                {
-                    value: 1,
-                    label: '零申报',
-                },
-                {
-                    value: 2,
-                    label: '有开票无纳税',
-                },
-                {
-                    value: 3,
-                    label: '有开票有纳税',
-                },
-                {
-                    value: 4,
-                    label: '有开票后期零申报',
-                },
-            ],
-        },
-        taxLevel: {
-            value: 0,
-            options: [
-                {
-                    value: 0,
-                    label: '全部公司等级',
-                },
-                {
-                    value: 1,
-                    label: 'A',
-                },
-                {
-                    value: 2,
-                    label: 'B',
-                },
-                {
-                    value: 3,
-                    label: 'C',
-                },
-                {
-                    value: 4,
-                    label: 'D',
-                },
-                {
-                    value: 5,
-                    label: 'M',
-                },
-            ],
-        },
+        taxStatus: NewTransferData.taxStatus,
+        taxLevel: NewTransferData.taxLevel,
         establishDate: {
             value: 0,
             options: [
@@ -169,119 +118,18 @@ Page({
                 },
             ],
         },
-        pickerItem: [
-            {
-                title: "请选择税务情况",
-                options: [
-                    {label: '零申报', value: 1},
-                    {label: '有开票', value: 2},
-                    {label: '有交税', value: 3},
-                ],
-                value: []
-            },
-
-        ],
         cityVisible: false,
         cityText: '',
         cityValue: [],
         dateText: '',
         dateValue: [],
-        taxStatusMap: {
-            1: "零申报",
-            2: "有开票无纳税",
-            3: "有开票有纳税",
-            4: "有开票后期零申报",
-        },
-        companyStatusMap: {
-            1: "无",
-            2: "已税务登记",
-            3: "已开户",
-            4: "已刻章",
-        },
-        dataList: [
-            {
-                companyName: "乐*****有限公司",
-                companyIndustry: "科技类",
-                transferPrice: 50000,
-                faceNegate: false,
-                establishDate: 1,
-                companyStatus: 3,
-                area: "斗门",
-                taxStatus: 1
-
-            },
-            {
-                companyName: "企*****咨询有限公司",
-                companyIndustry: "贸易类",
-                transferPrice: 300000,
-                establishDate: 2,
-                faceNegate: false,
-                companyStatus: 4,
-                area: "斗门",
-                taxStatus: 3
-            },
-            {
-                companyName: "企*****咨询有限公司",
-                companyIndustry: "贸易类",
-                transferPrice: 300000,
-                establishDate: 2,
-                companyStatus: 4,
-                faceNegate: true,
-                area: "斗门",
-                taxStatus: 3
-            },
-            {
-                companyName: "企*****咨询有限公司",
-                companyIndustry: "贸易类",
-                transferPrice: 300000,
-                establishDate: 2,
-                faceNegate: false,
-                companyStatus: 4,
-                area: "斗门",
-                taxStatus: 3
-            },
-        ],
-        companyIndustry: {
-            1000001: "综合类",
-            1000002: "环保类",
-            1000003: "供应链",
-            1000004: "金融类",
-            1000005: "房产类",
-            1000006: "人才类",
-            1000007: "代理类",
-            1000008: "物流类",
-            1000009: "贸易类",
-            1000010: "投资类",
-            1000011: "科技类",
-            1000012: "产品类",
-            1000013: "管理类",
-            1000014: "服务类",
-            1000015: "设计/企划类",
-            1000016: "材料类",
-            1000017: "工程类",
-            1000018: "其他",
-            1000019: "文化传媒",
-            1000020: "教育咨询",
-            1000021: "建筑工程",
-            1000022: "教育科技",
-            1000023: "电子商务",
-            1000024: "实业",
-            1000025: "金属",
-            1000026: "装饰工程",
-        },
+        taxStatusMap: NewTransferData.taxStatusMap,
+        companyStatusMap: NewTransferData.companyStatusMap,
+        dataList: [],
+        companyIndustryMap: NewTransferData.companyIndustryMap,
         counties: [],
-        tTypeMap:{
-            1:"个体户",
-            2:"公司"
-        },
-        taxLevelMap: {
-            0: "无",
-            1: "A级",
-            2: "B级",
-            3: "C级",
-            4: "D级",
-            5: "M级"
-        },
+        tTypeMap:NewTransferData.tTypeMap,
+        taxLevelMap: NewTransferData.taxLevelMap,
     },
 
     /**

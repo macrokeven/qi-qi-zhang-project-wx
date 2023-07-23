@@ -5,9 +5,9 @@
                 <view class="com-name">{{companyInfo.companyName}}</view>
             </view>
             <view class="form-d-row">
-                <view class="cash" wx:if="{{!companyInfo.faceNegate}}">￥<view class="c-n">{{companyInfo.transferPrice}}</view>元
+                <view class="cash" wx:if="{{companyInfo.faceNegate!==1}}">￥<view class="c-n">{{companyInfo.transferPrice}}</view>元
                 </view>
-                <view class="cash" wx:if="{{companyInfo.faceNegate}}"><view class="c-n">面议</view>
+                <view class="cash" wx:if="{{companyInfo.faceNegate===1}}"><view class="c-n">面议</view>
                 </view>
                 <view class="i-change" style="{{companyInfo.companyChangeStatus===2?'color:#E34D59':''}}">
                     {{companyChangeMap[companyInfo.companyChangeStatus]}}</view>

@@ -1,6 +1,7 @@
 // pages/company-transfer/company-transfer.js
 const {API: $api} = require("../../utils/MyRequest");
 const areaList = require("./../../data/AreaData").areaList;
+const NewTransferData = require("./../../data/NewTransferData").data;
 const getOptions = (obj, filter) => {
     const res = Object.keys(obj).map((key) => ({value: key, label: obj[key]}));
     if (filter) {
@@ -31,7 +32,6 @@ Page({
         })
         return dataList;
     },
-
     openNewTransfer() {
         if (!getApp().globalData.userInfo.login) {
             wx.navigateTo({
@@ -98,65 +98,19 @@ Page({
         price: 0,
         companyType: 0,
         hasLicenses: 0,
-        pickerItem: [
-            {
-                title: "请选择税务情况",
-                options: [
-                    {label: '零申报', value: 1},
-                    {label: '有开票', value: 2},
-                    {label: '有交税', value: 3},
-                ],
-                value: []
-            },
 
-        ],
         cityVisible: false,
         cityText: '',
         cityValue: [],
         dateText: '',
         dateValue: [],
-        taxStatusMap: {
-            0: "税务情况",
-            1: "零申报",
-            2: "有开票无纳税",
-            3: "有开票有纳税",
-            4: "有开票后期零申报",
-        },
-        taxLevelMap: {
-            0: "无",
-            1: "A级",
-            2: "B级",
-            3: "C级",
-            4: "D级",
-            5: "M级"
-        },
-        priceMap: {
-            0: "价格区间",
-            1: "1万-2万",
-            2: "2万-3万",
-            3: "3万-4万",
-            4: "5万-7万",
-            5: "7万及以上"
-        },
-        establishYearMap: {
-            0: "成立年限",
-            1: "1年以下",
-            2: "1-2年",
-            3: "3-5年",
-            4: "5年以上",
-        },
-        companyStatusMap: {
-            1: "无",
-            2: "已税务登记",
-            3: "已开户",
-            4: "已刻章",
-        },
-        seasons: [
-            {label: '春', value: '春'},
-            {label: '夏', value: '夏'},
-            {label: '秋', value: '秋'},
-            {label: '冬', value: '冬'},
-        ],
+        taxStatusMap: NewTransferData.taxStatusMap,
+        taxLevelMap: NewTransferData.taxLevelMap,
+        priceMap: NewTransferData.priceMap,
+        establishYearMap: NewTransferData.establishYearMap,
+        companyStatusMap: NewTransferData.companyStatusMap,
+        companyIndustryMap: NewTransferData.companyIndustryMap,
+        tTypeMap: NewTransferData.tTypeMap,
         dataList: [],
         areaText: '',
         areaValue: [0],
@@ -172,39 +126,9 @@ Page({
         areaCode: 0,
         minPrice: 0,
         maxPrice: 0,
-        companyIndustry: {
-            1000001: "综合类",
-            1000002: "环保类",
-            1000003: "供应链",
-            1000004: "金融类",
-            1000005: "房产类",
-            1000006: "人才类",
-            1000007: "代理类",
-            1000008: "物流类",
-            1000009: "贸易类",
-            1000010: "投资类",
-            1000011: "科技类",
-            1000012: "产品类",
-            1000013: "管理类",
-            1000014: "服务类",
-            1000015: "设计/企划类",
-            1000016: "材料类",
-            1000017: "工程类",
-            1000018: "其他",
-            1000019: "文化传媒",
-            1000020: "教育咨询",
-            1000021: "建筑工程",
-            1000022: "教育科技",
-            1000023: "电子商务",
-            1000024: "实业",
-            1000025: "金属",
-            1000026: "装饰工程",
-        },
+
         companyStatusValueMap: {},
-        tTypeMap: {
-            1: "个体户",
-            2: "公司"
-        },
+
     },
     chooseMultipleItem(e) {
         let oldValueMap = this.data[`${e.currentTarget.dataset.name}` + 'ValueMap'];

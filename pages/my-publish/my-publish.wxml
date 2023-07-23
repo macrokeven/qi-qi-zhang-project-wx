@@ -20,25 +20,25 @@
                     <t-tag wx:if="{{ company.tStatus === 4 }}" theme="warning">已下架</t-tag>
                 </view>
                 <view class="price-panel">
-                    <view class="price" wx:if="{{!company.faceNegate}}">{{company.transferPrice}}</view>
-                    <view class="price" wx:if="{{company.faceNegate}}">面议</view>
-                    <view class="unit" wx:if="{{!company.faceNegate}}">元</view>
+                    <view class="price" wx:if="{{company.faceNegate!==1}}">{{company.transferPrice}}</view>
+                    <view class="price" wx:if="{{company.faceNegate===1}}">面议</view>
+                    <view class="unit" wx:if="{{company.faceNegate!==1}}">元</view>
                 </view>
             </view>
 
             <view class="l-row" style="margin:20rpx 20rpx 16rpx 20rpx;width:calc(100% - 40rpx)">
                 <view class="comp-info">{{taxStatusMap[company.taxStatus]}}</view>
-                <view class="comp-info">{{companyStatusMap[company.companyStatus]}}</view>
+                <view class="comp-info">{{tTypeMap[company.tType]}}</view>
             </view>
 
             <view class="l-row" style="margin:0 20rpx 16rpx 20rpx;width:calc(100% - 40rpx)">
                 <view class="comp-base-info">
                     <view class="des">行业类型：</view>
-                    <view class="content">{{companyIndustry[company.companyIndustry]}}</view>
+                    <view class="content">{{companyIndustryMap[company.companyIndustry]}}</view>
                 </view>
                 <view class="comp-base-info">
-                    <view class="des">公司地址：</view>
-                    <view class="content">{{countryValues[company.companyArea]}}</view>
+                    <view class="des">税务等级：</view>
+                    <view class="content">{{taxLevelMap[company.taxLevel]}}</view>
                 </view>
             </view>
 

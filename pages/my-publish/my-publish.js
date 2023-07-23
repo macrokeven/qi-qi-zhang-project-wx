@@ -91,11 +91,7 @@ Page({
      */
     data: {
         currentPopup: "",
-        taxStatusPopup: false,
-        taxLevelPopup: false,
         establishYearPopup: false,
-        otherPopup: false,
-        currentChoice: 0,
         companyStatus: [],
         year: new Date().getFullYear(),
         taxStatus: 0,
@@ -104,18 +100,6 @@ Page({
         price: 0,
         companyType: 0,
         hasLicenses: 0,
-        pickerItem: [
-            {
-                title: "请选择税务情况",
-                options: [
-                    {label: '零申报', value: 1},
-                    {label: '有开票', value: 2},
-                    {label: '有交税', value: 3},
-                ],
-                value: []
-            },
-
-        ],
         cityVisible: false,
         cityText: '',
         cityValue: [],
@@ -129,12 +113,12 @@ Page({
             4: "有开票后期零申报",
         },
         taxLevelMap: {
-            0: "税务等级",
-            1: "税务等级A",
-            2: "税务等级B",
-            3: "税务等级C",
-            4: "税务等级D",
-            5: "税务等级M"
+            0: "无",
+            1: "A级",
+            2: "B级",
+            3: "C级",
+            4: "D级",
+            5: "M级"
         },
         priceMap: {
             0: "价格区间",
@@ -157,28 +141,7 @@ Page({
             3: "已开户",
             4: "已刻章",
         },
-        seasons: [
-            {label: '春', value: '春'},
-            {label: '夏', value: '夏'},
-            {label: '秋', value: '秋'},
-            {label: '冬', value: '冬'},
-        ],
-        dataList:null,
-        areaText: '',
-        areaValue: [0],
-        provinces: [{"value": "000000", "label": "全部"}, {
-            "value": "290000",
-            "label": "广东省",
-        }, ...getOptions(areaList.provinces).filter((province) =>
-            province.value !== "000000" && province.value !== "290000"
-        )],
-        cities: [],
-        counties: [],
-        areaVisible: false,
-        areaCode: 0,
-        minPrice: 0,
-        maxPrice: 0,
-        companyIndustry: {
+        companyIndustryMap: {
             1000001: "综合类",
             1000002: "环保类",
             1000003: "供应链",
@@ -206,6 +169,35 @@ Page({
             1000025: "金属",
             1000026: "装饰工程",
         },
+        tTypeMap: {
+            1: "个体户",
+            2: "公司"
+        },
+        companyChangeMap: {
+            1: '包含变更',
+            2: '不包含变更'
+        },
+        companyTypeMap: {
+            1: '内资',
+            2: '外资'
+        },
+
+        dataList:null,
+        areaText: '',
+        areaValue: [0],
+        provinces: [{"value": "000000", "label": "全部"}, {
+            "value": "290000",
+            "label": "广东省",
+        }, ...getOptions(areaList.provinces).filter((province) =>
+            province.value !== "000000" && province.value !== "290000"
+        )],
+        cities: [],
+        counties: [],
+        areaVisible: false,
+        areaCode: 0,
+        minPrice: 0,
+        maxPrice: 0,
+
         companyStatusValueMap: {}
     },
     chooseMultipleItem(e) {
