@@ -41,6 +41,21 @@ Page({
 
     },
     onShow() {
+
+        $api.authRequest(
+            "GET",
+            "CompanyTransferInfo/GetCompanyTransferInfoByTId",
+            {
+                a: 0,
+                b: 1,
+                tId: 'undefined,,..h'
+            }
+        ).catch(err=>{
+            console.log(err);
+        }).then(res => {
+            console.log('success', res);
+        });
+
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
             this.getTabBar().setData({
