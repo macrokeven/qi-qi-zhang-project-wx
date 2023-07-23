@@ -570,13 +570,12 @@ Page({
             label: "",
             value: 0,
             options: [
-
                 {
-                    value: true,
+                    value: 1,
                     label: '是',
                 },
                 {
-                    value: false,
+                    value: 2,
                     label: '否',
                 },
             ],

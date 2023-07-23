@@ -215,9 +215,9 @@
             {{faceNegate.value === 0 ? '请选择是否面议' : faceNegate.label}}
         </view>
 
-        <view wx:if="{{!faceNegate.value}}" class="form-head"><view class="red-spot">*</view>转让价格
+        <view wx:if="{{faceNegate.value!==1}}" class="form-head"><view class="red-spot">*</view>转让价格
         </view>
-        <t-input wx:if="{{!faceNegate.value}}" class="my-input" placeholder-style="font-size:32rpx" type="number"
+        <t-input wx:if="{{faceNegate.value!==1}}" class="my-input" placeholder-style="font-size:32rpx" type="number"
                  value="{{transferPrice}}" data-name="transferPrice" bind:change="onUserInput"
                  placeholder="请输入转让价格..."/>
         <view class="form-head"><view class="red-spot">*</view>公司变更
