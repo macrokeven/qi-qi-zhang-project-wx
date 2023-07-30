@@ -4,6 +4,7 @@
 
 // pages/new-transfer/new-transfer.js
 import Message from 'tdesign-miniprogram/message';
+import {data as NewTransferData} from "../../data/NewTransferData";
 
 const {API: $api} = require("../../utils/MyRequest");
 const areaList = require("./../../data/AreaData").areaList;
@@ -17,30 +18,7 @@ const getOptions = (obj, filter) => {
 
 const match = (v1, v2, size) => v1.toString().slice(0, size) === v2.toString().slice(0, size);
 
-// const nonRequiredItems = [
-//     'taxLevel',
-//     'licenses',
-//     'comment'
-// ];
-
 const formDataFilters = {
-    // submit: [
-    //     'companyName',
-    //     'companyIndustry',
-    //     'companyArea',
-    //     'establishDate',
-    //     'taxStatus',
-    //     'taxLevel',
-    //     'licenses',
-    //     'companyStatus',
-    //     'transferPrice',
-    //     'companyChangeStatus',
-    //     'faceNegate',
-    //     'sellerName',
-    //     'sellerPhone',
-    //     'comment',
-    //     'companyType',
-    // ],
     required: [
         /* 基本信息 */
         'companyNameFull',
@@ -83,10 +61,6 @@ const formItemNames = {
     comment: '备注',
 }
 
-/* all of these regexs are global-matching */
-/* @return
-    true = pass
-*/
 const formDataFormats = {
     /* 公司全称: 不少于三个字符 */
     companyName: '.{3,}',
@@ -95,7 +69,7 @@ const formDataFormats = {
     /* 联系人姓名: (目前仅限国人)不少于两个中文字符 */
     sellerName: '[\u4e00-\u9fa5]{2,}',
     /* 手机号: 自定义多项规则 */
-    sellerPhone: (v)=>{
+    sellerPhone: (v) => {
         const rs = [
             /* Mobile */
             '^[1]{1}(([3]{1}[4-9]{1})|([5]{1}[012789]{1})|([8]{1}[12378]{1})|([4]{1}[7]{1}))[0-9]{8}$',
@@ -105,8 +79,8 @@ const formDataFormats = {
             '^[1]{1}(([3]{1}[3]{1})|([5]{1}[3]{1})|([8]{1}[09]{1}))[0-9]{8}$'
         ];
 
-        if(v.match('^[0-9]{11}$')){
-            for(let r of rs) if(v.match(r)) return true;
+        if (v.match('^[0-9]{11}$')) {
+            for (let r of rs) if (v.match(r)) return true;
         }
         return false;
     }
@@ -124,7 +98,7 @@ Page({
     },
     getFormData(filterName = '', toArray = false) {
         let allData = {
-            tId:this.data.tId,
+            tId: this.data.tId,
             /* 基本信息 */
             companyNameFull: this.data.companyName,
             tType: this.data.tType.value,
@@ -148,23 +122,23 @@ Page({
         }
 
         const filter = formDataFilters[filterName];
-        if(filter){
+        if (filter) {
             // [[k1, v1], [k2, v2], ...]
-            if(toArray) return filter.map(k=>[k, allData[k]]);
+            if (toArray) return filter.map(k => [k, allData[k]]);
             let newData = {};
-            for(let k of filter) newData[k] = allData[k];
+            for (let k of filter) newData[k] = allData[k];
             return newData;
         }
         return allData;
     },
-    setAllFormData(data){
-        const resetItemForOptions = (data, value)=>({
+    setAllFormData(data) {
+        const resetItemForOptions = (data, value) => ({
             ...data,
             value,
-            label: data.options.find(v=>v.value === value)?.label
+            label: data.options.find(v => v.value === value)?.label
         });
 
-        let companyStatusValues = data.companyStatus.split(',').map(v=>parseInt(v));
+        let companyStatusValues = data.companyStatus.split(',').map(v => parseInt(v));
         this.setData({
             /* 基本信息 */
             companyName: data.companyNameFull,
@@ -182,7 +156,7 @@ Page({
             licenses: data.licenses,
 
             /* non-standard variables */
-            companyStatusValueMap: companyStatusValues.reduce((p, n)=>(p[n] = true, p), []),
+            companyStatusValueMap: companyStatusValues.reduce((p, n) => (p[n] = true, p), []),
             companyStatusTextValue: companyStatusValues.map(key => this.data.companyStatusMap[key]).join(" "),
 
             companyType: resetItemForOptions(this.data.companyType, data.companyType),
@@ -203,8 +177,8 @@ Page({
         // console.log(wx.createSelectorQuery().select('.form-head'))
 
         /* to filter transferPrice when faceNegate gets true */
-        if(formRequiredDataObj.faceNegate){
-            formRequiredDataList = formRequiredDataList.filter(([k])=>k!=='transferPrice');
+        if (formRequiredDataObj.faceNegate) {
+            formRequiredDataList = formRequiredDataList.filter(([k]) => k !== 'transferPrice');
             delete formRequiredDataObj.transferPrice;
         }
 
@@ -213,11 +187,11 @@ Page({
         /* 1: find an empty item */
         let emptyItem = formRequiredDataList.
             /* an empty item (requires defaults to 0) */
-            find(([k, v])=>(!v && v!==false) ||
-            /* OR a multi-selectable item that selects nothing */ 
-                (v instanceof Array && !v.find(v=>v)));
+            find(([k, v]) => (!v && v !== false) ||
+                /* OR a multi-selectable item that selects nothing */
+                (v instanceof Array && !v.find(v => v)));
         // console.log('hi', emptyItem, formRequiredDataList.find(([k])=>k=='companyStatus'));
-        if(emptyItem) return {
+        if (emptyItem) return {
             ok: false,
             type: 'empty',
             itemKey: emptyItem[0],
@@ -225,15 +199,14 @@ Page({
         }
 
         /* 2: find an invalid field */
-        let invalidItem = Object.entries(formDataFormats).
-            find(([k, regex])=>{
-                if(typeof(regex) == 'string') regex = ((regex)=>(
-                    (v)=>!!(`${v}`).match(`^${regex}$`)
-                ))(regex);
-                if(!formRequiredDataObj[k]) return false;
-                return !regex(formRequiredDataObj[k]);
-            });
-        if(invalidItem) return {
+        let invalidItem = Object.entries(formDataFormats).find(([k, regex]) => {
+            if (typeof (regex) == 'string') regex = ((regex) => (
+                (v) => !!(`${v}`).match(`^${regex}$`)
+            ))(regex);
+            if (!formRequiredDataObj[k]) return false;
+            return !regex(formRequiredDataObj[k]);
+        });
+        if (invalidItem) return {
             ok: false,
             type: 'invalid',
             itemKey: invalidItem[0],
@@ -313,9 +286,9 @@ Page({
     },
     modifyTransfer() {
         let result = this.checkForm();
-        if(!result.ok){
-            let content = result.type === 'empty'?
-                ` ${result.itemName} 不能为空`:
+        if (!result.ok) {
+            let content = result.type === 'empty' ?
+                ` ${result.itemName} 不能为空` :
                 ` ${result.itemName} 格式错误`;
             Message.error({
                 context: this,
@@ -326,7 +299,7 @@ Page({
             });
             return;
         }
-        try{
+        try {
             $api.authRequest(
                 "POST",
                 `CompanyTransferInfo/UpdateCompanyTransferInfoByCompanyTransferInfoAndUid`,
@@ -343,13 +316,32 @@ Page({
                     setTimeout(() => {
                         wx.navigateBack();
                     }, 500)
-    
+
                 }
             })
-        }catch(e){console.log(e)}
+        } catch (e) {
+            console.log(e)
+        }
     },
-    removeTransfer(){
-        
+    removeTransfer() {
+        $api.authRequest(
+            "POST",
+            `CompanyTransferInfo/ChangeTStatusByTStatusAndUidAndTid`,
+            {tId: this.data.tId, tStatus: 4}
+        ).then(res => {
+            if (res.status === 0) {
+                Message.success({
+                    context: this,
+                    offset: [20, 32],
+                    marquee: {loop: 0},
+                    duration: 5000,
+                    content: ' 下架成功!',
+                })
+                setTimeout(() => {
+                    wx.navigateBack();
+                }, 500)
+            }
+        })
     },
     getMapBooleanValueToString(map) {
         return Object.keys(map).filter(key => map[key]).join(",");
@@ -359,10 +351,6 @@ Page({
             [`${e.target.dataset.name}`]: e.detail.value,
         });
     },
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         tId: null,
         dateVisible: false,
@@ -376,272 +364,15 @@ Page({
             visible: false,
         },
         currentName: "",
-        companyIndustry: {
-            visible: false,
-            label: "",
-            value: 0,
-            options: [
-                {
-                    value: 1000001,
-                    label: '综合类',
-                },
-                {
-                    value: 1000002,
-                    label: '环保类',
-                },
-                {
-                    value: 1000003,
-                    label: '供应链',
-                },
-                {
-                    value: 1000004,
-                    label: '金融类',
-                },
-                {
-                    value: 1000005,
-                    label: '房产类',
-                },
-                {
-                    value: 1000006,
-                    label: '人才类',
-                },
-                {
-                    value: 1000007,
-                    label: '代理类',
-                },
-                {
-                    value: 1000008,
-                    label: '物流类',
-                },
-                {
-                    value: 1000009,
-                    label: '贸易类',
-                },
-                {
-                    value: 1000010,
-                    label: '投资类',
-                },
-                {
-                    value: 1000011,
-                    label: '科技类',
-                },
-                {
-                    value: 1000012,
-                    label: '产品类',
-                },
-                {
-                    value: 1000013,
-                    label: '管理类',
-                },
-                {
-                    value: 1000014,
-                    label: '服务类',
-                },
-                {
-                    value: 1000015,
-                    label: '设计/企划类',
-                },
-                {
-                    value: 1000016,
-                    label: '材料类',
-                },
-                {
-                    value: 1000017,
-                    label: '工程类',
-                },
-                {
-                    value: 1000018,
-                    label: '其他',
-                },
-                {
-                    value: 1000019,
-                    label: '文化传媒',
-                },
-
-                {
-                    value: 1000020,
-                    label: '教育咨询',
-                },
-                {
-                    value: 1000021,
-                    label: '建筑工程',
-                },
-                {
-                    value: 1000022,
-                    label: '教育科技',
-                },
-                {
-                    value: 1000023,
-                    label: '电子商务',
-                },
-                {
-                    value: 1000024,
-                    label: '实业',
-                },
-                {
-                    value: 1000025,
-                    label: '金属',
-                },
-                {
-                    value: 1000026,
-                    label: '装饰工程',
-                },
-
-            ]
-        },
-        taxStatus: {
-            visible: false,
-            label: "",
-            value: 0,
-            options: [
-                {
-                    value: 1,
-                    label: '零申报',
-                },
-                {
-                    value: 2,
-                    label: '有开票无纳税',
-                },
-                {
-                    value: 3,
-                    label: '有开票有纳税',
-                },
-            ],
-        },
-        tType: {
-            visible: false,
-            label: "",
-            value: 0,
-            options: [
-                {
-                    value: 1,
-                    label: '个体户',
-                },
-                {
-                    value: 2,
-                    label: '公司',
-                },
-            ],
-        },
-        taxLevel: {
-            visible: false,
-            label: "",
-            value: 0,
-            options: [
-                {
-                    value: 1,
-                    label: 'A',
-                },
-                {
-                    value: 2,
-                    label: 'B',
-                },
-                {
-                    value: 3,
-                    label: 'C',
-                },
-                {
-                    value: 4,
-                    label: 'D',
-                },
-                {
-                    value: 5,
-                    label: 'M',
-                },
-            ],
-        },
-        establishYear: {
-            visible: false,
-            label: "",
-            value: 0,
-            options: [
-                {
-                    value: 1,
-                    label: '1年',
-                },
-                {
-                    value: 2,
-                    label: '2年',
-                },
-                {
-                    value: 3,
-                    label: '3年',
-                },
-                {
-                    value: 4,
-                    label: '4年',
-                },
-                {
-                    value: '5',
-                    label: '5年及以上',
-                },
-            ],
-        },
-        companyStatus: {
-            visible: false,
-            label: "",
-            value: 0,
-            options: [
-                {
-                    value: 1,
-                    label: '已税务登记',
-                },
-                {
-                    value: 2,
-                    label: '已开户',
-                },
-                {
-                    value: 3,
-                    label: '已刻章',
-                },
-            ],
-        },
-        companyType: {
-            visible: false,
-            label: "",
-            value: 0,
-            options: [
-                {
-                    value: 1,
-                    label: '内资',
-                },
-                {
-                    value: 2,
-                    label: '外资',
-                },
-            ],
-        },
-        companyChange: {
-            visible: false,
-            label: "",
-            value: 0,
-            options: [
-                {
-                    value: 1,
-                    label: '包含',
-                },
-                {
-                    value: 2,
-                    label: '不包含',
-                },
-            ],
-        },
-        faceNegate: {
-            visible: false,
-            label: "",
-            value: 0,
-            options: [
-
-                {
-                    value: true,
-                    label: '是',
-                },
-                {
-                    value: false,
-                    label: '否',
-                },
-            ],
-        },
+        companyIndustry: NewTransferData.companyIndustry,
+        taxStatus: NewTransferData.taxStatus,
+        tType: NewTransferData.tType,
+        taxLevel: NewTransferData.taxLevel,
+        establishYear: NewTransferData.establishYear,
+        companyStatus: NewTransferData.companyStatus,
+        companyType: NewTransferData.companyType,
+        companyChange: NewTransferData.companyChange,
+        faceNegate: NewTransferData.faceNegate,
         companyName: "",
         companyArea: 0,
         licenses: "",
@@ -656,13 +387,10 @@ Page({
         areaCode: 0,
         areaValue: [],
         companyStatusValueMap: [],
-        companyStatusMap: {
-            1: "税务登记",
-            2: "银行开户",
-            3: "刻章"
-        },
+        companyStatusMap: NewTransferData.companyStatusMap,
         companyStatusTextValue: "",
         companyStatusVisible: false,
+
     },
     chooseMultipleItem(e) {
         let oldValueMap = this.data[`${e.currentTarget.dataset.name}` + 'ValueMap'];
@@ -676,8 +404,7 @@ Page({
             [`${e.currentTarget.dataset.name}` + 'TextValue']: text,
         });
     },
-    
-    updateFormData(){
+    updateFormData() {
         $api.authRequest(
             "POST",
             `CompanyTransferInfo/UpdateCompanyTransferInfoByCompanyTransferInfoAndUid`,
@@ -690,32 +417,20 @@ Page({
             }
         });
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad(options) {
         this.setData({
             currentObj: this.data.taxStatus,
             tId: options.tId
         })
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
     onReady() {
 
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
     onShow() {
         // const {provinces} = this.data;
         // const {cities, counties} = this.getCities(provinces[0].value);
         // this.setData({cities, counties: areaList.counties});
-        
+
         $api.authRequest(
             "POST",
             "CompanyTransferInfo/GetCompanyTransferInfoByUidAndTId",

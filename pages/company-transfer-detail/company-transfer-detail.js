@@ -200,9 +200,9 @@ Page({
                 minPrice: this.data.minPrice,
                 maxPrice: this.data.maxPrice,
                 priceStatus: this.data.price,
-                taxStatusList: this.data.taxStatus === 0 ? [] : [this.data.taxStatus],
-                companyStatusList: this.getChosenValueFromMap(this.data.companyStatusValueMap),
-                companyTypeList: this.data.companyType === 0 ? [] : [this.data.companyType],
+                taxStatus: this.data.taxStatus === 0 ? [] : [this.data.taxStatus],
+                companyStatus: this.getChosenValueFromMap(this.data.companyStatusValueMap),
+                companyType: this.data.companyType === 0 ? [] : [this.data.companyType],
                 area: this.data.areaValue[1] ? this.data.areaValue[1] : 0,
                 establishYear: this.data.establishYear,
                 taxLevel: this.data.taxLevel === 0 ? [] : [this.data.taxLevel]

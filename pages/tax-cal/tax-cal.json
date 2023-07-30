@@ -2,6 +2,7 @@
     "usingComponents": {
         "t-message": "tdesign-miniprogram/message/message",
         "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+        "t-input": "tdesign-miniprogram/input/input",
         "t-picker": "tdesign-miniprogram/picker/picker"
     },
     "navigationBarBackgroundColor": "#2969FF",

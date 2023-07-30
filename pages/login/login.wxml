@@ -21,7 +21,7 @@
     </button>
 
     <view class="l-row security-box">
-        <t-checkbox icon="rectangle" style="padding:0"/>
+        <t-checkbox icon="rectangle" style="padding:0" value="'true'" bind:change="getAgreeLicense"/>
         <view class="security-text" style="width:80%;margin-left:20rpx">
             我已阅读同意用户协议和隐私政策，未注册绑定的手机号验证成功后将自动注册
         </view>

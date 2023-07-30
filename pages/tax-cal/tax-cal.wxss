@@ -72,7 +72,7 @@
     /*background: red;*/
     margin-top: auto;
     width: 220rpx;
-    text-align: end;
+    /*text-align: end;*/
 }
 
 .l-row-c{

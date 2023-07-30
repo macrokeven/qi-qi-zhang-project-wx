@@ -6,7 +6,18 @@
         <view class="l-row">
             <view class="l-l-row">含税销售额(元)</view>
             <view class="l-r-row">
-                <input class="i-num" style="width:300rpx" type="number" placeholder="请输入不含税销售额" placeholder-style="color:rgba(0,0,0,0.3);font-size:32rpx;" bind:change="calcTaxFromInput"/>
+                <t-input
+                        placeholder="0.00"
+                        suffix="元"
+                        borderless="true"
+                        align="right"
+                        type="number"
+                        bindchange="calcTaxFromInput"
+                        t-class-tips="tips"
+                        style="padding:0"
+                        class="i-num"
+                />
+<!--                <input class="i-num" style="width:300rpx;text-align:end" type="number" placeholder="请输入不含税销售额" placeholder-style="color:rgba(0,0,0,0.3);font-size:32rpx;" bind:change="calcTaxFromInput"/>-->
             </view>
         </view>
         <view class="l-row">
