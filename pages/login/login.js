@@ -3,6 +3,17 @@ import Message from 'tdesign-miniprogram/message/index';
 
 const {API: $api} = require("../../utils/MyRequest");
 Page({
+    checkLicense(){
+        if(!this.data.agreeLicense){
+            Message.error({
+                context: this,
+                offset: [20, 32],
+                marquee: {loop: 0},
+                duration: 5000,
+                content: '请先同意用户协议',
+            })
+        }
+    },
     getActiveCode() {
         if (this.data.agreeLicense) {
             let that = this;

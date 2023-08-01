@@ -1,0 +1,32 @@
+<!--pages/knowledge-wiki.wxml-->
+<view class="l-container">
+    <view class="l-card">
+        <view class="l-row">
+            <view
+                wx:if="wikiData != null"
+                wx:for="{{ wikiData }}"
+                wx:for-item="item"
+                wx:key="index"
+                class="list-item {{ openStatus[index]? 'item-opened': '' }}"
+                >
+
+                <view
+                    class="item-title"
+                    data-key="{{ index }}"
+                    data-item="{{ item }}"
+                    bind:tap="toggleContentShow">
+
+                    <text>{{ item.title }}</text>
+
+                    <view class="space"></view>
+
+                    <text wx:if="{{ item.content }}" class="item-tritip">
+                    </text>
+                </view>
+                <view wx:if="{{ item.content && openStatus[index] }}" class="item-content">
+                    <text class="item-content-text">{{ item.content }}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

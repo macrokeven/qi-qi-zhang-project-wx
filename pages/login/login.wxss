@@ -83,3 +83,7 @@
 .login-pic{
     width: 80%;
 }
+
+.test {
+    display: inline;
+}

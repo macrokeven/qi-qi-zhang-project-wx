@@ -16,7 +16,8 @@
         "pages/tax-cal/tax-cal",
         "pages/my-publish/my-publish",
         "pages/contact-info/contact-info",
-        "pages/real-id-verification/real-id-verification"
+        "pages/real-id-verification/real-id-verification",
+        "pages/knowledge-wiki/knowledge-wiki"
     ],
     "usingComponents": {
         "t-demo": "./components/demo-block/index",

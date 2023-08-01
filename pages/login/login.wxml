@@ -16,9 +16,12 @@
         </view>
     </view>
     <view class="login-btn" wx:if="{{loginMethod===1}}" bind:tap="login">登录</view>
-    <button wx:if="{{loginMethod===0}}" class="login-btn" style="letter-spacing:5rpx;margin-top:80rpx;font-size:35rpx"
-            open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号快捷登录
-    </button>
+    <view class="checkLicense" bind:tap="checkLicense">
+        <button wx:if="{{loginMethod===0}}" class="login-btn" style="letter-spacing:5rpx;margin-top:80rpx;font-size:35rpx; {{ agreeLicense? '': 'pointer-events: none;' }}"
+            open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+                手机号快捷登录
+        </button>
+    </view>
 
     <view class="l-row security-box">
         <t-checkbox icon="rectangle" style="padding:0" value="'true'" bind:change="getAgreeLicense"/>
