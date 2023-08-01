@@ -16,7 +16,7 @@
         </view>
     </view>
     <view class="login-btn" wx:if="{{loginMethod===1}}" bind:tap="login">登录</view>
-    <view class="checkLicense" bind:tap="checkLicense">
+    <view class="check-license" bind:tap="checkLicense">
         <button wx:if="{{loginMethod===0}}" class="login-btn" style="letter-spacing:5rpx;margin-top:80rpx;font-size:35rpx; {{ agreeLicense? '': 'pointer-events: none;' }}"
             open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
                 手机号快捷登录

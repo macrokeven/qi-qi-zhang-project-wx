@@ -84,6 +84,6 @@
     width: 80%;
 }
 
-.test {
+.check-license {
     display: inline;
 }
