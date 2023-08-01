@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1c7b5886-6935-4618-90d2-3b2cf158eb17" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/login.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/my-publish-info/my-publish-info.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/my-publish-info/my-publish-info.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/my-publish-info/my-publish-info.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/my-publish-info/my-publish-info.wxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +19,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2S02hJRYfK3oDu2sKjFxNHtaqVC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,6 +38,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/keven/My Projects/Qi Qi Zhang Project/Qi Qi Zhang Project WX/assets/svg&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -78,6 +81,9 @@
       <workItem from="1689593970830" duration="14477000" />
       <workItem from="1689917394604" duration="8459000" />
       <workItem from="1690108115228" duration="8025000" />
+      <workItem from="1690565274683" duration="5746000" />
+      <workItem from="1690876723696" duration="36000" />
+      <workItem from="1690881058918" duration="20000" />
     </task>
     <servers />
   </component>

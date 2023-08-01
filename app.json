@@ -15,7 +15,8 @@
         "pages/my-publish-info/my-publish-info",
         "pages/tax-cal/tax-cal",
         "pages/my-publish/my-publish",
-        "pages/contact-info/contact-info"
+        "pages/contact-info/contact-info",
+        "pages/real-id-verification/real-id-verification"
     ],
     "usingComponents": {
         "t-demo": "./components/demo-block/index",
