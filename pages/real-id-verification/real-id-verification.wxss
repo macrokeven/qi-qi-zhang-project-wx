@@ -1,1 +1,19 @@
 /* pages/real-id-verification/real-id-verification.wxss */
+.pic-upload-box{
+    width: 90%;
+    height: 400rpx;
+    border: 7rpx dashed #afafaf;
+    border-radius: 40rpx;
+    margin: 30rpx 5%;
+    display: flex;
+    flex-direction: column;
+}
+.card-title{
+    margin: 20rpx 0 0 40rpx;
+    font-size: 40rpx;
+}
+.describe-text{
+    font-size: 40rpx;
+    color: #afafaf;
+    margin: 5rpx 0;
+}

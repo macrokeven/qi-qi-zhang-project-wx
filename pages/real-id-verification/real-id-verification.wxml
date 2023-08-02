@@ -1,2 +1,14 @@
-<!--pages/real-id-verification/real-id-verification.wxml-->
-<text>pages/real-id-verification/real-id-verification.wxml</text>
+<view class="l-container full-screen" style="background:rgb(244,244,244);justify-content: flex-start;">
+    <view class="l-card">
+        <view class="l-row">
+            <view class="card-title">实名验证</view>
+        </view>
+        <view class="l-row">
+            <view class="pic-upload-box l-center" bind:tap="uploadPhoto">
+                <view class="describe-text">请上传身份证正面</view>
+                <view class="describe-text">大小不超过3MB</view>
+            </view>
+        </view>
+    </view>
+</view>
+<t-message id="t-message"></t-message>
