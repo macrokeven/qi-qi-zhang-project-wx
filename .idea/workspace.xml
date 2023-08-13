@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c7b5886-6935-4618-90d2-3b2cf158eb17" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/real-id-verification/real-id-verification.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/real-id-verification/real-id-verification.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/real-id-verification/real-id-verification.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/real-id-verification/real-id-verification.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/real-id-verification/real-id-verification.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/real-id-verification/real-id-verification.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/setting/setting.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/setting/setting.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/MyRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/MyRequest.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,27 +34,30 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2S02hJRYfK3oDu2sKjFxNHtaqVC" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "keven",
-    "last_opened_file_path": "/Users/keven/My Projects/Qi Qi Zhang Project/Qi Qi Zhang Project WX/assets/svg",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/keven/My Projects/Qi Qi Zhang Project/Qi Qi Zhang Project WX/assets/svg&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/svg" />
@@ -84,6 +92,12 @@
       <workItem from="1690565274683" duration="5746000" />
       <workItem from="1690876723696" duration="36000" />
       <workItem from="1690881058918" duration="20000" />
+      <workItem from="1690999621296" duration="588000" />
+      <workItem from="1691000230774" duration="1515000" />
+      <workItem from="1691061150296" duration="8000" />
+      <workItem from="1691061164035" duration="27000" />
+      <workItem from="1691061195722" duration="626000" />
+      <workItem from="1691261102768" duration="8543000" />
     </task>
     <servers />
   </component>

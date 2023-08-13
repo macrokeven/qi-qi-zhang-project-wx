@@ -2,7 +2,7 @@
 .pic-upload-box{
     width: 90%;
     height: 400rpx;
-    border: 7rpx dashed #afafaf;
+    border: 4rpx dashed #afafaf;
     border-radius: 40rpx;
     margin: 30rpx 5%;
     display: flex;
@@ -16,4 +16,7 @@
     font-size: 40rpx;
     color: #afafaf;
     margin: 5rpx 0;
+}
+.upload-image{
+    width: 90%;
 }

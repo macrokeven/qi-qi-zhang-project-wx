@@ -22,14 +22,29 @@
             <view class="button-text">我的发布</view>
             <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
         </view>
+        <view class="profile-button" bindtap="openPage" data-route="{{'my-publish'}}">
+            <image class="button-icon" src="./../../assets/svg/library.svg"></image>
+            <view class="button-text">创业资料库</view>
+            <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
+        </view>
         <view class="profile-button" bindtap="openPage" data-route="{{'contact-info'}}">
             <image class="button-icon" src="./../../assets/svg/contact.svg"></image>
             <view class="button-text">联系记录</view>
             <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
         </view>
         <view class="profile-button" bindtap="openPage" data-route="{{'user-info'}}">
-            <image class="button-icon" src="./../../assets/svg/persion.svg"></image>
+            <image class="button-icon" src="./../../assets/svg/person.svg"></image>
             <view class="button-text">个人资料</view>
+            <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
+        </view>
+        <view class="profile-button" bindtap="openPage" data-route="{{'real-id-verification'}}">
+            <image class="button-icon" src="./../../assets/svg/real-verify.svg"></image>
+            <view class="button-text">实名验证</view>
+            <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
+        </view>
+        <view class="profile-button" bindtap="openPage" data-route="{{'real-id-verification'}}">
+            <image class="button-icon" src="./../../assets/svg/company-verify.svg"></image>
+            <view class="button-text">企业认证</view>
             <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
         </view>
         <view class="profile-button" bindtap="openPage" data-route="{{'company-info'}}">
@@ -42,7 +57,7 @@
         <!--            <image class="button-icon" src="./../../assets/svg/link.svg"></image>-->
         <!--            <view class="button-text">帐无忧绑定</view>-->
         <!--        </view>-->
-        <button class="tb-button" bindtap="callUser" >
+        <button class="tb-button" bindtap="callUser" style="margin-bottom:20rpx;">
             <image class="button-icon" src="../../assets/svg/customer-service.svg"></image>
             <view class="button-text">联系我们</view>
             <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
@@ -57,5 +72,6 @@
             <view class="my-btn">退出登录</view>
             <view class="safe-box"></view>
         </t-popup>
+        <view class="tab-box"></view>
     </view>
 </view>

@@ -4,11 +4,24 @@
             <view class="card-title">实名验证</view>
         </view>
         <view class="l-row">
-            <view class="pic-upload-box l-center" bind:tap="uploadPhoto">
-                <view class="describe-text">请上传身份证正面</view>
-                <view class="describe-text">大小不超过3MB</view>
+            <view class="pic-upload-box l-center" data-type="1" bind:tap="uploadPhoto">
+                <view wx-if="{{uploadIDCardF===''}}" class="describe-text">请上传身份证正面</view>
+                <view wx-if="{{uploadIDCardF===''}}" class="describe-text">大小不超过4MB</view>
+                <image wx-if="{{uploadIDCardF!==''}}" src="{{uploadIDCardF}}" class="upload-image"></image>
             </view>
         </view>
+
+        <view class="l-row">
+            <view class="pic-upload-box l-center" data-type="2" bind:tap="uploadPhoto">
+                <view wx-if="{{uploadIDCardB===''}}" class="describe-text">请上传身份证反面</view>
+                <view wx-if="{{uploadIDCardB===''}}" class="describe-text">大小不超过4MB</view>
+                <image wx-if="{{uploadIDCardB!==''}}" src="{{uploadIDCardB}}" class="upload-image"></image>
+            </view>
+        </view>
+        <view class="l-row l-center">
+            <t-button theme="primary" style="width:90%;margin:20rpx 0 40rpx 0;" bindtap="submitData">提交认证</t-button>
+        </view>
+
     </view>
 </view>
 <t-message id="t-message"></t-message>
