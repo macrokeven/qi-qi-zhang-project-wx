@@ -1,57 +1,58 @@
 {
-    "pages": [
-        "pages/home/home",
-        "pages/pay-test/pay-test",
-        "pages/tax-status/tax-status",
-        "pages/setting/setting",
-        "pages/login/login",
-        "pages/company-info/company-info",
-        "pages/user-info/user-info",
-        "pages/value-add-tax-info/value-add-tax-info",
-        "pages/company-transfer/company-transfer",
-        "pages/new-transfer/new-transfer",
-        "pages/company-transfer-detail/company-transfer-detail",
-        "pages/company-transfer-info/company-transfer-info",
-        "pages/my-publish-info/my-publish-info",
-        "pages/tax-cal/tax-cal",
-        "pages/my-publish/my-publish",
-        "pages/contact-info/contact-info",
-        "pages/real-id-verification/real-id-verification",
-        "pages/knowledge-wiki/knowledge-wiki"
-    ],
-    "usingComponents": {
-        "t-demo": "./components/demo-block/index",
-        "t-button": "tdesign-miniprogram/button/button",
-        "t-icon": "tdesign-miniprogram/icon/icon",
-        "navigation-bar": "../../components/navigation-bar/navigation-bar"
-    },
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#f6f6f6",
-        "backgroundColor": "#f6f6f6",
-        "navigationBarTitleText": "TDesign",
-        "navigationBarTextStyle": "black"
-    },
-    "sitemapLocation": "sitemap.json",
-    "tabBar": {
-        "custom": true,
-        "list": [
-            {
-                "pagePath": "pages/home/home",
-                "text": "首页"
-            },
-            {
-                "pagePath": "pages/tax-status/tax-status",
-                "text": "报税查看"
-            },
-            {
-                "pagePath": "pages/setting/setting",
-                "text": "设置"
-            },
-            {
-                "pagePath": "pages/company-transfer/company-transfer",
-                "text": "公司转让"
-            }
-        ]
-    }
+  "pages": [
+    "pages/home/home",
+    "pages/pay-test/pay-test",
+    "pages/tax-status/tax-status",
+    "pages/setting/setting",
+    "pages/login/login",
+    "pages/company-info/company-info",
+    "pages/user-info/user-info",
+    "pages/value-add-tax-info/value-add-tax-info",
+    "pages/company-transfer/company-transfer",
+    "pages/new-transfer/new-transfer",
+    "pages/company-transfer-detail/company-transfer-detail",
+    "pages/company-transfer-info/company-transfer-info",
+    "pages/my-publish-info/my-publish-info",
+    "pages/tax-cal/tax-cal",
+    "pages/my-publish/my-publish",
+    "pages/contact-info/contact-info",
+    "pages/real-id-verification/real-id-verification",
+    "pages/knowledge-wiki/knowledge-wiki",
+    "pages/company-verification/company-verification"
+  ],
+  "usingComponents": {
+    "t-demo": "./components/demo-block/index",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "navigation-bar": "../../components/navigation-bar/navigation-bar"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6f6f6",
+    "backgroundColor": "#f6f6f6",
+    "navigationBarTitleText": "TDesign",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tax-status/tax-status",
+        "text": "报税查看"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "text": "设置"
+      },
+      {
+        "pagePath": "pages/company-transfer/company-transfer",
+        "text": "公司转让"
+      }
+    ]
+  }
 }

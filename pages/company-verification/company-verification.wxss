@@ -1,0 +1,21 @@
+.pic-upload-box{
+    width: 90%;
+    height: 400rpx;
+    border: 4rpx dashed #afafaf;
+    border-radius: 40rpx;
+    margin: 30rpx 5%;
+    display: flex;
+    flex-direction: column;
+}
+.card-title{
+    margin: 20rpx 0 0 40rpx;
+    font-size: 40rpx;
+}
+.describe-text{
+    font-size: 40rpx;
+    color: #afafaf;
+    margin: 5rpx 0;
+}
+.upload-image{
+    width: 90%;
+}

@@ -42,7 +42,7 @@
             <view class="button-text">实名验证</view>
             <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>
         </view>
-        <view class="profile-button" bindtap="openPage" data-route="{{'real-id-verification'}}">
+        <view class="profile-button" bindtap="openPage" data-route="{{'company-verification'}}">
             <image class="button-icon" src="./../../assets/svg/company-verify.svg"></image>
             <view class="button-text">企业认证</view>
             <image class="button-arrow" src="./../../assets/svg/right-arrow.svg"></image>

@@ -41,9 +41,14 @@ function authRequest(method, url, data = {}) {
     return handleRequest(method, url, data, true);
 }
 
+function getUrl(){
+    return myUrl;
+}
+
 const API = {
     noAuthRequest,
     authRequest,
+    getUrl
 };
 
 module.exports = {

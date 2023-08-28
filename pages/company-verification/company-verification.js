@@ -1,19 +1,16 @@
-// pages/real-id-verification/real-id-verification.js
+// pages/company-verification/company-verification.js
 import Message from 'tdesign-miniprogram/message/index';
 import {API as $api} from "../../utils/MyRequest";
 
 Page({
-    /**
-     * 页面的初始数据
-     */
     data: {
-        uploadIDCardF: "",
-        uploadIDCardB: ""
+        companyLicense: "",
+        person: "",
+        personIdNum: ""
     },
-    uploadPhoto(e) {
+    uploadPhoto() {
         let that = this;
-        let type = e.currentTarget.dataset.type;
-        let uploadUrl = $api.getUrl() + "FileUpload/" + (type === '1' ? 'UploadUserIdCardPictureFront' : 'UploadUserIdCardPictureBack');
+        let uploadUrl = $api.getUrl() + "FileUpload/UploadEnterpriseLicensePicture";
         console.log(uploadUrl)
         wx.chooseMedia({
             count: 1,
@@ -34,7 +31,7 @@ Page({
                         header: {
                             "Authorization": getApp().globalData.userInfo.token
                         },
-                        url: uploadUrl, //仅为示例，非真实的接口地址
+                        url: uploadUrl,
                         filePath: res.tempFiles[0].tempFilePath,
                         name: 'multipartFile',
                         formData: {
@@ -49,15 +46,9 @@ Page({
                                 duration: 5000,
                                 content: '上传成功!',
                             })
-                            if (type === '1') {
-                                that.setData({
-                                    uploadIDCardF: picUrl
-                                })
-                            } else {
-                                that.setData({
-                                    uploadIDCardB: picUrl
-                                })
-                            }
+                            that.setData({
+                                companyLicense: picUrl
+                            })
                         },
                         fail(err) {
                             console.log(err);
@@ -67,17 +58,20 @@ Page({
             }
         })
     },
-
     getData() {
         $api.authRequest(
             "POST",
-            `IdCardVerifyInfo/GetIdCardVerifyInfoByUid`,
+            `EnterpriseLicenseVerifyInfo/GetEnterpriseLicenseVerifyInfoByUid`,
             {}
         ).then(res => {
-            this.setData({
-                uploadIDCardF: res.data.idCardFUrl,
-                uploadIDCardB: res.data.idCardBUrl,
-            })
+            if (res.data !== null && res.data !== undefined) {
+                this.setData({
+                    companyLicense: res.data.picUrl,
+                    person: res.data.person,
+                    personIdNum: res.data.personIdNum,
+                })
+            }
+
             if (res.data.status === 3) {
                 Message.success({
                     context: this,
@@ -95,8 +89,11 @@ Page({
     submitData() {
         $api.authRequest(
             "POST",
-            `IdCardVerifyInfo/SubmitIdCardVerifyByUid`,
-            {}
+            `EnterpriseLicenseVerifyInfo/SubmitEnterpriseLicenseVerifyByUid`,
+            {
+                person: this.data.person,
+                personIdNum: this.data.personIdNum,
+            }
         ).then(res => {
             if (res.status === 0) {
                 Message.success({
@@ -115,52 +112,19 @@ Page({
                     offset: [20, 32],
                     marquee: {loop: 0},
                     duration: 2000,
-                    content: '网络异常，稍后再试！1000023'
+                    content: res.msg
                 })
             }
 
         });
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
     onShow() {
         this.getData();
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
+    onUserInput(e) {
+        this.setData({
+            [`${e.target.dataset.name}`]: e.detail.value,
+        });
     },
 
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    }
 })
